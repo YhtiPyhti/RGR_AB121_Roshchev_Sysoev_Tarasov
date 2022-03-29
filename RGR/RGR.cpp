@@ -1,6 +1,82 @@
 ﻿#include <iostream>
 using namespace std;
-int main()
+void main()
 {
-    cout << "Hello World!";
+	setlocale(LC_ALL, "Russian");
+
+	string s;
+
+	cout << "Пароль: ";
+
+	cin >> s;
+
+	if (s == "123") {
+
+		cout << "Выбирите щифр: " << endl;
+		int k;
+
+		cout << "Выберите шифр: " << endl;
+
+		cout << "Нажмите <1> если выбрали  ?? " << endl;
+		cout << "Нажмите <2> если выбрали  ?? " << endl;
+		cout << "Нажмите <3> если выбрали  ?? " << endl;
+		cout << "Нажмите <4> если выбрали  ?? " << endl;
+		cout << "Нажмите <5> если выбрали  ?? " << endl;
+		cout << "Нажмите <6> если выбрали  ?? " << endl;
+		cout << "Нажмите <7> если выбрали  ?? " << endl;
+		cout << "Нажмите <8> если выбрали  ?? " << endl;
+		cout << "Нажмите <9> если выбрали  ?? " << endl;
+
+		cout << "Нажмите <10> если выбрали  выход " << endl;
+
+		cin >> k;
+
+		switch (k) {
+
+		case 1:
+			//вызов функции с шифровкой
+			break;
+
+		case 2:
+
+			break;
+
+		case 3:
+
+			break;
+
+		case 4:
+
+			break;
+		case 6:
+
+			break;
+
+		case 7:
+
+			break;
+
+		case 8:
+
+			break;
+
+		case 9:
+
+			break;
+
+		case 10:
+			exit;
+		}
+
+
+	}
+
+	else {
+
+		cout << "Неверный пароль " << endl;
+
+	}
+
+	system("pause");
+
 }
