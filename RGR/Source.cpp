@@ -9,9 +9,11 @@ int mod(int g, int X, int p) {
 	return t;
 }
 
-void El_Gamal(int &m)
+void El_Gamal()
 {
-	int g = 5, p = 23, Xa = 4, Xb = 11, Ya = 0, Yb = 0, k = 7, r = 0, e = 0, m1 = 0, t = 0;
+	int g = 5, p = 23, Xa = 4, Xb = 11, Ya = 0, Yb = 0, k = 7, r = 0, e = 0, m = 0, m1 = 0, t = 0;
+	cout << "Введите число в пределах от 1 до " << p << endl;
+	cin >> m;
 	Ya = mod(g, Xa, p);
 	Yb = mod(g, Xb, p);
 	cout << "Абонент A" << " Секретный ключ - " << Xa << " Открытый ключ - " << Ya << endl;

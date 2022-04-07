@@ -35,7 +35,7 @@ void main(){
 		switch (k) {
 
 		case 1:
-			El_Gamal(k);
+			El_Gamal();
 			break;
 
 		case 2:
