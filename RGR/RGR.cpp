@@ -1,7 +1,10 @@
 ﻿#include <iostream>
+#include <clocale>
+#include "Header.h"
+
 using namespace std;
-void main()
-{
+
+void main(){
 	setlocale(LC_ALL, "Russian");
 
 	string s;
@@ -12,12 +15,10 @@ void main()
 
 	if (s == "123") {
 
-		cout << "Выбирите щифр: " << endl;
 		int k;
-
 		cout << "Выберите шифр: " << endl;
 
-		cout << "Нажмите <1> если выбрали  ?? " << endl;
+		cout << "Нажмите <1> если выбрали  Эль Гамаля " << endl;
 		cout << "Нажмите <2> если выбрали  ?? " << endl;
 		cout << "Нажмите <3> если выбрали  ?? " << endl;
 		cout << "Нажмите <4> если выбрали  ?? " << endl;
@@ -34,7 +35,7 @@ void main()
 		switch (k) {
 
 		case 1:
-			//вызов функции с шифровкой
+			El_Gamal(k);
 			break;
 
 		case 2:
