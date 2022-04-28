@@ -12,12 +12,12 @@ int mod(int g, int X, int p) {
 void El_Gamal()
 {
 	int g = 5, p = 23, Xa = 4, Xb = 11, Ya = 0, Yb = 0, k = 7, r = 0, e = 0, m = 0, m1 = 0, t = 0;
-	cout << "Ââåäèòå ÷èñëî â ïðåäåëàõ îò 1 äî " << p << endl;
+	cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã·Ã¨Ã±Ã«Ã® Ã¢ Ã¯Ã°Ã¥Ã¤Ã¥Ã«Ã Ãµ Ã®Ã² 1 Ã¤Ã® " << p << endl;
 	cin >> m;
 	Ya = mod(g, Xa, p);
 	Yb = mod(g, Xb, p);
-	cout << "Àáîíåíò A" << " Ñåêðåòíûé êëþ÷ - " << Xa << " Îòêðûòûé êëþ÷ - " << Ya << endl;
-	cout << "Àáîíåíò B" << " Ñåêðåòíûé êëþ÷ - " << Xb << " Îòêðûòûé êëþ÷ - " << Yb << endl;
+	cout << "Ã€Ã¡Ã®Ã­Ã¥Ã­Ã² A" << " Ã‘Ã¥ÃªÃ°Ã¥Ã²Ã­Ã»Ã© ÃªÃ«Ã¾Ã· - " << Xa << " ÃŽÃ²ÃªÃ°Ã»Ã²Ã»Ã© ÃªÃ«Ã¾Ã· - " << Ya << endl;
+	cout << "Ã€Ã¡Ã®Ã­Ã¥Ã­Ã² B" << " Ã‘Ã¥ÃªÃ°Ã¥Ã²Ã­Ã»Ã© ÃªÃ«Ã¾Ã· - " << Xb << " ÃŽÃ²ÃªÃ°Ã»Ã²Ã»Ã© ÃªÃ«Ã¾Ã· - " << Yb << endl;
 	r = mod(g, k, p);
 	t = mod(Yb, k, p);
 	e = ((m % p) * t) % p;
@@ -25,7 +25,80 @@ void El_Gamal()
 	t = mod(r, g, p);
 	m1 = ((e % p) * t) % p;
 
-	cout << "Èñõîäíûé òåêñò: " << m << endl;
-	cout << "Çàøèôðîâàííûé òåêñò: " << r << ", " << e << endl;
-	cout << "Ðàñøèôðîâàííûé òåêñò: " << m1 << endl;
+	cout << "ÃˆÃ±ÃµÃ®Ã¤Ã­Ã»Ã© Ã²Ã¥ÃªÃ±Ã²: " << m << endl;
+	cout << "Ã‡Ã Ã¸Ã¨Ã´Ã°Ã®Ã¢Ã Ã­Ã­Ã»Ã© Ã²Ã¥ÃªÃ±Ã²: " << r << ", " << e << endl;
+	cout << "ÃÃ Ã±Ã¸Ã¨Ã´Ã°Ã®Ã¢Ã Ã­Ã­Ã»Ã© Ã²Ã¥ÃªÃ±Ã²: " << m1 << endl;
+}
+
+void Tarab_G()
+{
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251); 
+    SetConsoleOutputCP(1251);
+    
+    char str[1000];
+    cin.getline(str, 1000);
+    for (int i = 0; i < 1000; i++) 
+    {
+     if (str[i] == 'Ð‘') 
+     {
+        str[i] = 'Ð©';
+     }
+     else if (str[i] == 'Ð©')
+        str[i] = 'Ð‘';
+
+     if (str[i] == 'Ð’')
+        str[i] = 'Ð¨';
+     else if (str[i] == 'Ð¨')
+        str[i] = 'Ð’';
+
+     if (str[i] == 'Ð“')
+        str[i] = 'Ð§';
+     else if (str[i] == 'Ð§')
+        str[i] = 'Ð“';
+
+     if (str[i] == 'Ð”')
+        str[i] = 'Ð¦';
+     else if (str[i] == 'Ð¦')
+        str[i] = 'Ð”';
+
+     if (str[i] == 'Ð–')
+        str[i] = 'Ð¥';
+     else if (str[i] == 'Ð¥')
+        str[i] = 'Ð–';
+
+     if (str[i] == 'Ð—') 
+     {
+        str[i] = 'Ð¤';
+     }
+     else 
+     {
+        if (str[i] == 'Ð¤')
+            str[i] = 'Ð—';
+     }
+
+     if (str[i] == 'Ðš')
+        str[i] = 'Ð¢';
+     else if (str[i] == 'Ð¢')
+        str[i] = 'Ðš';
+
+     if (str[i] == 'Ð›')
+        str[i] = 'Ð¡';
+     else if (str[i] == 'Ð¡')
+        str[i] = 'Ð›';
+
+     if (str[i] == 'Ðœ')
+        str[i] = 'Ð ';
+     else if (str[i] == 'Ð ')
+        str[i] = 'Ðœ';
+
+     if (str[i] == 'Ð')
+        str[i] = 'ÐŸ';
+     else if (str[i] == 'ÐŸ')
+        str[i] = 'Ð';
+
+     }
+  cout <<"Ð—Ð°ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ðµ ÑÐ»Ð¾Ð²Ð¾: "<< str << endl;
+
+
 }
