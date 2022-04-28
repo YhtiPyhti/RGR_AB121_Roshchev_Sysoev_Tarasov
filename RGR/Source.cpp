@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Header.h"
+#include <clocale>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -16,15 +18,17 @@ int mod(int g, int X, int p) {
 	return t;
 }
 
-void El_Gamal()
-{
-	int g = 5, p = 23, Xa = 4, Xb = 11, Ya = 0, Yb = 0, k = 7, r = 0, e = 0, m = 0, m1 = 0, t = 0;
-	cout << "Ââåäèòå ÷èñëî â ïðåäåëàõ îò 1 äî " << p << endl;
+void El_Gamal(){
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+	int g = 5, p = 3571, Xa = 4, Xb = 11, Ya = 0, Yb = 0, k = 7, r = 0, e = 0, m = 0, m1 = 0, t = 0;
+	cout << "Выберете число от 1 до " << p << endl;
 	cin >> m;
 	Ya = mod(g, Xa, p);
 	Yb = mod(g, Xb, p);
-	cout << "Àáîíåíò A" << " Ñåêðåòíûé êëþ÷ - " << Xa << " Îòêðûòûé êëþ÷ - " << Ya << endl;
-	cout << "Àáîíåíò B" << " Ñåêðåòíûé êëþ÷ - " << Xb << " Îòêðûòûé êëþ÷ - " << Yb << endl;
+    cout << "Абонент A" << " Секретный ключ - " << Xa << " Открытый ключ - " << Ya << endl;
+    cout << "Абонент B" << " Секретный ключ - " << Xb << " Открытый ключ - " << Yb << endl;
 	r = mod(g, k, p);
 	t = mod(Yb, k, p);
 	e = ((m % p) * t) % p;
@@ -32,9 +36,9 @@ void El_Gamal()
 	t = mod(r, g, p);
 	m1 = ((e % p) * t) % p;
 
-	cout << "Èñõîäíûé òåêñò: " << m << endl;
-	cout << "Çàøèôðîâàííûé òåêñò: " << r << ", " << e << endl;
-	cout << "Ðàñøèôðîâàííûé òåêñò: " << m1 << endl;
+	cout << "Исходный текст:" << m << endl;
+	cout << "Зашифрованный текст:" << r << ", " << e << endl;
+	cout << "Расшифрованный текст:" << m1 << endl;
 }
 
 void Tarab_G()

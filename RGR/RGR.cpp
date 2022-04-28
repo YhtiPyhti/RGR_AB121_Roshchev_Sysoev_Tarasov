@@ -58,9 +58,6 @@ void main(){
 			cout << decode_atbash(str);   // декодированная
 
 			putchar('\n');
-
-
-
 			getchar();
 
 			break;
