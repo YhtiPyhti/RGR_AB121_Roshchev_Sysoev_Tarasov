@@ -1,4 +1,11 @@
 #include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"
+
 using namespace std;
 int mod(int g, int X, int p) {
 	int t = 0, t0 = g % p;
@@ -102,3 +109,44 @@ void Tarab_G()
 
 
 }
+
+    char* code_atbash(char* src) {
+        char* dst = src;
+        const char* cch, * dch;
+
+        while (*src) {
+            if (isalpha(*src)) {
+                for (dch = DECODE_ATBASH, cch = CODE_ATBASH; *cch; *cch++, *dch++) {
+                    if (*cch == toupper(*src)) {
+                        *src = (isupper(*src)) ? *dch : tolower(*dch);
+                        break;
+                    }
+                }
+            }
+            *src++;
+        }
+        return dst;
+    }
+
+    // функция декодирования
+    char* decode_atbash(char* src) {
+        char* dst = src;
+        const char* cch, * dch;
+
+        while (*src) {
+            if (isalpha(*src)) {
+                for (dch = DECODE_ATBASH, cch = CODE_ATBASH; *cch; *cch++, *dch++) {
+                    if (*dch == toupper(*src)) {
+                        *src = (isupper(*src)) ? *cch : tolower(*cch);
+                        break;
+                    }
+                }
+            }
+            *src++;
+        }
+        return dst;
+    }
+
+
+   
+

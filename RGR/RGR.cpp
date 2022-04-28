@@ -1,6 +1,12 @@
 ﻿#include <iostream>
 #include <clocale>
 #include "Header.h"
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
 using namespace std;
 
@@ -20,7 +26,7 @@ void main(){
 
 		cout << "Нажмите <1> если выбрали  Эль Гамаля " << endl;
 		cout << "Нажмите <2> если выбрали  Тарабарская грамота " << endl;
-		cout << "Нажмите <3> если выбрали  ??? " << endl;
+		cout << "Нажмите <3> если выбрали  Атбаш " << endl;
 		cout << "Нажмите <4> если выбрали  ??? " << endl;
 		cout << "Нажмите <5> если выбрали  ??? " << endl;
 		cout << "Нажмите <6> если выбрали  ??? " << endl;
@@ -43,6 +49,17 @@ void main(){
 			break;
 
 		case 3:
+			char str[64];
+			gets_s(str);
+			//puts(str);    // исходная строка
+			puts(code_atbash(str));    // закодированная
+			puts(decode_atbash(str));   // декодированная
+
+			putchar('\n');
+
+
+
+			getchar();
 
 			break;
 
