@@ -45,14 +45,16 @@ void main(){
 			break;
 
 		case 2:
-            //Tarab_G();
+            Tarab_G();
 			break;
 
 		case 3:
 			char str[64];
+			cout << "Введите строку:";
 			cin >> str;
-			//puts(str);    // исходная строка
+			cout << "Закодированная строка:";
 			cout << code_atbash(str);    // закодированная
+			cout << "Декодированная строка:";
 			cout << decode_atbash(str);   // декодированная
 
 			putchar('\n');
