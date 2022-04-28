@@ -1,4 +1,11 @@
 #include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"
+
 using namespace std;
 int mod(int g, int X, int p) {
 	int t = 0, t0 = g % p;
@@ -102,7 +109,7 @@ void Tarab_G()
 
 
 }
-void atbash() {
+
     char* code_atbash(char* src) {
         char* dst = src;
         const char* cch, * dch;
@@ -142,4 +149,4 @@ void atbash() {
 
 
    
-}
+

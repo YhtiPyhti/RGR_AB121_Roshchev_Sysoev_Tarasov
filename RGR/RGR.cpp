@@ -1,6 +1,12 @@
 ﻿#include <iostream>
 #include <clocale>
 #include "Header.h"
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
 using namespace std;
 
@@ -43,7 +49,17 @@ void main(){
 			break;
 
 		case 3:
-			Atbash();
+			char str[64];
+			gets_s(str);
+			//puts(str);    // исходная строка
+			puts(code_atbash(str));    // закодированная
+			puts(decode_atbash(str));   // декодированная
+
+			putchar('\n');
+
+
+
+			getchar();
 
 			break;
 
