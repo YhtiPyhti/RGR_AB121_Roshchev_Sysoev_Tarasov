@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
+#include <Windows.h>
 #define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
