@@ -39,7 +39,7 @@ void main(){
 			break;
 
 		case 2:
-
+                        Tarab_G();
 			break;
 
 		case 3:
