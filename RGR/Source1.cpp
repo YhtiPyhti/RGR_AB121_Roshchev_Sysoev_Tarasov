@@ -3,59 +3,58 @@
 #include "Header.h"
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+#include <cctype>
 #include <Windows.h>
 
-string symbols = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-int i, j, c, sum;
 using namespace std;
-
-//Функция получения кода символа
-void Keycode(string s)
-{
-    for (int i = 1; i <= symbols.Length(); i++)
-        if (s == symbols[i])
-            c = i;
+void Vizhiner() {
+	string Key, Text, EnText;
+	cout << "Введите строку: ";
+	cin >> Text;
+	cout << "Введите ключ: ";
+	cin >> Key;
+	EnText = encodeText(Text, Key);
+	cout << "Закодированная строка: " << EnText << endl;
 }
+string encodeText(string text, string key) {
+    int i, j;
 
-//Функция шифрования
-string Encode(string Text, String Key)
-{
-    String result;
-    for (i = 1; i <= Text.Length(); i++)
-    {
-        if (j >= Key.Length())
-            j = 0;
-        j++;
-        Keycode(Text[i]);
-        sum = c;
-        Keycode(Key[j]);
-        sum = sum + c;
-        if (sum > 118)
-            sum = sum - 118;
-        result += symbols[sum];
-    }
-    j = 0;
-    return result;
-}
+    char newKey[100];
+    char encryptedText[100];
 
-//Функция дешифрования
-String Decode(string Text, String Key)
-{
-    String result;
-    for (i = 1; i <= Text.Length(); i++)
-    {
-        if (j >= Key.Length())
+    //новый ключ
+    for (i = 0, j = 0; i < text.length(); ++i, ++j) {
+        if (j == key.length()) {
             j = 0;
-        j++;
-        Keycode(Text[i]);
-        sum = c;
-        Keycode(Key[j]);
-        sum = sum - c;
-        if (sum < 1)
-            sum = sum + 118;
-        result += symbols[sum];
+        }
+        newKey[i] = key[j];
     }
-    j = 0;
-    return result;
+    newKey[i] = '\0';
+    
+    //шифровка
+    for (i = 0; i < text.length(); i++) {
+        if (text[i] != ' ') {
+            if (97 < (int)text[i] && 97 < (int)newKey[i]) {
+                encryptedText[i] = (((text[i] - 'a') + (newKey[i] - 'a')) % 26);
+                encryptedText[i] += 'a';
+            }
+            else if (97 > (int)text[i] && 97 < (int)newKey[i]) {
+                encryptedText[i] = (((text[i] - 'A') + (newKey[i] - 'a')) % 26);
+                encryptedText[i] += 'a';
+            }
+            else if (97 < (int)text[i] && 97 > (int)newKey[i]) {
+                encryptedText[i] = (((text[i] - 'a') + (newKey[i] - 'A')) % 26);
+                encryptedText[i] += 'a';
+            }
+            else {
+                encryptedText[i] = (((text[i] - 'A') + (newKey[i] - 'A')) % 26);
+                encryptedText[i] += 'A';
+            }
+        }
+        else {
+            encryptedText[i] = ' ';
+        }
+    }
+    encryptedText[i] = '\0';
+    return encryptedText;
 }
