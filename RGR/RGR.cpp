@@ -45,15 +45,15 @@ void main(){
 			break;
 
 		case 2:
-            Tarab_G();
+            //Tarab_G();
 			break;
 
 		case 3:
 			char str[64];
-			gets_s(str);
+			cin >> str;
 			//puts(str);    // исходная строка
-			puts(code_atbash(str));    // закодированная
-			puts(decode_atbash(str));   // декодированная
+			cout << code_atbash(str);    // закодированная
+			cout << decode_atbash(str);   // декодированная
 
 			putchar('\n');
 
