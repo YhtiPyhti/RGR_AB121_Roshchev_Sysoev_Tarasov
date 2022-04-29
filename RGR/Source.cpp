@@ -2,7 +2,7 @@
 #include "Header.h"
 #include <clocale>
 #include <stdio.h>
-#include <string.h>
+#include <string>
 #include <cctype>
 #include <Windows.h>
 #define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -19,9 +19,6 @@ int mod(int g, int X, int p) {
 }
 
 void El_Gamal(){
-    setlocale(LC_ALL, "Russian");
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
 	int g = 5, p = 3571, Xa = 4, Xb = 11, Ya = 0, Yb = 0, k = 7, r = 0, e = 0, m = 0, m1 = 0, t = 0;
 	cout << "Выберете число от 1 до " << p << endl;
 	cin >> m;
@@ -32,6 +29,7 @@ void El_Gamal(){
 	r = mod(g, k, p);
 	t = mod(Yb, k, p);
 	e = ((m % p) * t) % p;
+    //расшифровка
 	g = p - 1 - Xb;
 	t = mod(r, g, p);
 	m1 = ((e % p) * t) % p;
