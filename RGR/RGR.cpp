@@ -78,7 +78,7 @@ void menu() {
 		break;
 
 	case 10:
-		exit;
+		exit(0);
 	}
 	menu();
 }
