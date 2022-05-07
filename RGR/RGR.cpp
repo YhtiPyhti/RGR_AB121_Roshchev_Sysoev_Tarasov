@@ -91,7 +91,7 @@ void main(){
 
 	cin >> s;
 
-	if (s == "123") {
+	if (s == "1111") {
 		menu();
 	}
 
