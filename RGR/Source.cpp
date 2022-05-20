@@ -47,7 +47,7 @@ void El_Gamal() {
         decodtext += (char)(El_Gamal_decode(g, p, Xb, zahiv) + '0');
     }
     cout << "Encode text: " << encodtext << endl;
-    cout << "Decode text: " << decodtext;
+    cout << "Decode text: " << decodtext << endl;
 
 }
 
