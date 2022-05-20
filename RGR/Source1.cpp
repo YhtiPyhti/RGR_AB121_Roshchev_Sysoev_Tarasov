@@ -1,12 +1,5 @@
-#include <iostream>
-#include <clocale>
-#include "Header.h"
-#include <stdio.h>
-#include <string>
-#include <cctype>
-#include <Windows.h>
+#include "Header1.h"
 
-using namespace std;
 void Vizhiner() {
     string Key, Text, EnText, DeText;
 	cout << "¬ведите строку: ";

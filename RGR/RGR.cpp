@@ -1,14 +1,5 @@
-﻿#include <iostream>
-#include <clocale>
-#include "Header.h"
-#include <stdio.h>
-#include <string>
-#include <cctype>
-#include <Windows.h>
-#define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"
-
-using namespace std;
+﻿#include "Header.h"
+#include "Header1.h"
 
 void menu() {
 	int k;

@@ -1,14 +1,4 @@
-#include <iostream>
 #include "Header.h"
-#include <clocale>
-#include <stdio.h>
-#include <string>
-#include <cctype>
-#include <Windows.h>
-#define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"
-
-using namespace std;
 int mod(int g, int X, int p) {
 	int t = 0, t0 = g % p;
 	for (int i = 1; i <= X; i++) {
@@ -18,25 +8,47 @@ int mod(int g, int X, int p) {
 	return t;
 }
 
-void El_Gamal(){
-	int g = 5, p = 3571, Xa = 4, Xb = 11, Ya = 0, Yb = 0, k = 7, r = 0, e = 0, m = 0, m1 = 0, t = 0;
-	cout << "Выберете число от 1 до " << p << endl;
-	cin >> m;
-	Ya = mod(g, Xa, p);
-	Yb = mod(g, Xb, p);
-    cout << "Абонент A" << " Секретный ключ - " << Xa << " Открытый ключ - " << Ya << endl;
-    cout << "Абонент B" << " Секретный ключ - " << Xb << " Открытый ключ - " << Yb << endl;
-	r = mod(g, k, p);
-	t = mod(Yb, k, p);
-	e = ((m % p) * t) % p;
-    //расшифровка
-	g = p - 1 - Xb;
-	t = mod(r, g, p);
-	m1 = ((e % p) * t) % p;
+int El_Gamal_decode(int g, int p, int Xb, vector<int> entext) {
+    int m1, t;
+    g = p - 1 - Xb;
+    t = mod(entext[0], g, p);
+    m1 = ((entext[1] % p) * t) % p;
+    return m1;
+}
+vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m) {
+    int r, t, e, Yb;
+    vector<int> entext;
+    Yb = mod(g, Xb, p);//открытый ключ
+    r = mod(g, k, p);//зашифров 1
+    entext.push_back(r);
 
-	cout << "Исходный текст:" << m << endl;
-	cout << "Зашифрованный текст:" << r << ", " << e << endl;
-	cout << "Расшифрованный текст:" << m1 << endl;
+    t = mod(Yb, k, p);
+    e = ((m % p) * t) % p;//зашифров 2
+    entext.push_back(e);
+    return entext;
+}
+
+void El_Gamal() {
+    string decodtext, encodtext;
+    string text;
+    int g = 5, p = 3571, t = 0, k = 7;//доп данные для шифровки 
+    int Xb = 11;//ключи
+    int r = 0, e = 0, m = 0, decode = 0; //текста
+    vector<int> zahiv;
+    cout << "Input strings: ";
+    cin >> text;
+    for (int i = 0; i < text.length(); i++) {
+        m = text[i] - '0';
+        zahiv = El_Gamal_encode(g, p, Xb, k, m);
+
+        encodtext += (char)(zahiv[0] + '0');
+        encodtext += (char)(zahiv[1] + '0');
+
+        decodtext += (char)(El_Gamal_decode(g, p, Xb, zahiv) + '0');
+    }
+    cout << "Encode text: " << encodtext << endl;
+    cout << "Decode text: " << decodtext;
+
 }
 
 void Tarab_G()
