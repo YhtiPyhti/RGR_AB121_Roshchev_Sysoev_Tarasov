@@ -55,7 +55,7 @@ void Tarab_G()
 {
     setlocale(LC_ALL, "Russian");
     SetConsoleCP(1251); 
-   SetConsoleOutputCP(1251);
+    SetConsoleOutputCP(1251);
     
        char str[1000];
     cout << "Введите буквы :" << endl;

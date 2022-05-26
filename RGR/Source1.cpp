@@ -1,16 +1,44 @@
 #include "Header1.h"
 
+void eng(string text) {
+    int k = 0;
+    while (k < text.length()) {
+        if ((text[k] >= 'a') && (text[k] <= 'z'));
+        else if ((text[k] >= 'A') && (text[k] <= 'Z'));
+        else {
+            throw " Incorrect input! Use only english. (Be sure to use a space before entering)\n";
+        }
+        k++;
+    }
+}
+
 void Vizhiner() {
     string Key, Text, EnText, DeText;
-	cout << "Введите строку: ";
-    cin.ignore();
-    getline(cin, Text);
-	cout << "Введите ключ: ";
-	cin >> Key;
-	EnText = encodeText(Text, Key);
-	cout << "Закодированная строка: " << EnText << endl;
-    DeText = decodeText(EnText, Key);
-    cout << "Раскодированная строка: " << DeText << endl;
+    try {
+        cout << "Input text: ";
+        cin.ignore();
+        getline(cin, Text);
+        eng(Text);
+    }
+    catch (const char* err) {
+        cout << err << endl;
+        Text.clear();
+        Vizhiner();
+    }
+    try {
+        cout << "Input key: ";
+        cin >> Key;
+        eng(Key);
+        EnText = encodeText(Text, Key);
+        cout << "Encoded string " << EnText << endl;
+        DeText = decodeText(EnText, Key);
+        cout << "Decoded string: " << DeText << endl;
+    }
+    catch (const char* err) {
+        cout << err << endl;
+        Key.clear();
+        Vizhiner();
+    }
 }
 string encodeText(string text, string key) {
     int i, j;
