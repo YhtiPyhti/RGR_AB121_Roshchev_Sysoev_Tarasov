@@ -3,11 +3,11 @@
 void eng(string text) {
     int k = 0;
     while (k < text.length()) {
-        if ((text[k] >= 'a') && (text[k] <= 'z'));
+        if ((text[k] >= 'a') && (text[k] <= 'z') || (text[k] == ' '));
         else if ((text[k] >= 'A') && (text[k] <= 'Z'));
-        else {
+        else 
             throw " Incorrect input! Use only english. (Be sure to use a space before entering)\n";
-        }
+        
         k++;
     }
 }

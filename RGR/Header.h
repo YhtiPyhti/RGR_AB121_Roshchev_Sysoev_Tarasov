@@ -18,3 +18,4 @@ char* code_atbash(char* src);
 char* decode_atbash(char* src);
 vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m);
 int El_Gamal_decode(int g, int p, int Xb, vector<int> entext);
+void eng(string text);

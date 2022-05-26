@@ -1,4 +1,7 @@
 #include "Header.h"
+
+void eng(string text);
+
 int mod(int g, int X, int p) {
 	int t = 0, t0 = g % p;
 	for (int i = 1; i <= X; i++) {
@@ -35,20 +38,28 @@ void El_Gamal() {
     int Xb = 11;//ключи
     int r = 0, e = 0, m = 0, decode = 0; //текста
     vector<int> zahiv;
-    cout << "Input strings: ";
-    cin >> text;
-    for (int i = 0; i < text.length(); i++) {
-        m = text[i] - '0';
-        zahiv = El_Gamal_encode(g, p, Xb, k, m);
 
-        encodtext += (char)(zahiv[0] + '0');
-        encodtext += (char)(zahiv[1] + '0');
+    try {
+        cout << "Input text: ";
+        cin.ignore();
+        getline(cin, text);
+        eng(text);
+        for (int i = 0; i < text.length(); i++) {
+            m = text[i] - '0';
+            zahiv = El_Gamal_encode(g, p, Xb, k, m);
 
-        decodtext += (char)(El_Gamal_decode(g, p, Xb, zahiv) + '0');
+            encodtext += (char)(zahiv[0] + '0');
+            encodtext += (char)(zahiv[1] + '0');
+
+            decodtext += (char)(El_Gamal_decode(g, p, Xb, zahiv) + '0');
+        }
+        cout << "Encode text: " << encodtext << endl;
+        cout << "Decode text: " << decodtext << endl;
+    }catch (const char* err) {
+        cout << err << endl;
+        text.clear();
+        El_Gamal();
     }
-    cout << "Encode text: " << encodtext << endl;
-    cout << "Decode text: " << decodtext << endl;
-
 }
 
 void Tarab_G()
