@@ -172,7 +172,117 @@ void Tarab_G()
         }
         return dst;
     }
+void Grons()
+{
+    SetConsoleCP(1251);
+    setlocale(LC_ALL, "Russian");
+    int res = 0;
+    string i;
+    char alph[] = { 'а','б','в','г','д','е','ё','ж','з','и','й','к','л',
+         'м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я' };
+    cout << "Введите сообщение: \n";
+    string msg;
+    cin >> msg;
+    cout << "\n";
+    cout << "Введите ключ: \n";
+    cin >> i;
+    while (i.length() < msg.length()) {
+        i = i + i;
+    }
+    for (int j = 0; j != msg.length();j++) {//шифр
+        for (int v = 0; v != strlen(alph);v++) {
+            if (msg[j] == alph[v]) {
+                if (i[j] == '0') {
+                    res = 0;
+                }
+                if (i[j] == '1') {
+                    res = 1;
+                }
+                if (i[j] == '2') {
+                    res = 2;
+                }
+                if (i[j] == '3') {
+                    res = 3;
+                }
+                if (i[j] == '4') {
+                    res = 4;
+                }
+                if (i[j] == '5') {
+                    res = 5;
+                }
+                if (i[j] == '6') {
+                    res = 6;
+                }
+                if (i[j] == '7') {
+                    res = 7;
+                }
+                if (i[j] == '8') {
+                    res = 8;
+                }
+                if (i[j] == '9') {
+                    res = 9;
+                }
+                if (v + res >= 33) {
 
+                    msg[j] = alph[v + res - 33];
+                }
+                else 
+                msg[j] = alph[v + res];
+                break;
+            }
+        }
+
+
+    }
+    cout << "Зашифрованное соббщение: " << msg << endl;
+
+    for (int j = 0; j != msg.length();j++) { //дешифр
+        for (int v = 0; v != strlen(alph);v++) {
+            if (msg[j] == alph[v]) {
+                if (i[j] == '0') {
+                    res = 0;
+                }
+                if (i[j] == '1') {
+                    res = 1;
+                }
+                if (i[j] == '2') {
+                    res = 2;
+                }
+                if (i[j] == '3') {
+                    res = 3;
+                }
+                if (i[j] == '4') {
+                    res = 4;
+                }
+                if (i[j] == '5') {
+                    res = 5;
+                }
+                if (i[j] == '6') {
+                    res = 6;
+                }
+                if (i[j] == '7') {
+                    res = 7;
+                }
+                if (i[j] == '8') {
+                    res = 8;
+                }
+                if (i[j] == '9') {
+                    res = 9;
+                }
+                if (v - res < 0) {
+
+                    msg[j] = alph[v - res + 33];
+                
+
+                }
+                else
+                    msg[j] = alph[v - res];
+                break;
+            }
+        }
+    }
+    cout << "Расшифрованное сообщение: " << msg;
+}
 
    
 
