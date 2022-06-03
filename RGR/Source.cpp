@@ -68,14 +68,14 @@ void Tarab_G()
     SetConsoleCP(1251); 
     SetConsoleOutputCP(1251);
     cout << "Введите буквы :" << endl;
+    char str[1000];
     cin >> str;
-	char str[1000];
-       int v=0;
+    int v;
 	for (int c=0;c<strlen(str); c++){
 		char k='а';
 		char y='А';
 		v=0;
-	   for (int j = 0; j < 33; j++) {
+	   for (int i = 0; i < 33; i++) {
             if (str[i] == k){
                 v++;
                 break;
@@ -88,7 +88,7 @@ void Tarab_G()
                 v++;
                 break;
             }
-            if (str[i] == b) {
+            if (str[i] == y) {
                 v++;
                 break;
             }
