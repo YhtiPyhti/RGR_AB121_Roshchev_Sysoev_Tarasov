@@ -67,10 +67,43 @@ void Tarab_G()
     setlocale(LC_ALL, "Russian");
     SetConsoleCP(1251); 
     SetConsoleOutputCP(1251);
-    
-       char str[1000];
     cout << "Введите буквы :" << endl;
     cin >> str;
+	char str[1000];
+       int v=0;
+	for (int c=0;c<strlen(str); c++){
+		char k='а';
+		char y='А';
+		v=0;
+	   for (int j = 0; j < 33; j++) {
+            if (str[i] == k){
+                v++;
+                break;
+            }
+            if (str[i] == 'ё') {
+                v++;
+                break;
+            }
+            if (str[i] == 'Ё') {
+                v++;
+                break;
+            }
+            if (str[i] == b) {
+                v++;
+                break;
+            }
+            if (str[i] == ' ') {
+                v++;
+                break;
+            }
+            k++;
+            y++;
+        }
+        if (v == 0) {
+            cout << "Введите русские буквы пожалуйста.\n";
+            break;
+        }
+	}
     for (int i = 0; i < 1000; i++) 
     {
      if (str[i] == 'Б') 
@@ -129,6 +162,66 @@ void Tarab_G()
         str[i] = 'П';
      else if (str[i] == 'П')
         str[i] = 'Н';
+
+     }
+	 for (int i = 0; i < 1000; i++) 
+    {
+     if (str[i] == 'б') 
+     {
+       str[i] = 'щ';
+    }
+     else if (str[i] == 'щ')
+        str[i] = 'б';
+
+     if (str[i] == 'в')
+        str[i] = 'ш';
+     else if (str[i] == 'ш')
+        str[i] = 'в';
+
+     if (str[i] == 'г')
+        str[i] = 'ч';
+     else if (str[i] == 'ч')
+        str[i] = 'г';
+
+     if (str[i] == 'д')
+       str[i] = 'ц';
+     else if (str[i] == 'ц')
+	     str[i] = 'д';
+
+    if (str[i] == 'ж')
+        str[i] = 'х';
+     else if (str[i] == 'х')
+        str[i] = 'ж';
+
+     if (str[i] == 'з') 
+       {       
+	str[i] = 'ф';
+     }
+     else 
+     {
+       if (str[i] == 'ф')
+            str[i] = 'з';
+     }
+
+     if (str[i] == 'к')
+        str[i] = 'т';
+     else if (str[i] == 'т')
+        str[i] = 'к';
+
+     if (str[i] == 'л')
+        str[i] = 'с';
+     else if (str[i] == 'с')
+        str[i] = 'л';
+
+     if (str[i] == 'м')
+        str[i] = 'р';
+     else if (str[i] == 'р')
+        str[i] = 'м';
+
+     if (str[i] == 'н')
+        str[i] = 'п';
+     else if (str[i] == 'п')
+        str[i] = 'н';
 
      }
   cout <<"Зашифрованное слово: "<< str << endl;
