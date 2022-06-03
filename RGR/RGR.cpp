@@ -27,7 +27,7 @@ void menu() {
 		break;
 
 	case 2:
-		//Tarab_G();
+		Tarab_G();
 		break;
 
 	case 3:
