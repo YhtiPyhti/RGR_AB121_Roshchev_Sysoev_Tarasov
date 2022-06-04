@@ -484,9 +484,7 @@ void Grons(ofstream& fout)
     fout << endl;
 
 }
-void transp{
-int main()
-{
+void transp(ofstream& fout) {
     char n[1000];
     cin.getline(n,1000);
     string q = n;
@@ -507,6 +505,5 @@ int main()
         swap(q[i + 1], q[q.length() - i - 1]);
     }
     cout << q << endl;
-}
 
 }

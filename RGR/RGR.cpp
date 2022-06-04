@@ -11,7 +11,7 @@ enum instuction {
 };
 
 void menu() {
-	ofstream fout("C:\\Users\\Sergei\\Desktop\\Output.txt", ios::app);
+	ofstream fout("C:\\Users\\Output.txt", ios::app);
 
 	int k;
 	cout << endl;
@@ -35,13 +35,13 @@ void menu() {
 	case Эль_Гамаля:
 		system("cls");
 		El_Gamal(fout);
-		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
+		system("notepad C:\\Users\\Output.txt ");
 		break;
 
 	case Тарабарская_грамота:
 		system("cls");
 		Tarab_G(fout);
-		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
+		system("notepad C:\\Users\\Output.txt ");
 		break;
 
 	case Атбаш:
@@ -69,31 +69,31 @@ void menu() {
 
 		putchar('\n');
 		getchar();
-		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
+		system("notepad C:\\Users\\Output.txt ");
 		break;
 
 	case Вижинер:
 		system("cls");
 		Vizhiner(fout);
-		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
+		system("notepad C:\\Users\\Output.txt ");
 		break;
 
 	case Гронсфельд:
 		system("cls");
         Grons(fout);
-		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
+		system("notepad C:\\Users\\Output.txt ");
 		break;
 
 	case Двойная_табличная_перестановка:
 		system("cls");
 		TablCryp(fout);
-		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
+		system("notepad C:\\Users\\Output.txt ");
 		break;
 
 	case 7:
-               system("cls");
-               void transp();
-	       system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
+          system("cls");
+          void transp();
+	      system("notepad C:\\Users\\Output.txt ");
 		break;
 
 	case 8:
@@ -119,6 +119,7 @@ void main(){
 	cin >> s;
 
 	if (s == "1111") {
+		remove("C:\\Users\\Output.txt");
 		menu();
 	}
 
