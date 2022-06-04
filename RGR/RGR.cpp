@@ -91,7 +91,9 @@ void menu() {
 		break;
 
 	case 7:
-               void transp()
+               system("cls");
+               void transp();
+	       system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
 		break;
 
 	case 8:
