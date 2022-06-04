@@ -21,32 +21,46 @@ void numb(vector<int> number, int y) {
 	if(S1 != S2) throw " Incorrect input! Repeating numbers. (Be sure to use a space before entering)\n";
 }
 
-void Vizhiner() {
-    string Key, Text, EnText, DeText;
+void Vizhiner(ofstream& fout) {
+
+    string key, text, enText, deText;
     try {
         cout << "Input text: ";
         cin.ignore();
-        getline(cin, Text);
-        eng(Text);
+        getline(cin, text);
+        eng(text);
     }
     catch (const char* err) {
         cout << err << endl;
-        Text.clear();
-        Vizhiner();
+        text.clear();
+        Vizhiner(fout);
     }
     try {
         cout << "Input key: ";
-        cin >> Key;
-        eng(Key);
-        EnText = encodeText(Text, Key);
-        cout << "Encoded string " << EnText << endl;
-        DeText = decodeText(EnText, Key);
-        cout << "Decoded string: " << DeText << endl;
+        cin >> key;
+        eng(key); 
+
+		fout << "Vigenere Cipher" << endl;
+		fout << endl;
+		fout << "Origin text: " << text << endl;
+		fout << endl;
+
+        enText = encodeText(text, key);
+        cout << "Encoded string: " << enText << endl;
+
+		fout << "Encoded string: " << text << endl;
+		fout << endl;
+
+        deText = decodeText(enText, key);
+        cout << "Decoded string: " << deText << endl;
+
+		fout << "Decoded string: " << deText << endl;
+		fout << endl;
     }
     catch (const char* err) {
         cout << err << endl;
-        Key.clear();
-        Vizhiner();
+        key.clear();
+        Vizhiner(fout);
     }
 }
 string encodeText(string text, string key) {
@@ -282,7 +296,7 @@ string decrypting(string ishText, vector<int> c, vector<int>& c1) {
 	return text;
 }
 
-void TablCryp() {
+void TablCryp(ofstream& fout) {
 	setlocale(LC_ALL, "Russian");
 	string deText, enText, ishText;
 	vector<int>	key;
@@ -318,14 +332,24 @@ void TablCryp() {
 			numb(key, a);
 			numb(key1, b);
 
+			fout << "Spreadsheet encryption using the double permutation method " << endl;
+			fout << endl;
+			fout << "Origin strings: " << ishText << endl;
+			fout << endl;
 
 			enText = encrypting(ishText, key, key1);
 			cout << endl;
 			cout << "Encrypting text: " << enText << endl;
 
+			fout << "Encode strings: " << enText << endl;
+			fout << endl;
+
 			deText = decrypting(enText, key, key1);
 			cout << endl;
 			cout << "Decrypting text: " << deText << endl;
+
+			fout << "Decoded string: " << deText << endl;
+			fout << endl;
 
 		}
 		catch (const char* err) {
@@ -333,12 +357,12 @@ void TablCryp() {
 			ishText.clear();
 			key.clear();
 			key1.clear();
-			TablCryp();
+			TablCryp(fout);
 		}
 	}
 	catch (const char* err) {
 		cout << err << endl;
 		ishText.clear();
-		TablCryp();
+		TablCryp(fout);
 	}
 }

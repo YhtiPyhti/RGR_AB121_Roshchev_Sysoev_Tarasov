@@ -31,7 +31,9 @@ vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m) {
     return entext;
 }
 
-void El_Gamal() {
+void El_Gamal(ofstream& fout) {
+    //переименовываем операции
+
     string decodtext, encodtext;
     string text;
     int g = 5, p = 3571, t = 0, k = 7;//доп данные для шифровки 
@@ -44,6 +46,12 @@ void El_Gamal() {
         cin.ignore();
         getline(cin, text);
         eng(text);
+
+        fout << "ElGamal Cipher" << endl;
+        fout << endl;
+        fout << "Origin text: " << text << endl;
+        fout << endl;
+
         for (int i = 0; i < text.length(); i++) {
             m = text[i] - '0';
             zahiv = El_Gamal_encode(g, p, Xb, k, m);
@@ -54,15 +62,24 @@ void El_Gamal() {
             decodtext += (char)(El_Gamal_decode(g, p, Xb, zahiv) + '0');
         }
         cout << "Encode text: " << encodtext << endl;
+
+        fout << "Encode text: " << encodtext << endl;
+        fout << endl;
+
+
         cout << "Decode text: " << decodtext << endl;
+
+        fout << "Decode text: " << decodtext << endl;
+        fout << endl;
+
     }catch (const char* err) {
         cout << err << endl;
         text.clear();
-        El_Gamal();
+        El_Gamal(fout);
     }
 }
 
-void Tarab_G()
+void Tarab_G(ofstream& fout)
 {
     setlocale(LC_ALL, "Russian");
     SetConsoleCP(1251); 
@@ -71,6 +88,12 @@ void Tarab_G()
     char str[1000];
     cin >> str;
     int v;
+
+    fout << "Gibberish letter" << endl;
+    fout << endl;
+    fout << "Origin text: " << str << endl;
+    fout << endl;
+
 	for (int c=0;c<strlen(str); c++){
 		char k='а';
 		char y='А';
@@ -224,7 +247,12 @@ void Tarab_G()
         str[i] = 'н';
 
      }
-  cout <<"Зашифрованное слово: "<< str << endl;
+    cout <<"Зашифрованное слово: "<< str << endl;
+
+    fout << "Encrypting text:" << str << endl;
+    fout << endl;
+
+
 	for (int i = 0; i < 1000; i++) 
     {
      if (str[i] == 'Б') 
@@ -287,6 +315,9 @@ void Tarab_G()
      }
   cout <<"Дешифрованное слово: "<< str << endl;
 
+  fout << "Decrypting text:" << str << endl;
+  fout << endl;
+
 
 }
 
@@ -326,7 +357,7 @@ void Tarab_G()
         }
         return dst;
     }
-void Grons()
+void Grons(ofstream& fout)
 {
     SetConsoleCP(1251);
     setlocale(LC_ALL, "Russian");
@@ -343,6 +374,12 @@ void Grons()
     cout << "Введите ключ: \n";
     cin >> i;
     int u = strlen(alph);
+
+    fout << "Gronsfeld" << endl;
+    fout << endl;
+    fout << "Origin text: " << msg << endl;
+    fout << endl;
+
     while (i.length() < msg.length()) {
         i = i + i;
     }
@@ -393,6 +430,9 @@ void Grons()
     }
     cout << "Зашифрованное соббщение: " << msg << endl;
 
+    fout << "Encoded string: " << msg << endl;
+    fout << endl;
+
     for (int j = 0; j != msg.length();j++) { //дешифр
         for (int v = 0; v != strlen(alph);v++) {
             if (msg[j] == alph[v]) {
@@ -439,4 +479,8 @@ void Grons()
         }
     }
     cout << "Расшифрованное сообщение: " << msg;
+
+    fout << "Decoded string: " << msg << endl;
+    fout << endl;
+
 }

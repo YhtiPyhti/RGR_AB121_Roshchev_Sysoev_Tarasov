@@ -1,11 +1,21 @@
 ﻿#include "Header.h"
 #include "Header1.h"
 
+enum instuction {
+	Эль_Гамаля = 1,
+	Тарабарская_грамота,
+	Атбаш,
+	Вижинер,
+	Гронсфельд,
+	Двойная_табличная_перестановка
+};
+
 void menu() {
+	ofstream fout("C:\\Users\\Sergei\\Desktop\\Output.txt", ios::app);
+
 	int k;
 	cout << endl;
 	cout << "Выберите шифр: " << endl;
-
 	cout << "Нажмите <1> если выбрали  Эль Гамаля " << endl;
 	cout << "Нажмите <2> если выбрали  Тарабарская грамота " << endl;
 	cout << "Нажмите <3> если выбрали  Атбаш " << endl;
@@ -22,38 +32,57 @@ void menu() {
 
 	switch (k) {
 
-	case 1:
-		El_Gamal();
+	case Эль_Гамаля:
+		system("cls");
+		El_Gamal(fout);
 		break;
 
-	case 2:
-		Tarab_G();
+	case Тарабарская_грамота:
+		system("cls");
+		Tarab_G(fout);
 		break;
 
-	case 3:
+	case Атбаш:
+		system("cls");
 		char str[64];
 		cout << "Введите строку:";
 		cin >> str;
+
+		fout << "Atbash" << endl;
+		fout << endl;
+		fout << "Origin strings: " << str << endl;
+		fout << endl;
+
 		cout << "Закодированная строка:";
+
 		cout << code_atbash(str);    // закодированная
+		fout << "Decoded string: " << str << endl;
+		fout << endl;
+
 		cout << "Декодированная строка:";
+
 		cout << decode_atbash(str);   // декодированная
+		fout << "Decoded string: " << str << endl;
+		fout << endl;
 
 		putchar('\n');
 		getchar();
 
 		break;
 
-	case 4:
-		Vizhiner();
+	case Вижинер:
+		system("cls");
+		Vizhiner(fout);
 		break;
 
-	case 5:
-        Grons();
+	case Гронсфельд:
+		system("cls");
+        Grons(fout);
 		break;
 
-	case 6:
-		TablCryp();
+	case Двойная_табличная_перестановка:
+		system("cls");
+		TablCryp(fout);
 		break;
 
 	case 7:

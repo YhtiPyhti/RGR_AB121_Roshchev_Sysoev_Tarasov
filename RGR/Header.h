@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include <clocale>
 #include <stdio.h>
 #include <string>
@@ -11,12 +12,16 @@
 
 
 using namespace std;
+
 int mod(int g, int X, int p);
-void El_Gamal();
-void Tarab_G();
-char* code_atbash(char* src);
-char* decode_atbash(char* src);
+void eng(string text);
+void El_Gamal(ofstream& fout);
 vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m);
 int El_Gamal_decode(int g, int p, int Xb, vector<int> entext);
-void eng(string text);
-void Grons();
+
+void Tarab_G(ofstream& fout);
+
+char* code_atbash(char* src);
+char* decode_atbash(char* src);
+
+void Grons(ofstream& fout);
