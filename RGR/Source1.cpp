@@ -23,12 +23,11 @@ void numb(vector<int> number, int y) {
 
 void Vizhiner(ofstream& fout) {
 	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };//0-11
-    string key, text, enText, deText;
-	int n;
+    string key, text, enText, deText,n;
 	cout << "Generate text?" << endl;
 	cout << "1 - No" << endl << "2 - Yes" << endl;
 	cin >> n;
-	if (n == 1) {
+	if (n == "1") {
 		try {
 			cout << "Input text: ";
 			cin.ignore();
@@ -68,7 +67,7 @@ void Vizhiner(ofstream& fout) {
 			Vizhiner(fout);
 		}
 	}
-	else if (n == 2) {
+	else if (n == "2") {
 		text = rantext[9] + ' ' + rantext[7] + ' ' + rantext[8];
 		key = "KEY";
 		cout << "Origin text: " << text << endl;
@@ -331,15 +330,15 @@ string decrypting(string ishText, vector<int> c, vector<int>& c1) {
 
 void TablCryp(ofstream& fout) {
 	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };
-	string deText, enText, ishText;
+	string deText, enText, ishText, n;
 	vector<int>	key;
 	vector<int>	key1;
-	int b, a, x, n;
+	int b, a, x;
 	bool is_End = false;
 	cout << "Generate text?" << endl;
 	cout << "1 - No" << endl << "2 - Yes" << endl;
 	cin >> n;
-	if (n == 1) {
+	if (n == "1") {
 		try {
 			cout << "Input text: ";
 			cin.ignore();
@@ -402,7 +401,7 @@ void TablCryp(ofstream& fout) {
 			TablCryp(fout);
 		}
 	}
-	else if (n == 2) {
+	else if (n == "2") {
 		ishText = rantext[4] + ' ' + rantext[6] + ' ' + rantext[0];
 		a = sqrt(ishText.length());
 		if (ishText.length() % a == 0) b = ishText.length() / a;

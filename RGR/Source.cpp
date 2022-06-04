@@ -33,9 +33,7 @@ vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m) {
 
 void El_Gamal(ofstream& fout) {
     vector<string> rantext = {"we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor."};
-    string decodtext, encodtext;
-    string text;
-    int n = 0;
+    string decodtext, encodtext, text, n;
     int g = 5, p = 3571, t = 0, k = 7;//доп данные для шифровки 
     int Xb = 11;//ключи
     int r = 0, e = 0, m = 0, decode = 0; //текста
@@ -43,7 +41,7 @@ void El_Gamal(ofstream& fout) {
     cout << "Generate text?" << endl;
     cout << "1 - No" << endl << "2 - Yes" << endl;
     cin >> n;
-    if (n == 1) {
+    if (n == "1") {
         try {
             system("cls");
             cout << "Input text: ";
@@ -83,7 +81,7 @@ void El_Gamal(ofstream& fout) {
             El_Gamal(fout);
         }
     }
-    else if (n == 2) {
+    else if (n == "2") {
         system("cls");
         text = rantext[3] + ' ' + rantext[2] + ' ' + rantext[5];
         cout << "Origin text: " << text << endl;
