@@ -484,3 +484,29 @@ void Grons(ofstream& fout)
     fout << endl;
 
 }
+void transp{
+int main()
+{
+    char n[1000];
+    cin.getline(n,1000);
+    string q = n;
+    if (q.length() % 2 != 0)
+        q =q+ ' ';
+
+
+    for (int i = 0; i < q.length() / 2; i += 2) {
+        swap(q[i], q[q.length() -(i+1)-1]);
+        swap(q[i+1], q[q.length() -i-1]);
+    }
+
+
+    cout << q << endl;
+
+    for (int i = 0; i < (q.length() / 2); i += 2) {
+        swap(q[i], q[q.length() - (i + 1) - 1]);
+        swap(q[i + 1], q[q.length() - i - 1]);
+    }
+    cout << q << endl;
+}
+
+}
