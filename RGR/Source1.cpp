@@ -22,46 +22,79 @@ void numb(vector<int> number, int y) {
 }
 
 void Vizhiner(ofstream& fout) {
-
+	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };//0-11
     string key, text, enText, deText;
-    try {
-        cout << "Input text: ";
-        cin.ignore();
-        getline(cin, text);
-        eng(text);
-    }
-    catch (const char* err) {
-        cout << err << endl;
-        text.clear();
-        Vizhiner(fout);
-    }
-    try {
-        cout << "Input key: ";
-        cin >> key;
-        eng(key); 
+	int n;
+	cout << "Generate text?" << endl;
+	cout << "1 - No" << endl << "2 - Yes" << endl;
+	cin >> n;
+	if (n == 1) {
+		try {
+			cout << "Input text: ";
+			cin.ignore();
+			getline(cin, text);
+			eng(text);
+		}
+		catch (const char* err) {
+			cout << err << endl;
+			text.clear();
+			Vizhiner(fout);
+		}
+		try {
+			cout << "Input key: ";
+			cin >> key;
+			eng(key);
+
+			fout << "Vigenere Cipher" << endl;
+			fout << endl;
+			fout << "Origin text: " << text << endl;
+			fout << endl;
+
+			enText = encodeText(text, key);
+			cout << "Encoded string: " << enText << endl;
+
+			fout << "Encoded string: " << enText << endl;
+			fout << endl;
+
+			deText = decodeText(enText, key);
+			cout << "Decoded string: " << deText << endl;
+
+			fout << "Decoded string: " << deText << endl;
+			fout << endl;
+		}
+		catch (const char* err) {
+			cout << err << endl;
+			key.clear();
+			Vizhiner(fout);
+		}
+	}
+	else if (n == 2) {
+		text = rantext[9] + ' ' + rantext[7] + ' ' + rantext[8];
+		key = "KEY";
+		cout << "Origin text: " << text << endl;
+		cout << "Key: " << key << endl;
 
 		fout << "Vigenere Cipher" << endl;
 		fout << endl;
 		fout << "Origin text: " << text << endl;
 		fout << endl;
 
-        enText = encodeText(text, key);
-        cout << "Encoded string: " << enText << endl;
+		enText = encodeText(text, key);
+		cout << "Encoded string: " << enText << endl;
 
 		fout << "Encoded string: " << enText << endl;
 		fout << endl;
 
-        deText = decodeText(enText, key);
-        cout << "Decoded string: " << deText << endl;
+		deText = decodeText(enText, key);
+		cout << "Decoded string: " << deText << endl;
 
 		fout << "Decoded string: " << deText << endl;
 		fout << endl;
-    }
-    catch (const char* err) {
-        cout << err << endl;
-        key.clear();
-        Vizhiner(fout);
-    }
+	}
+	else {
+		cout << "Input 1 or 2" << endl;
+		Vizhiner(fout);
+	}
 }
 string encodeText(string text, string key) {
     int i, j;
@@ -297,72 +330,120 @@ string decrypting(string ishText, vector<int> c, vector<int>& c1) {
 }
 
 void TablCryp(ofstream& fout) {
-	setlocale(LC_ALL, "Russian");
+	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };
 	string deText, enText, ishText;
 	vector<int>	key;
 	vector<int>	key1;
-	int b, a, x;
+	int b, a, x, n;
 	bool is_End = false;
-
-	try {
-		cout << "Input text: ";
-		cin.ignore();
-		getline(cin, ishText);
-
-		eng(ishText);
-
+	cout << "Generate text?" << endl;
+	cout << "1 - No" << endl << "2 - Yes" << endl;
+	cin >> n;
+	if (n == 1) {
 		try {
-			a = sqrt(ishText.length());
-			if (ishText.length() % a == 0) b = ishText.length() / a;
-			else b = ishText.length() / a + 1;
-			cout << "Input first key(numbers 0 - " << a - 1 << "): " << endl;
+			cout << "Input text: ";
+			cin.ignore();
+			getline(cin, ishText);
 
-			for (auto i = 0; i < a; i++) {
-				cin >> x;
-				key.push_back(x);
+			eng(ishText);
+
+			try {
+				a = sqrt(ishText.length());
+				if (ishText.length() % a == 0) b = ishText.length() / a;
+				else b = ishText.length() / a + 1;
+				cout << "Input first key(numbers 0 - " << a - 1 << "): " << endl;
+
+				for (auto i = 0; i < a; i++) {
+					cin >> x;
+					key.push_back(x);
+				}
+
+				cout << "Input second key(numbers 0 - " << b - 1 << "): " << endl;//для stolbik
+
+				for (auto i = 0; i < b; i++) {
+					cin >> x;
+					key1.push_back(x);
+				}
+
+				numb(key, a);
+				numb(key1, b);
+
+				fout << "Spreadsheet encryption using the double permutation method " << endl;
+				fout << endl;
+				fout << "Origin strings: " << ishText << endl;
+				fout << endl;
+
+				enText = encrypting(ishText, key, key1);
+				cout << endl;
+				cout << "Encrypting text: " << enText << endl;
+
+				fout << "Encode strings: " << enText << endl;
+				fout << endl;
+
+				deText = decrypting(enText, key, key1);
+				cout << endl;
+				cout << "Decrypting text: " << deText << endl;
+
+				fout << "Decoded string: " << deText << endl;
+				fout << endl;
+
 			}
-	
-			cout << "Input second key(numbers 0 - " << b - 1 << "): " << endl;//для stolbik
-
-			for (auto i = 0; i < b; i++) {
-				cin >> x;
-				key1.push_back(x);
+			catch (const char* err) {
+				cout << err << endl;
+				ishText.clear();
+				key.clear();
+				key1.clear();
+				TablCryp(fout);
 			}
-
-			numb(key, a);
-			numb(key1, b);
-
-			fout << "Spreadsheet encryption using the double permutation method " << endl;
-			fout << endl;
-			fout << "Origin strings: " << ishText << endl;
-			fout << endl;
-
-			enText = encrypting(ishText, key, key1);
-			cout << endl;
-			cout << "Encrypting text: " << enText << endl;
-
-			fout << "Encode strings: " << enText << endl;
-			fout << endl;
-
-			deText = decrypting(enText, key, key1);
-			cout << endl;
-			cout << "Decrypting text: " << deText << endl;
-
-			fout << "Decoded string: " << deText << endl;
-			fout << endl;
-
 		}
 		catch (const char* err) {
 			cout << err << endl;
 			ishText.clear();
-			key.clear();
-			key1.clear();
 			TablCryp(fout);
 		}
 	}
-	catch (const char* err) {
-		cout << err << endl;
-		ishText.clear();
-		TablCryp(fout);
+	else if (n == 2) {
+		ishText = rantext[4] + ' ' + rantext[6] + ' ' + rantext[0];
+		a = sqrt(ishText.length());
+		if (ishText.length() % a == 0) b = ishText.length() / a;
+		else b = ishText.length() / a + 1;
+		cout << "Input first key(numbers 0 - " << a - 1 << "): " << endl;
+		for (auto i = 0; i < a; i++) {
+			cin >> x;
+			key.push_back(x);
+		}
+
+		cout << "Input second key(numbers 0 - " << b - 1 << "): " << endl;//для stolbik
+
+		for (auto i = 0; i < b; i++) {
+			cin >> x;
+			key1.push_back(x);
+		}
+
+		numb(key, a);
+		numb(key1, b);
+
+		fout << "Spreadsheet encryption using the double permutation method " << endl;
+		fout << endl;
+		fout << "Origin strings: " << ishText << endl;
+		fout << endl;
+
+		enText = encrypting(ishText, key, key1);
+		cout << endl;
+		cout << "Encrypting text: " << enText << endl;
+
+		fout << "Encode strings: " << enText << endl;
+		fout << endl;
+
+		deText = decrypting(enText, key, key1);
+		cout << endl;
+		cout << "Decrypting text: " << deText << endl;
+
+		fout << "Decoded string: " << deText << endl;
+		fout << endl;
+	}
+	else {
+       cout << "Input 1 or 2" << endl;
+       TablCryp(fout);
 	}
 }

@@ -32,20 +32,61 @@ vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m) {
 }
 
 void El_Gamal(ofstream& fout) {
-    //переименовываем операции
-
+    vector<string> rantext = {"we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor."};
     string decodtext, encodtext;
     string text;
+    int n = 0;
     int g = 5, p = 3571, t = 0, k = 7;//доп данные для шифровки 
     int Xb = 11;//ключи
     int r = 0, e = 0, m = 0, decode = 0; //текста
     vector<int> zahiv;
+    cout << "Generate text?" << endl;
+    cout << "1 - No" << endl << "2 - Yes" << endl;
+    cin >> n;
+    if (n == 1) {
+        try {
+            system("cls");
+            cout << "Input text: ";
+            cin.ignore();
+            getline(cin, text);
+            eng(text);
 
-    try {
-        cout << "Input text: ";
-        cin.ignore();
-        getline(cin, text);
-        eng(text);
+            fout << "ElGamal Cipher" << endl;
+            fout << endl;
+            fout << "Origin text: " << text << endl;
+            fout << endl;
+
+            for (int i = 0; i < text.length(); i++) {
+                m = text[i] - '0';
+                zahiv = El_Gamal_encode(g, p, Xb, k, m);
+
+                encodtext += (char)(zahiv[0] + '0');
+                encodtext += (char)(zahiv[1] + '0');
+
+                decodtext += (char)(El_Gamal_decode(g, p, Xb, zahiv) + '0');
+            }
+            cout << "Encode text: " << encodtext << endl;
+
+            fout << "Encode text: " << encodtext << endl;
+            fout << endl;
+
+
+            cout << "Decode text: " << decodtext << endl;
+
+            fout << "Decode text: " << decodtext << endl;
+            fout << endl;
+
+        }
+        catch (const char* err) {
+            cout << err << endl;
+            text.clear();
+            El_Gamal(fout);
+        }
+    }
+    else if (n == 2) {
+        system("cls");
+        text = rantext[3] + ' ' + rantext[2] + ' ' + rantext[5];
+        cout << "Origin text: " << text << endl;
 
         fout << "ElGamal Cipher" << endl;
         fout << endl;
@@ -71,10 +112,9 @@ void El_Gamal(ofstream& fout) {
 
         fout << "Decode text: " << decodtext << endl;
         fout << endl;
-
-    }catch (const char* err) {
-        cout << err << endl;
-        text.clear();
+    }
+    else {
+        cout << "Input 1 or 2" << endl;
         El_Gamal(fout);
     }
 }
