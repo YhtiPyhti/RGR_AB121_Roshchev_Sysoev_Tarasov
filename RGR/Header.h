@@ -25,3 +25,4 @@ char* code_atbash(char* src);
 char* decode_atbash(char* src);
 
 void Grons(ofstream& fout);
+void transp(ofstream& fout);
