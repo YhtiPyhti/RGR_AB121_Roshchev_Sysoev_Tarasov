@@ -48,7 +48,7 @@ void Vizhiner(ofstream& fout) {
         enText = encodeText(text, key);
         cout << "Encoded string: " << enText << endl;
 
-		fout << "Encoded string: " << text << endl;
+		fout << "Encoded string: " << enText << endl;
 		fout << endl;
 
         deText = decodeText(enText, key);

@@ -35,11 +35,13 @@ void menu() {
 	case Эль_Гамаля:
 		system("cls");
 		El_Gamal(fout);
+		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
 		break;
 
 	case Тарабарская_грамота:
 		system("cls");
 		Tarab_G(fout);
+		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
 		break;
 
 	case Атбаш:
@@ -67,22 +69,25 @@ void menu() {
 
 		putchar('\n');
 		getchar();
-
+		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
 		break;
 
 	case Вижинер:
 		system("cls");
 		Vizhiner(fout);
+		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
 		break;
 
 	case Гронсфельд:
 		system("cls");
         Grons(fout);
+		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
 		break;
 
 	case Двойная_табличная_перестановка:
 		system("cls");
 		TablCryp(fout);
+		system("notepad C:\\Users\\Sergei\\Desktop\\Output.txt ");
 		break;
 
 	case 7:
