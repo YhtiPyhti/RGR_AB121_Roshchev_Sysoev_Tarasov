@@ -31,7 +31,7 @@ vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m) {
     return entext;
 }
 
-void El_Gamal(ofstream& fout, const string& password) {
+void El_Gamal(ofstream& fout, const string& password, ifstream& in) {
     vector<string> rantext = {"we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor."};
     string decodtext, encodtext, text, n, s;
     int g = 5, p = 3571, t = 0, k = 7;//доп данные для шифровки 
@@ -39,7 +39,7 @@ void El_Gamal(ofstream& fout, const string& password) {
     int r = 0, e = 0, m = 0, decode = 0; //текста
     vector<int> zahiv;
     cout << "Generate text?" << endl;
-    cout << "1 - No" << endl << "2 - Yes" << endl;
+    cout << "1 - No" << endl << "2 - Yes" << endl << "3 - Take from file";
     cin >> n;
     if (n == "1") {
         try {
@@ -95,7 +95,7 @@ void El_Gamal(ofstream& fout, const string& password) {
         catch (const char* err) {
             cout << err << endl;
             text.clear();
-            El_Gamal(fout, password);
+            El_Gamal(fout, password, in);
         }
     }
     else if (n == "2") {
@@ -147,9 +147,58 @@ void El_Gamal(ofstream& fout, const string& password) {
             return;
         }
     }
+    else if (n == "3") {
+        system("cls");
+        mt19937 gen(time(0));
+        uniform_int_distribution<int> uid1(0, 11);
+        getline(in, text);
+        cout << "Origin text: " << text << endl;
+
+        fout << "ElGamal Cipher" << endl;
+        fout << endl;
+        fout << "Origin text: " << text << endl;
+        fout << endl;
+
+        for (int i = 0; i < text.length(); i++) {
+            m = text[i] - '0';
+            zahiv = El_Gamal_encode(g, p, Xb, k, m);
+
+            encodtext += (char)(zahiv[0] + '0');
+            encodtext += (char)(zahiv[1] + '0');
+
+            decodtext += (char)(El_Gamal_decode(g, p, Xb, zahiv) + '0');
+        }
+        cout << "Password: ";
+        cin >> s;
+        if (s == password) {
+            cout << "Encode text: " << encodtext << endl;
+
+            fout << "Encode text: " << encodtext << endl;
+            fout << endl;
+        }
+        else {
+            cout << "Incorrect Password! " << endl;
+            return;
+        }
+
+        cout << "Password: ";
+        s.clear();
+        cin >> s;
+
+        if (s == password) {
+            cout << "Decode text: " << decodtext << endl;
+
+            fout << "Decode text: " << decodtext << endl;
+            fout << endl;
+        }
+        else {
+            cout << "Incorrect Password! " << endl;
+            return;
+        }
+    }
     else {
         cout << "Input 1 or 2" << endl;
-        El_Gamal(fout, password);
+        El_Gamal(fout, password, in);
     }
 }
 

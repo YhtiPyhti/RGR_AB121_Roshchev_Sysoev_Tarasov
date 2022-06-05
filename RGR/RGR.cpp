@@ -15,6 +15,7 @@ enum instuction {
 void menu(const string& password) {
 	string s, vibor, wish;
 	ofstream fout("Output.txt", ios::app);
+	ifstream in("Input.txt");
 
 	int k;
 
@@ -46,7 +47,7 @@ void menu(const string& password) {
 
 	case Эль_Гамаля:
 		system("cls");
-		El_Gamal(fout, password);
+		El_Gamal(fout, password, in);
 		system("notepad Output.txt ");
 		break;
 
