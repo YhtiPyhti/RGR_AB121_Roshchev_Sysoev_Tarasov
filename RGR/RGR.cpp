@@ -41,7 +41,7 @@ void menu(const string& password) {
 
 	case Тарабарская_грамота:
 		system("cls");
-		Tarab_G(fout);
+		Tarab_G(fout, password);
 		system("notepad C:\\Users\\Output.txt ");
 		break;
 
@@ -98,7 +98,7 @@ void menu(const string& password) {
 
 	case Гронсфельд:
 		system("cls");
-        Grons(fout);
+        Grons(fout, password);
 		system("notepad C:\\Users\\Output.txt ");
 		break;
 
@@ -110,7 +110,7 @@ void menu(const string& password) {
 
 	case 7:
           system("cls");
-          void transp();
+          transp(fout, password);
 	      system("notepad C:\\Users\\Output.txt ");
 		break;
 

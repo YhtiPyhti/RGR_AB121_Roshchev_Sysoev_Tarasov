@@ -153,8 +153,9 @@ void El_Gamal(ofstream& fout, const string& password) {
     }
 }
 
-void Tarab_G(ofstream& fout)
+void Tarab_G(ofstream& fout, const string& password)
 {
+    string s;
     setlocale(LC_ALL, "Russian");
     SetConsoleCP(1251); 
     SetConsoleOutputCP(1251);
@@ -321,10 +322,18 @@ void Tarab_G(ofstream& fout)
         str[i] = 'н';
 
      }
-    cout <<"Зашифрованное слово: "<< str << endl;
+     cout << "Password: ";
+     cin >> s;
+     if (s == password) {
+         cout << "Зашифрованное слово: " << str << endl;
 
-    fout << "Encrypting text:" << str << endl;
-    fout << endl;
+         fout << "Encrypting text:" << str << endl;
+         fout << endl;
+     }
+     else {
+         cout << "Incorrect Password! " << endl;
+         return;
+     }
 
 
 	for (int i = 0; i < 1000; i++) 
@@ -387,10 +396,19 @@ void Tarab_G(ofstream& fout)
         str[i] = 'Н';
 
      }
-  cout <<"Дешифрованное слово: "<< str << endl;
+    cout << "Password: ";
+    s.clear();
+    cin >> s;
+    if (s == password) {
+        cout << "Дешифрованное слово: " << str << endl;
 
-  fout << "Decrypting text:" << str << endl;
-  fout << endl;
+        fout << "Decrypting text:" << str << endl;
+        fout << endl;
+    }
+    else {
+        cout << "Incorrect Password! " << endl;
+        return;
+    }
 
 
 }
@@ -431,12 +449,12 @@ void Tarab_G(ofstream& fout)
         }
         return dst;
     }
-void Grons(ofstream& fout)
+void Grons(ofstream& fout, const string& password)
 {
     SetConsoleCP(1251);
     setlocale(LC_ALL, "Russian");
     int res = 0;
-    string i;
+    string i, s;
     char alph[] = { '!','#','$','%','&','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K',
         'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{',' ','|','}','~','а','б','в','г','д','е','ж','з', 'е','ё','ж','з', 'и','й','к','л',
         'м','н','о','п', 'р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Ь','Ъ','Щ','Ы','Э','Ю','Я' };
@@ -502,11 +520,18 @@ void Grons(ofstream& fout)
 
 
     }
-    cout << "Зашифрованное соббщение: " << msg << endl;
+    cout << "Password: ";
+    cin >> s;
+    if (s == password) {
+        cout << "Зашифрованное соббщение: " << msg << endl;
 
-    fout << "Encoded string: " << msg << endl;
-    fout << endl;
-
+        fout << "Encoded string: " << msg << endl;
+        fout << endl;
+    }
+    else {
+         cout << "Incorrect Password! " << endl;
+         return;
+     }
     for (int j = 0; j != msg.length();j++) { //дешифр
         for (int v = 0; v != strlen(alph);v++) {
             if (msg[j] == alph[v]) {
@@ -552,16 +577,26 @@ void Grons(ofstream& fout)
             }
         }
     }
-    cout << "Расшифрованное сообщение: " << msg;
+    cout << "Password: ";
+    s.clear();
+    cin >> s;
+    if (s == password) {
+        cout << "Расшифрованное сообщение: " << msg;
 
-    fout << "Decoded string: " << msg << endl;
-    fout << endl;
+        fout << "Decoded string: " << msg << endl;
+        fout << endl;
+    }
+    else {
+        cout << "Incorrect Password! " << endl;
+        return;
+    }
 
 }
-void transp(ofstream& fout) {
+void transp(ofstream& fout, const string& password) {
    SetConsoleCP(1251);
     setlocale(LC_ALL, "Russian");
     char n[1000];
+    string s;
     cout << "Введите слово для шифровки: ";
     cin.getline(n, 1000);
     string q = n;
@@ -572,15 +607,29 @@ void transp(ofstream& fout) {
         swap(q[i], q[q.length() - (i + 1) - 1]);
         swap(q[i + 1], q[q.length() - i - 1]);
     }
-
-    cout << "Зашифрованное слово :";
-    cout << q << endl;
-
+    cout << "Password: ";
+    cin >> s;
+    if (s == password) {
+        cout << "Зашифрованное слово :";
+        cout << q << endl;
+    }
+    else {
+        cout << "Incorrect Password! " << endl;
+        return;
+    }
     for (int i = 0; i < (q.length() / 2); i += 2) {
         swap(q[i], q[q.length() - (i + 1) - 1]);
         swap(q[i + 1], q[q.length() - i - 1]);
     }
-    cout << "Дешифрованное слово: ";
-    cout << q << endl;
-
+    cout << "Password: ";
+    s.clear();
+    cin >> s;
+    if (s == password) {
+        cout << "Дешифрованное слово: ";
+        cout << q << endl;
+    }
+    else {
+        cout << "Incorrect Password! " << endl;
+        return;
+    }
 }

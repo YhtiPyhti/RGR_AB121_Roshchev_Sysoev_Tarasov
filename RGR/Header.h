@@ -20,10 +20,10 @@ void El_Gamal(ofstream& fout, const string& password);
 vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m);
 int El_Gamal_decode(int g, int p, int Xb, vector<int> entext);
 
-void Tarab_G(ofstream& fout);
+void Tarab_G(ofstream& fout, const string& password);
 
 char* code_atbash(char* src);
 char* decode_atbash(char* src);
 
-void Grons(ofstream& fout);
-void transp(ofstream& fout);
+void Grons(ofstream& fout, const string& password);
+void transp(ofstream& fout, const string& password);
