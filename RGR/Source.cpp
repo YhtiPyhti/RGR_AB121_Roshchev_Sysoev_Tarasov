@@ -83,7 +83,9 @@ void El_Gamal(ofstream& fout) {
     }
     else if (n == "2") {
         system("cls");
-        text = rantext[3] + ' ' + rantext[2] + ' ' + rantext[5];
+        mt19937 gen(time(0));
+        uniform_int_distribution<int> uid1(0, 11);
+        text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
         cout << "Origin text: " << text << endl;
 
         fout << "ElGamal Cipher" << endl;

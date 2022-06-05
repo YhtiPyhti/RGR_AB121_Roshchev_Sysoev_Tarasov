@@ -7,6 +7,7 @@
 #include <cctype>
 #include <Windows.h>
 #include <vector>
+#include <random>
 #define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"
 

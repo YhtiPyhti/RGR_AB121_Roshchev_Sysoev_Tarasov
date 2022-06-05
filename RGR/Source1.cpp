@@ -22,6 +22,8 @@ void numb(vector<int> number, int y) {
 }
 
 void Vizhiner(ofstream& fout) {
+	mt19937 gen(time(0));
+	uniform_int_distribution<int> uid1(0, 11);
 	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };//0-11
     string key, text, enText, deText,n;
 	cout << "Generate text?" << endl;
@@ -68,7 +70,7 @@ void Vizhiner(ofstream& fout) {
 		}
 	}
 	else if (n == "2") {
-		text = rantext[9] + ' ' + rantext[7] + ' ' + rantext[8];
+		text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
 		key = "KEY";
 		cout << "Origin text: " << text << endl;
 		cout << "Key: " << key << endl;
@@ -329,6 +331,8 @@ string decrypting(string ishText, vector<int> c, vector<int>& c1) {
 }
 
 void TablCryp(ofstream& fout) {
+	mt19937 gen(time(0));
+	uniform_int_distribution<int> uid1(0, 11);
 	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };
 	string deText, enText, ishText, n;
 	vector<int>	key;
@@ -402,21 +406,19 @@ void TablCryp(ofstream& fout) {
 		}
 	}
 	else if (n == "2") {
-		ishText = rantext[4] + ' ' + rantext[6] + ' ' + rantext[0];
+		ishText = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
 		a = sqrt(ishText.length());
 		if (ishText.length() % a == 0) b = ishText.length() / a;
 		else b = ishText.length() / a + 1;
 		cout << "Input first key(numbers 0 - " << a - 1 << "): " << endl;
-		for (auto i = 0; i < a; i++) {
-			cin >> x;
-			key.push_back(x);
+		for (auto i = a-1; i >= 0; i--) {
+			key.push_back(i);
 		}
 
 		cout << "Input second key(numbers 0 - " << b - 1 << "): " << endl;//для stolbik
 
-		for (auto i = 0; i < b; i++) {
-			cin >> x;
-			key1.push_back(x);
+		for (auto i = b-1; i >= 0; i--) {
+			key1.push_back(i);
 		}
 
 		numb(key, a);
