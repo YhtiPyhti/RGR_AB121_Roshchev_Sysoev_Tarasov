@@ -1,26 +1,62 @@
+Gronsfeld
+
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Gronsfeld
+
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Encoded string: Uurre(yuwqnc!V{sqg!xvuqldZxuqb&uwtpnhWzulf#vvsrreYzppc$uuuvogYutmd#twysqgTyqnc!v{vuqbXvrmb$zxxulfUwqld)wzxppc$Uurre(yuwqncTwvog(tytrmbV{sqg!xvuqldZxuqb&uwtpnhWzulf#vvsrreYzppc$uuuvogYutmd#twysqg
+
+Decoded string: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Transponirovania
+
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Transponirovania
+
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Decoded string: karosta okStkarosta okStkarosta okStkarosta okStkarosta okStkarosta okStkarosta okSta oktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skato Skarosta okSt
+
+Transponirovania
+
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Encoded string: karosta okStkarosta okStkarosta okStkarosta okStkarosta okStkarosta okStkarosta okSta oktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skato Skarosta okSt
+
+Transponirovania
+
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Encoded string: karosta okStkarosta okStkarosta okStkarosta okStkarosta okStkarosta okStkarosta okSta oktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skatoaSoktr skato Skarosta okSt
+
+Decoded string: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Gronsfeld
+
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Gronsfeld
+
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Encoded string: Vvppg$uuwunc!Xzrmb&ywtppgVvppg$uuwuncTyunc!xzuqlfYwqlf(vvstqdUutqd#tyxrmbXzrmb&ywtppgVvppg$uuwuncTyunc!xzuqlf(Vvppg$uuwuncTyunc!xzuqlfYwqlf(vvstqdUutqd#tyxrmbXzrmb&ywtppgVvppg$uuwuncTyunc!xzuqlf
+
+Gronsfeld
+
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
+Encoded string: Tvsme(vuvuld!Uxqog$txxpnbUxqog$txxpnbUxqog$txxpnbUxqog$txxpnbUxqog$txxpnbUxqog$txxpnbUxqog$txxpnbUxqog$txxpnb#Wvsqd!wzsrlcWvsqd!wzsrlcWvsqd!wzsrlcWvsqd!wzsrlcWvsqd!wzsrlcWvsqd!wzsrlcWvsqd!wzsrlc
+
+Decoded string: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+
 Gibberish letter
 
-Origin text: Stoka
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
 
-Encrypting text: Tsoma
+Encrypting text: Tsoma tsqoma Tsoma tsqomaTsoma tsqomaTsoma tsqomaTsoma tsqomaTsoma tsqomaTsoma tsqomaTsoma tsqomaTsoma tsqoma Tsoma tsqomaTsoma tsqomaTsoma tsqomaTsoma tsqomaTsoma tsqomaTsoma tsqomaTsoma tsqoma
 
-Decrypting text: Stoka
-
-Gronsfeld
-
-Origin text: Stoka
-
-Encoded string: Tvrlc
-
-Decoded string: Stoka
-
-Gronsfeld
-
-Origin text: Stoka
-
-Gronsfeld
-
-Origin text: Stoka
-
-Encoded string: Tvrlc
+Decrypting text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
 
