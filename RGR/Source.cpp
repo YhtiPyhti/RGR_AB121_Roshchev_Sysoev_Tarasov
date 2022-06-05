@@ -560,6 +560,7 @@ void Grons(ofstream& fout)
 }
 void transp(ofstream& fout) {
    SetConsoleCP(1251);
+    setlocale(LC_ALL, "Russian");
     char n[1000];
     cout << "Введите слово для шифровки: ";
     cin.getline(n, 1000);
@@ -572,7 +573,7 @@ void transp(ofstream& fout) {
         swap(q[i + 1], q[q.length() - i - 1]);
     }
 
-    cout << "Зашиврованное слово :";
+    cout << "Зашифрованное слово :";
     cout << q << endl;
 
     for (int i = 0; i < (q.length() / 2); i += 2) {
