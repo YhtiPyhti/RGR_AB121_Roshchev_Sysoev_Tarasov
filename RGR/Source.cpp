@@ -1747,7 +1747,8 @@ void transp(ofstream& fout, const string& password, ifstream& in)
                 cout << "Incorrect Password! " << endl;
                 return;
             }
-            if (y == "2" || y == "3")
+        }
+        if (y == "2" || y == "3")
         {
             for (int i = 0; i < text.length() / 2; i += 2) {
                 swap(text[i], text[text.length() - (i + 1) - 1]);
@@ -1878,7 +1879,7 @@ void transp(ofstream& fout, const string& password, ifstream& in)
                 return;
             }
         }
-        if (y == "2" || y == "3")
+        if (y == "2")
         {
             for (int i = 0; i < text.length() / 2; i += 2) {
                 swap(text[i], text[text.length() - (i + 1) - 1]);
@@ -1923,25 +1924,13 @@ void transp(ofstream& fout, const string& password, ifstream& in)
             fout << "Origin text: " << text << endl;
             fout << endl;
         }
-        if (y == "2")
-        {
-            system("cls");
-            mt19937 gen(time(0));
-            uniform_int_distribution<int> uid1(0, 11);
-            getline(in,text);
-            cout << "Origin text: " << text << endl;
-            fout << "Transponirovania" << endl;
-            fout << endl;
-            fout << "Origin text: " << text << endl;
-            fout << endl;
-        }
         if (y == "1")
         {
             if (q.length() % 2 != 0) {
                 q = q + ' ';
             }
         }
-        if (y == "2" || y == "3")
+        if (y == "2")
         {
             if (text.length() % 2 != 0) {
                 text = text + ' ';
@@ -1969,7 +1958,7 @@ void transp(ofstream& fout, const string& password, ifstream& in)
                 return;
             }
         }
-        if (y == "2" || y == "3")
+        if (y == "2")
         {
             for (int i = 0; i < (text.length() / 2); i += 2) {
                 swap(text[i], text[text.length() - (i + 1) - 1]);
