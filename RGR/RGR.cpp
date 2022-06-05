@@ -8,7 +8,8 @@ enum instuction {
 	Вижинер,
 	Гронсфельд,
 	Двойная_табличная_перестановка,
-	Транспонирования
+	Транспонирования,
+	RSA
 };
 
 void menu(const string& password) {
@@ -26,7 +27,7 @@ void menu(const string& password) {
 	cout << "Нажмите <5> если выбрали  Гронсфельд " << endl;
 	cout << "Нажмите <6> если выбрали  Двойная табличная перестановка " << endl;
 	cout << "Нажмите <7> если выбрали  Транспонирование " << endl;
-	cout << "Нажмите <8> если выбрали  ??? " << endl;
+	cout << "Нажмите <8> если выбрали  RSA " << endl;
 	cout << "Нажмите <9> если выбрали  ??? " << endl;
 
 	cout << "Нажмите <10> если выбрали  выход " << endl;
@@ -190,8 +191,8 @@ void menu(const string& password) {
 		  system("notepad Output.txt ");
 		break;
 
-	case 8:
-
+	case RSA:
+		rsa();
 		break;
 
 	case 9:
