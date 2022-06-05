@@ -402,8 +402,8 @@ void Vizhiner(ofstream& fout, const string& password, ifstream& in) {
 string encodeText(string text, string key) {
     int i, j;
 
-    char newKey[100];
-    char encryptedText[1000];
+    char newKey[1000];
+    char encryptedText[10000];
 
     //новый ключ
     for (i = 0, j = 0; i < text.length(); ++i, ++j) {
@@ -445,8 +445,8 @@ string encodeText(string text, string key) {
 string decodeText(string text, string key) {
     int i, j;
 
-    char newKey[100];
-    char encryptedText[1000];
+    char newKey[1000];
+    char encryptedText[10000];
 
     //новый ключ
     for (i = 0, j = 0; i < text.length(); ++i, ++j) {
