@@ -523,25 +523,27 @@ void Grons(ofstream& fout)
 
 }
 void transp(ofstream& fout) {
+   SetConsoleCP(1251);
     char n[1000];
-    cin.getline(n,1000);
+    cout << "Введите слово для шифровки: ";
+    cin.getline(n, 1000);
     string q = n;
     if (q.length() % 2 != 0)
-        q =q+ ' ';
-
+        q = q + ' ';
 
     for (int i = 0; i < q.length() / 2; i += 2) {
-        swap(q[i], q[q.length() -(i+1)-1]);
-        swap(q[i+1], q[q.length() -i-1]);
+        swap(q[i], q[q.length() - (i + 1) - 1]);
+        swap(q[i + 1], q[q.length() - i - 1]);
     }
 
-
+    cout << "Зашиврованное слово :";
     cout << q << endl;
 
     for (int i = 0; i < (q.length() / 2); i += 2) {
         swap(q[i], q[q.length() - (i + 1) - 1]);
         swap(q[i + 1], q[q.length() - i - 1]);
     }
+    cout << "Дешифрованное слово: ";
     cout << q << endl;
 
 }
