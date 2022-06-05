@@ -7,12 +7,13 @@ enum instuction {
 	Атбаш,
 	Вижинер,
 	Гронсфельд,
-	Двойная_табличная_перестановка
+	Двойная_табличная_перестановка,
+	Транспонирования
 };
 
 void menu(const string& password) {
-	string s, vibor;
-	ofstream fout("C:\\Users\\Output.txt", ios::app);
+	string s, vibor, wish;
+	ofstream fout("Output.txt", ios::app);
 
 	int k;
 
@@ -45,82 +46,148 @@ void menu(const string& password) {
 	case Эль_Гамаля:
 		system("cls");
 		El_Gamal(fout, password);
-		system("notepad C:\\Users\\Output.txt ");
+		system("notepad Output.txt ");
 		break;
 
 	case Тарабарская_грамота:
 		system("cls");
 		Tarab_G(fout, password);
-		system("notepad C:\\Users\\Output.txt ");
+		system("notepad Output.txt ");
 		break;
 
 	case Атбаш:
 		system("cls");
 		char str[64];
-		cout << "Введите строку:";
-		cin >> str;
+		while (1) {
+			cout << "What would you like:" << endl << "1) decryption only" << endl << "2) only encrypt" << endl << "3) this and that" << endl;
+			cin >> wish;
+			if (wish == "3") {
+				cout << "Введите строку:";
+				cin >> str;
+				fout << "Atbash" << endl;
+				fout << endl;
+				fout << "Origin strings: " << str << endl;
+				fout << endl;
 
-		fout << "Atbash" << endl;
-		fout << endl;
-		fout << "Origin strings: " << str << endl;
-		fout << endl;
+				cout << "Пароль: ";
+				cin >> s;
+				if (s == password) {
+					cout << "Закодированная строка:";
+					cout << code_atbash(str) << endl;    // закодированная
 
-		cout << "Пароль: ";
-		cin >> s;
-		if (s == password) {
-			cout << "Закодированная строка:";
-			cout << code_atbash(str) << endl;    // закодированная
+					fout << "Decoded string: " << str << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Неверный пароль " << endl;
+					break;
+				}
 
-			fout << "Decoded string: " << str << endl;
-			fout << endl;
+				s.clear();
+				cout << "Пароль: ";
+				cin >> s;
+
+				if (s == password) {
+					cout << "Декодированная строка:";
+
+					cout << decode_atbash(str) << endl;   // декодированная
+					fout << "Decoded string: " << str << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Неверный пароль " << endl;
+					break;
+				}
+				putchar('\n');
+				getchar();
+				system("notepad Output.txt ");
+				break;
+			}
+			else if (wish == "2") {
+				cout << "Введите строку:";
+				cin >> str;
+				fout << "Atbash" << endl;
+				fout << endl;
+				fout << "Origin strings: " << str << endl;
+				fout << endl;
+
+				cout << "Пароль: ";
+				cin >> s;
+
+				if (s == password) {
+					cout << "Закодированная строка:";
+					cout << code_atbash(str) << endl;    // закодированная
+
+					fout << "Decoded string: " << str << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Неверный пароль " << endl;
+					break;
+				}
+
+				putchar('\n');
+				getchar();
+				system("notepad Output.txt ");
+				break;
+			}
+			else if (wish == "1") {
+				cout << "Введите строку:";
+				cin >> str;
+				fout << "Atbash" << endl;
+				fout << endl;
+				fout << "Origin strings: " << str << endl;
+				fout << endl;
+
+				cout << "Пароль: ";
+				cin >> s;
+
+				if (s == password) {
+					cout << "Декодированная строка:";
+
+					cout << decode_atbash(str) << endl;   // декодированная
+					fout << "Decoded string: " << str << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Неверный пароль " << endl;
+					break;
+				}
+				putchar('\n');
+				getchar();
+				system("notepad Output.txt ");
+				break;
+			}
+			else {
+				system("cls");
+				cout << "Введите число от 1 до 3" << endl;
+				wish.clear();
+			}
 		}
-		else {
-			cout << "Неверный пароль " << endl;
-			break;
-		}
-
-		s.clear();
-		cout << "Пароль: ";
-		cin >> s;
-
-		if (s == password) {
-			cout << "Декодированная строка:";
-
-			cout << decode_atbash(str) << endl;   // декодированная
-			fout << "Decoded string: " << str << endl;
-			fout << endl;
-		}
-		else {
-			cout << "Неверный пароль " << endl;
-			break;
-		}
-		putchar('\n');
-		getchar();
-		system("notepad C:\\Users\\Output.txt ");
 		break;
 
 	case Вижинер:
 		system("cls");
 		Vizhiner(fout, password);
-		system("notepad C:\\Users\\Output.txt ");
+		system("notepad Output.txt ");
 		break;
 
 	case Гронсфельд:
 		system("cls");
         Grons(fout, password);
-		system("notepad C:\\Users\\Output.txt ");
+		system("notepad Output.txt ");
 		break;
 
 	case Двойная_табличная_перестановка:
 		system("cls");
 		TablCryp(fout, password);
-		system("notepad C:\\Users\\Output.txt ");
+		system("notepad Output.txt ");
 		break;
 
-	case 7:
+	case Транспонирования:
           system("cls");
           transp(fout, password);
-	      system("notepad C:\\Users\\Output.txt ");
+		  system("notepad Output.txt ");
 		break;
 
 	case 8:
@@ -146,7 +213,7 @@ void main(){
 	cin >> s;
 
 	if (s == password) {
-		remove("C:\\Users\\Output.txt");
+		remove("Output.txt");
 		menu(password);
 	}
 

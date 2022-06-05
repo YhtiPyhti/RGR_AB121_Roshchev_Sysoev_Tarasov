@@ -1,0 +1,14 @@
+Spreadsheet encryption using the double permutation method 
+
+Origin strings: we we is
+
+Decoded string: s weie w
+
+Origin strings: world. most Recognition
+
+Spreadsheet encryption using the double permutation method 
+
+Origin strings: world. most Recognition
+
+Encode strings: *n_.ngtdooslicortemoiR_w
+
