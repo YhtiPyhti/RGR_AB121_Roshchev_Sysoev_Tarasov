@@ -11,6 +11,26 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <algorithm>
+#include <cctype>
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+#include <exception>
+#include <iostream>
+#include <limits>
+#include <map>
+#include <set>
+#include <stdexcept>
+#include <string>
+#include <vector>
+using namespace std;
+
+typedef map        < char, char    >   T_key;
+typedef string                             T_text;
+typedef set        < char  >               T_char_set;
+typedef vector     < char  >               T_symbols;
+
 
 #define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"

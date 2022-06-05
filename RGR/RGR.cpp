@@ -199,7 +199,8 @@ void menu(const string& password) {
 		break;
 
 	case 9:
-
+		tablichnaya perestanovka()
+		
 		break;
 
 	case 10:
