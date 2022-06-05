@@ -204,261 +204,619 @@ void El_Gamal(ofstream& fout, const string& password, ifstream& in) {
 
 void Tarab_G(ofstream& fout, const string& password)
 {
-    string s;
+    SetConsoleCP(1251);
     setlocale(LC_ALL, "Russian");
-    SetConsoleCP(1251); 
-    SetConsoleOutputCP(1251);
-    cout << "Введите буквы :" << endl;
-    char str[1000];
-    cin >> str;
-    int v;
-
-    fout << "Gibberish letter" << endl;
-    fout << endl;
-    fout << "Origin text: " << str << endl;
-    fout << endl;
-
-	for (int c=0;c<strlen(str); c++){
-		char k='а';
-		char y='А';
-		v=0;
-	   for (int i = 0; i < 33; i++) {
-            if (str[i] == k){
-                v++;
-                break;
-            }
-            if (str[i] == 'ё') {
-                v++;
-                break;
-            }
-            if (str[i] == 'Ё') {
-                v++;
-                break;
-            }
-            if (str[i] == y) {
-                v++;
-                break;
-            }
-            if (str[i] == ' ') {
-                v++;
-                break;
-            }
-            k++;
-            y++;
-        }
-        if (v == 0) {
-            cout << "Введите русские буквы пожалуйста.\n";
-            break;
-        }
-	}
-    for (int i = 0; i < 1000; i++) 
+    string s, n, text, str;
+    int v = 0, p, k, ss = 0;
+    char alph[] = { '!','#','$','%','&','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','[',']','^','_','`','{','|','}','~','а','б','в','г','д','е','ж','з','ё','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Ь','Ъ','Щ','Ы','Э','Ю','Я' };
+    vector<string> rantext = { "we", "do", "business", "around", "the", "world", "Recognition", "is","most", "powerful", "motivation", "factor" };
+    cout << "Generate text?" << endl;
+    cout << "1 - No" << endl << "2 - Yes" << endl;
+    cin >> n;
+    if (n == "1")
     {
-     if (str[i] == 'Б') 
-     {
-       str[i] = 'Щ';
-    }
-     else if (str[i] == 'Щ')
-        str[i] = 'Б';
-
-     if (str[i] == 'В')
-        str[i] = 'Ш';
-     else if (str[i] == 'Ш')
-        str[i] = 'В';
-
-     if (str[i] == 'Г')
-        str[i] = 'Ч';
-     else if (str[i] == 'Ч')
-        str[i] = 'Г';
-
-     if (str[i] == 'Д')
-       str[i] = 'Ц';
-     else if (str[i] == 'Ц')
-	     str[i] = 'Д';
-
-    if (str[i] == 'Ж')
-        str[i] = 'Х';
-     else if (str[i] == 'Х')
-        str[i] = 'Ж';
-
-     if (str[i] == 'З') 
-       {       
-	str[i] = 'Ф';
-     }
-     else 
-     {
-       if (str[i] == 'Ф')
-            str[i] = 'З';
-     }
-
-     if (str[i] == 'К')
-        str[i] = 'Т';
-     else if (str[i] == 'Т')
-        str[i] = 'К';
-
-     if (str[i] == 'Л')
-        str[i] = 'С';
-     else if (str[i] == 'С')
-        str[i] = 'Л';
-
-     if (str[i] == 'М')
-        str[i] = 'Р';
-     else if (str[i] == 'Р')
-        str[i] = 'М';
-
-     if (str[i] == 'Н')
-        str[i] = 'П';
-     else if (str[i] == 'П')
-        str[i] = 'Н';
-
-     }
-	 for (int i = 0; i < 1000; i++) 
-    {
-     if (str[i] == 'б') 
-     {
-       str[i] = 'щ';
-    }
-     else if (str[i] == 'щ')
-        str[i] = 'б';
-
-     if (str[i] == 'в')
-        str[i] = 'ш';
-     else if (str[i] == 'ш')
-        str[i] = 'в';
-
-     if (str[i] == 'г')
-        str[i] = 'ч';
-     else if (str[i] == 'ч')
-        str[i] = 'г';
-
-     if (str[i] == 'д')
-       str[i] = 'ц';
-     else if (str[i] == 'ц')
-	     str[i] = 'д';
-
-    if (str[i] == 'ж')
-        str[i] = 'х';
-     else if (str[i] == 'х')
-        str[i] = 'ж';
-
-     if (str[i] == 'з') 
-       {       
-	str[i] = 'ф';
-     }
-     else 
-     {
-       if (str[i] == 'ф')
-            str[i] = 'з';
-     }
-
-     if (str[i] == 'к')
-        str[i] = 'т';
-     else if (str[i] == 'т')
-        str[i] = 'к';
-
-     if (str[i] == 'л')
-        str[i] = 'с';
-     else if (str[i] == 'с')
-        str[i] = 'л';
-
-     if (str[i] == 'м')
-        str[i] = 'р';
-     else if (str[i] == 'р')
-        str[i] = 'м';
-
-     if (str[i] == 'н')
-        str[i] = 'п';
-     else if (str[i] == 'п')
-        str[i] = 'н';
-
-     }
-     cout << "Password: ";
-     cin >> s;
-     if (s == password) {
-         cout << "Зашифрованное слово: " << str << endl;
-
-         fout << "Encrypting text:" << str << endl;
-         fout << endl;
-     }
-     else {
-         cout << "Incorrect Password! " << endl;
-         return;
-     }
-
-
-	for (int i = 0; i < 1000; i++) 
-    {
-     if (str[i] == 'Б') 
-     {
-       str[i] = 'Щ';
-    }
-     else if (str[i] == 'Щ')
-        str[i] = 'Б';
-
-     if (str[i] == 'В')
-        str[i] = 'Ш';
-     else if (str[i] == 'Ш')
-        str[i] = 'В';
-
-     if (str[i] == 'Г')
-        str[i] = 'Ч';
-     else if (str[i] == 'Ч')
-        str[i] = 'Г';
-
-     if (str[i] == 'Д')
-       str[i] = 'Ц';
-     else if (str[i] == 'Ц')
-	     str[i] = 'Д';
-
-    if (str[i] == 'Ж')
-        str[i] = 'Х';
-     else if (str[i] == 'Х')
-        str[i] = 'Ж';
-
-     if (str[i] == 'З') 
-       {       
-	str[i] = 'Ф';
-     }
-     else 
-     {
-       if (str[i] == 'Ф')
-            str[i] = 'З';
-     }
-
-     if (str[i] == 'К')
-        str[i] = 'Т';
-     else if (str[i] == 'Т')
-        str[i] = 'К';
-
-     if (str[i] == 'Л')
-        str[i] = 'С';
-     else if (str[i] == 'С')
-        str[i] = 'Л';
-
-     if (str[i] == 'М')
-        str[i] = 'Р';
-     else if (str[i] == 'Р')
-        str[i] = 'М';
-
-     if (str[i] == 'Н')
-        str[i] = 'П';
-     else if (str[i] == 'П')
-        str[i] = 'Н';
-
-     }
-    cout << "Password: ";
-    s.clear();
-    cin >> s;
-    if (s == password) {
-        cout << "Дешифрованное слово: " << str << endl;
-
-        fout << "Decrypting text:" << str << endl;
+        cout << "Vvedite soobshenie: " << endl;
+        cin.ignore();
+        getline(cin, str);
+        k = str.length();
+        cout << "Origin text: " << str << endl;
+        fout << "Gibberish letter" << endl;
+        fout << endl;
+        fout << "Origin text: " << str << endl;
         fout << endl;
     }
-    else {
-        cout << "Incorrect Password! " << endl;
-        return;
+    if (n == "2")
+    {
+        system("cls");
+        mt19937 gen(time(0));
+        uniform_int_distribution<int> uid1(0, 11);
+        text = rantext[uid1(gen)] +  rantext[uid1(gen)] + rantext[uid1(gen)];
+        k = text.length();
+        cout << "Origin text: " << text << endl;
+        fout << "Gibberish letter" << endl;
+        fout << endl;
+        fout << "Origin text: " << text << endl;
+        fout << endl;
     }
+    if (n == "1") { //проверка str
+        for (int i = 0; i < k; i++)
+        {
+            for (int x = 0; x < strlen(alph); x++)
+            {
+                if (str[i] == alph[x])
+                {
+                    ss++;
+                }
+            }
+        }
+    }
+    if (ss != 0) {
+        cout << "Error.Write again.";
+    }
+    else {
+        if (n == "2") {  //проверка text
+            for (int i = 0; i < k; i++)
+            {
+                for (int x = 0; x < strlen(alph); x++)
+                {
+                    if (text[i] == alph[x])
+                    {
+                        ss++;
+                    }
+                }
+            }
+        }
+        if (ss != 0) {
+            cout << "Error.Write again.";
+        }
+        else
+        {
+            if (n == "1") {   //Encoded str
+                for (int i = 0; i < k; i++)
+                {
+                    if (str[i] == 'B')
+                        str[i] = 'C';
+                    else if (str[i] == 'C')
+                        str[i] = 'B';
 
+                    if (str[i] == 'D')
+                        str[i] = 'F';
+                    else if (str[i] == 'F')
+                        str[i] = 'D';
+
+                    if (str[i] == 'G')
+                    {
+                        str[i] = 'H';
+                    }
+                    else
+                    {
+                        if (str[i] == 'H')
+                            str[i] = 'G';
+                    }
+
+                    if (str[i] == 'J')
+                        str[i] = 'L';
+                    else if (str[i] == 'L')
+                        str[i] = 'J';
+
+                    if (str[i] == 'K')
+                        str[i] = 'M';
+                    else if (str[i] == 'M')
+                        str[i] = 'K';
+
+                    if (str[i] == 'N')
+                        str[i] = 'P';
+                    else if (str[i] == 'P')
+                        str[i] = 'N';
+
+                    if (str[i] == 'Q')
+                        str[i] = 'R';
+                    else if (str[i] == 'R')
+                        str[i] = 'Q';
+
+                    if (str[i] == 'S')
+                    {
+                        str[i] = 'T';
+                    }
+                    else if (str[i] == 'T')
+                        str[i] = 'S';
+
+                    if (str[i] == 'V')
+                        str[i] = 'W';
+                    else if (str[i] == 'W')
+                        str[i] = 'V';
+
+                    if (str[i] == 'X')
+                        str[i] = 'Z';
+                    else if (str[i] == 'Z')
+                        str[i] = 'X';
+                }
+                for (int i = 0; i < k; i++)
+                {
+
+                    if (str[i] == 'b')
+                        str[i] = 'c';
+                    else if (str[i] == 'c')
+                        str[i] = 'b';
+
+                    if (str[i] == 'd')
+                        str[i] = 'f';
+                    else if (str[i] == 'f')
+                        str[i] = 'd';
+
+                    if (str[i] == 'g')
+                    {
+                        str[i] = 'h';
+                    }
+                    else
+                    {
+                        if (str[i] == 'h')
+                            str[i] = 'g';
+                    }
+
+                    if (str[i] == 'j')
+                        str[i] = 'l';
+                    else if (str[i] == 'l')
+                        str[i] = 'j';
+
+                    if (str[i] == 'k')
+                        str[i] = 'm';
+                    else if (str[i] == 'm')
+                        str[i] = 'k';
+
+                    if (str[i] == 'n')
+                        str[i] = 'p';
+                    else if (str[i] == 'p')
+                        str[i] = 'n';
+
+                    if (str[i] == 'q')
+                        str[i] = 'r';
+                    else if (str[i] == 'r')
+                        str[i] = 'q';
+
+                    if (str[i] == 's')
+                    {
+                        str[i] = 't';
+                    }
+                    else if (str[i] == 't')
+                        str[i] = 's';
+
+                    if (str[i] == 'v')
+                        str[i] = 'w';
+                    else if (str[i] == 'w')
+                        str[i] = 'v';
+
+                    if (str[i] == 'x')
+                        str[i] = 'z';
+                    else if (str[i] == 'z')
+                        str[i] = 'x';
+                }
+
+                     cout << "Password: ";
+                     cin >> s;
+                     if (s == password) 
+                     {
+                        cout << "Encoded: " << str << endl;
+
+                        fout << "Encrypting text: " << str << endl;
+                        fout << endl;
+                     }
+                     else 
+                     {
+                        cout << "Incorrect Password! " << endl;
+                        return;
+                     }
+                
+            }
+
+            if (n == "2") 
+            {   //Encoded text
+                for (int i = 0; i < k; i++)
+                {
+                    if (text[i] == 'B')
+                        text[i] = 'C';
+                    else if (text[i] == 'C')
+                        text[i] = 'B';
+
+                    if (text[i] == 'D')
+                        text[i] = 'F';
+                    else if (text[i] == 'F')
+                        text[i] = 'D';
+
+                    if (text[i] == 'G')
+                    {
+                        text[i] = 'H';
+                    }
+                    else
+                    {
+                        if (text[i] == 'H')
+                            text[i] = 'G';
+                    }
+
+                    if (text[i] == 'J')
+                        text[i] = 'L';
+                    else if (text[i] == 'L')
+                        text[i] = 'J';
+
+                    if (text[i] == 'K')
+                        text[i] = 'M';
+                    else if (text[i] == 'M')
+                        text[i] = 'K';
+
+                    if (text[i] == 'N')
+                        text[i] = 'P';
+                    else if (text[i] == 'P')
+                        text[i] = 'N';
+
+                    if (text[i] == 'Q')
+                        text[i] = 'R';
+                    else if (text[i] == 'R')
+                        text[i] = 'Q';
+
+                    if (text[i] == 'S')
+                    {
+                        text[i] = 'T';
+                    }
+                    else if (text[i] == 'T')
+                        text[i] = 'S';
+
+                    if (text[i] == 'V')
+                        text[i] = 'W';
+                    else if (text[i] == 'W')
+                        text[i] = 'V';
+
+                    if (text[i] == 'X')
+                        text[i] = 'Z';
+                    else if (text[i] == 'Z')
+                        text[i] = 'X';
+                }
+                for (int i = 0; i < k; i++)
+                {
+
+                    if (text[i] == 'b')
+                        text[i] = 'c';
+                    else if (text[i] == 'c')
+                        text[i] = 'b';
+
+                    if (text[i] == 'd')
+                        text[i] = 'f';
+                    else if (text[i] == 'f')
+                        text[i] = 'd';
+
+                    if (text[i] == 'g')
+                    {
+                        text[i] = 'h';
+                    }
+                    else
+                    {
+                        if (text[i] == 'h')
+                            text[i] = 'g';
+                    }
+
+                    if (text[i] == 'j')
+                        text[i] = 'l';
+                    else if (text[i] == 'l')
+                        text[i] = 'j';
+
+                    if (text[i] == 'k')
+                        text[i] = 'm';
+                    else if (text[i] == 'm')
+                        text[i] = 'k';
+
+                    if (text[i] == 'n')
+                        text[i] = 'p';
+                    else if (text[i] == 'p')
+                        text[i] = 'n';
+
+                    if (text[i] == 'q')
+                        text[i] = 'r';
+                    else if (text[i] == 'r')
+                        text[i] = 'q';
+
+                    if (text[i] == 's')
+                    {
+                        text[i] = 't';
+                    }
+                    else if (text[i] == 't')
+                        text[i] = 's';
+
+                    if (text[i] == 'v')
+                        text[i] = 'w';
+                    else if (text[i] == 'w')
+                        text[i] = 'v';
+
+                    if (text[i] == 'x')
+                        text[i] = 'z';
+                    else if (text[i] == 'z')
+                        text[i] = 'x';
+                }
+
+                    cout << "Password: ";
+                    cin >> s;
+                    if (s == password) {
+                        cout << "Encoded: " << text << endl;
+
+                        fout << "Encrypting text: " << text << endl;
+                        fout << endl;
+                    }
+                    else {
+                        cout << "Incorrect Password! " << endl;
+                        return;
+                    }
+                
+            }
+            if (n == "1") {   //Decoded str
+                for (int i = 0; i < k; i++)
+                {
+                    if (str[i] == 'B')
+                        str[i] = 'C';
+                    else if (str[i] == 'C')
+                        str[i] = 'B';
+
+                    if (str[i] == 'D')
+                        str[i] = 'F';
+                    else if (str[i] == 'F')
+                        str[i] = 'D';
+
+                    if (str[i] == 'G')
+                    {
+                        str[i] = 'H';
+                    }
+                    else
+                    {
+                        if (str[i] == 'H')
+                            str[i] = 'G';
+                    }
+
+                    if (str[i] == 'J')
+                        str[i] = 'L';
+                    else if (str[i] == 'L')
+                        str[i] = 'J';
+
+                    if (str[i] == 'K')
+                        str[i] = 'M';
+                    else if (str[i] == 'M')
+                        str[i] = 'K';
+
+                    if (str[i] == 'N')
+                        str[i] = 'P';
+                    else if (str[i] == 'P')
+                        str[i] = 'N';
+
+                    if (str[i] == 'Q')
+                        str[i] = 'R';
+                    else if (str[i] == 'R')
+                        str[i] = 'Q';
+
+                    if (str[i] == 'S')
+                    {
+                        str[i] = 'T';
+                    }
+                    else if (str[i] == 'T')
+                        str[i] = 'S';
+
+                    if (str[i] == 'V')
+                        str[i] = 'W';
+                    else if (str[i] == 'W')
+                        str[i] = 'V';
+
+                    if (str[i] == 'X')
+                        str[i] = 'Z';
+                    else if (str[i] == 'Z')
+                        str[i] = 'X';
+                }
+                for (int i = 0; i < k; i++)
+                {
+
+                    if (str[i] == 'b')
+                        str[i] = 'c';
+                    else if (str[i] == 'c')
+                        str[i] = 'b';
+
+                    if (str[i] == 'd')
+                        str[i] = 'f';
+                    else if (str[i] == 'f')
+                        str[i] = 'd';
+
+                    if (str[i] == 'g')
+                    {
+                        str[i] = 'h';
+                    }
+                    else
+                    {
+                        if (str[i] == 'h')
+                            str[i] = 'g';
+                    }
+
+                    if (str[i] == 'j')
+                        str[i] = 'l';
+                    else if (str[i] == 'l')
+                        str[i] = 'j';
+
+                    if (str[i] == 'k')
+                        str[i] = 'm';
+                    else if (str[i] == 'm')
+                        str[i] = 'k';
+
+                    if (str[i] == 'n')
+                        str[i] = 'p';
+                    else if (str[i] == 'p')
+                        str[i] = 'n';
+
+                    if (str[i] == 'q')
+                        str[i] = 'r';
+                    else if (str[i] == 'r')
+                        str[i] = 'q';
+
+                    if (str[i] == 's')
+                    {
+                        str[i] = 't';
+                    }
+                    else if (str[i] == 't')
+                        str[i] = 's';
+
+                    if (str[i] == 'v')
+                        str[i] = 'w';
+                    else if (str[i] == 'w')
+                        str[i] = 'v';
+
+                    if (str[i] == 'x')
+                        str[i] = 'z';
+                    else if (str[i] == 'z')
+                        str[i] = 'x';
+                }
+                    cout << "Password: ";
+                    cin >> s;
+                    if (s == password) {
+                        cout << "Decoded: " << str << endl;
+
+                        fout << "Decrypting text: " << str << endl;
+                        fout << endl;
+                    }
+                    else {
+                        cout << "Incorrect Password! " << endl;
+                        return;
+                    }
+                
+            }
+            if (n == "2") {     //Decoded text
+                for (int i = 0; i < k; i++)
+                {
+                    if (text[i] == 'B')
+                        text[i] = 'C';
+                    else if (text[i] == 'C')
+                        text[i] = 'B';
+
+                    if (text[i] == 'D')
+                        text[i] = 'F';
+                    else if (text[i] == 'F')
+                        text[i] = 'D';
+
+                    if (text[i] == 'G')
+                    {
+                        text[i] = 'H';
+                    }
+                    else
+                    {
+                        if (text[i] == 'H')
+                            text[i] = 'G';
+                    }
+
+                    if (text[i] == 'J')
+                        text[i] = 'L';
+                    else if (text[i] == 'L')
+                        text[i] = 'J';
+
+                    if (text[i] == 'K')
+                        text[i] = 'M';
+                    else if (text[i] == 'M')
+                        text[i] = 'K';
+
+                    if (text[i] == 'N')
+                        text[i] = 'P';
+                    else if (text[i] == 'P')
+                        text[i] = 'N';
+
+                    if (text[i] == 'Q')
+                        text[i] = 'R';
+                    else if (text[i] == 'R')
+                        text[i] = 'Q';
+
+                    if (text[i] == 'S')
+                    {
+                        text[i] = 'T';
+                    }
+                    else if (text[i] == 'T')
+                        text[i] = 'S';
+
+                    if (text[i] == 'V')
+                        text[i] = 'W';
+                    else if (text[i] == 'W')
+                        text[i] = 'V';
+
+                    if (text[i] == 'X')
+                        text[i] = 'Z';
+                    else if (text[i] == 'Z')
+                        text[i] = 'X';
+                }
+                for (int i = 0; i < k; i++)
+                {
+
+                    if (text[i] == 'b')
+                        text[i] = 'c';
+                    else if (text[i] == 'c')
+                        text[i] = 'b';
+
+                    if (text[i] == 'd')
+                        text[i] = 'f';
+                    else if (text[i] == 'f')
+                        text[i] = 'd';
+
+                    if (text[i] == 'g')
+                    {
+                        text[i] = 'h';
+                    }
+                    else
+                    {
+                        if (text[i] == 'h')
+                            text[i] = 'g';
+                    }
+
+                    if (text[i] == 'j')
+                        text[i] = 'l';
+                    else if (text[i] == 'l')
+                        text[i] = 'j';
+
+                    if (text[i] == 'k')
+                        text[i] = 'm';
+                    else if (text[i] == 'm')
+                        text[i] = 'k';
+
+                    if (text[i] == 'n')
+                        text[i] = 'p';
+                    else if (text[i] == 'p')
+                        text[i] = 'n';
+
+                    if (text[i] == 'q')
+                        text[i] = 'r';
+                    else if (text[i] == 'r')
+                        text[i] = 'q';
+
+                    if (text[i] == 's')
+                    {
+                        text[i] = 't';
+                    }
+                    else if (text[i] == 't')
+                        text[i] = 's';
+
+                    if (text[i] == 'v')
+                        text[i] = 'w';
+                    else if (text[i] == 'w')
+                        text[i] = 'v';
+
+                    if (text[i] == 'x')
+                        text[i] = 'z';
+                    else if (text[i] == 'z')
+                        text[i] = 'x';
+                }
+
+                    cout << "Password: ";
+                    cin >> s;
+                    if (s == password) {
+                        cout << "Decoded: " << text << endl;
+
+                        fout << "Decrypting text: " << text << endl;
+                        fout << endl;
+                    }
+                    else {
+                        cout << "Incorrect Password! " << endl;
+                        return;
+                    }
+                
+                
+            }
+        }
+    }
 
 }
 
