@@ -297,7 +297,7 @@ void Vizhiner(ofstream& fout, const string& password) {
 	}
 	else {
 		system("cls");
-		cout << "¬ведите число от 1 до 3" << endl;
+		cout << "Input 1 or 2 or 3" << endl;
 		wish.clear();
 	}
 }
@@ -897,7 +897,7 @@ void TablCryp(ofstream& fout, const string& password) {
 
 	else {
 		system("cls");
-		cout << "¬ведите число от 1 до 3" << endl;
+		cout << "Input 1 or 2 or 3" << endl;
 		wish.clear();
 		TablCryp(fout, password);
 	}

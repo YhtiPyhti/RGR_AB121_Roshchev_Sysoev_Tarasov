@@ -1,14 +1,32 @@
-Spreadsheet encryption using the double permutation method 
+Transponirovania
 
-Origin strings: we we is
+Origin text: we most is
 
-Decoded string: s weie w
+Encoded string: ist os mwe
 
-Origin strings: world. most Recognition
+Decoded string: we most is
 
-Spreadsheet encryption using the double permutation method 
+Transponirovania
 
-Origin strings: world. most Recognition
+Origin text: the powerful business
 
-Encode strings: *n_.ngtdooslicortemoiR_w
+Decoded string: s esinus bulrfwepoe th
+
+Transponirovania
+
+Origin text: s esinus bulrfwepoe th
+
+Decoded string: the powerful business 
+
+Transponirovania
+
+Origin text: s esinus bulrfwepoe th
+
+Encoded string: the powerful business 
+
+Transponirovania
+
+Origin text: Recognition motivation factor.
+
+Decoded string: r.toac fontivatimon ioitgncoRe
 
