@@ -800,7 +800,7 @@ void transp(ofstream& fout, const string& password)
             uniform_int_distribution<int> uid1(0, 11);
             text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
             cout << "Origin text: " << text << endl;
-            fout << "Gronsfeld" << endl;
+            fout << "Transponirovania" << endl;
             fout << endl;
             fout << "Origin text: " << text << endl;
             fout << endl;
