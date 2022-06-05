@@ -2,32 +2,21 @@
 #include <iostream>
 #include <fstream>
 #include <clocale>
-#include <stdio.h>
-#include <string>
-#include <cctype>
-#include <Windows.h>
 #include <vector>
 #include <random>
-#include <iostream>
-#include <math.h>
-#include <string.h>
 #include <string>
+#include <cctype>
+
+#include <Windows.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-
-bool isPrime(long int prime);
-long int calculateE(long int t);
-long int greatestCommonDivisor(long int e, long int t);
-long int calculateD(long int e, long int t);
-long int encrypt(long int i, long int e, long int n);
-long int decrypt(long int i, long int d, long int n);
 #define  CODE_ATBASH       "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define  DECODE_ATBASH    "ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
 
 using namespace std;
-int rsa();
 
 int mod(int g, int X, int p);
 void eng(string text);
@@ -42,3 +31,12 @@ char* decode_atbash(char* src);
 
 void Grons(ofstream& fout, const string& password);
 void transp(ofstream& fout, const string& password);
+
+int rsa(ofstream& fout, const string& password);
+
+bool isPrime(long int prime);
+long int calculateE(long int t);
+long int greatestCommonDivisor(long int e, long int t);
+long int calculateD(long int e, long int t);
+long int encrypt(long int i, long int e, long int n);
+long int decrypt(long int i, long int d, long int n);

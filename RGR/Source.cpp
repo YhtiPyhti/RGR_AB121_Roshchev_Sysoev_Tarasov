@@ -1510,7 +1510,7 @@ void transp(ofstream& fout, const string& password)
     }
 
 }
-int rsa()
+int rsa(ofstream& fout, const string& password)
 {
     long int p, q, n, t, e, d;
 
@@ -1587,7 +1587,9 @@ int rsa()
     std::getline(std::cin, msg);
 
     std::cout << "\nThe message is: " << msg << std::endl;
-
+    fout << "RSA" << endl;
+    fout << endl;
+    fout << "Origin text: " << msg << endl;
 
     // encryption
 
@@ -1598,11 +1600,14 @@ int rsa()
 
     std::cout << "\nTHE ENCRYPTED MESSAGE IS:" << std::endl;
 
+    fout << "Encrypted text: ";
+
     for (long int i = 0; i < msg.length(); i++)
     {
         printf("%c", (char)encryptedText[i]);
+        fout << (char)encryptedText[i];
     }
-
+    fout << endl;
 
     //decryption
 
@@ -1612,16 +1617,15 @@ int rsa()
     }
 
     std::cout << "\n\nTHE DECRYPTED MESSAGE IS:" << std::endl;
-
+    fout << "Decrypted text: ";
     for (long int i = 0; i < msg.length(); i++)
     {
         printf("%c", (char)decryptedText[i]);
+        fout << (char)decryptedText[i];
     }
-
+    fout << endl;
 
     std::cout << std::endl << std::endl;
-
-    //system("PAUSE");
 
     return 0;
 }

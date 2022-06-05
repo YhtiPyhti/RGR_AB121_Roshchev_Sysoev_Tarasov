@@ -192,7 +192,9 @@ void menu(const string& password) {
 		break;
 
 	case RSA:
-		rsa();
+		system("cls");
+		rsa(fout, password);
+		system("notepad Output.txt ");
 		break;
 
 	case 9:
