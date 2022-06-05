@@ -24,27 +24,78 @@ void numb(vector<int> number, int y) {
 void Vizhiner(ofstream& fout, const string& password) {
 	mt19937 gen(time(0));
 	uniform_int_distribution<int> uid1(0, 11);
-	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };//0-11
-    string key, text, enText, deText, n, s;
+	vector<string> rantext = { "we", "do", "business", "around", "the", "world", "Recognition", "is","most", "powerful", "motivation", "factor" };//0-11
+    string key, text, enText, deText, n, s, wish;
+	int k;
 	cout << "Generate text?" << endl;
 	cout << "1 - No" << endl << "2 - Yes" << endl;
 	cin >> n;
-	if (n == "1") {
-		try {
-			cout << "Input text: ";
-			cin.ignore();
-			getline(cin, text);
-			eng(text);
+
+	cout << "What would you like:" << endl << "1) decryption only" << endl << "2) only encrypt" << endl << "3) this and that" << endl;
+	cin >> wish;
+	if (wish == "3") {
+		if (n == "1") {
+			try {
+				cout << "Input text: ";
+				cin.ignore();
+				getline(cin, text);
+				eng(text);
+			}
+			catch (const char* err) {
+				cout << err << endl;
+				text.clear();
+				Vizhiner(fout, password);
+			}
+			try {
+				cout << "Input key: ";
+				cin >> key;
+				eng(key);
+
+				fout << "Vigenere Cipher" << endl;
+				fout << endl;
+				fout << "Origin text: " << text << endl;
+				fout << endl;
+				cout << "Password: ";
+				cin >> s;
+				if (s == password) {
+					enText = encodeText(text, key);
+					cout << "Encoded string: " << enText << endl;
+
+					fout << "Encoded string: " << enText << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Incorrect Password! " << endl;
+					return;
+				}
+
+				cout << "Password: ";
+				s.clear();
+				cin >> s;
+
+				if (s == password) {
+					deText = decodeText(enText, key);
+					cout << "Decoded string: " << deText << endl;
+
+					fout << "Decoded string: " << deText << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Incorrect Password! " << endl;
+					return;
+				}
+			}
+			catch (const char* err) {
+				cout << err << endl;
+				key.clear();
+				Vizhiner(fout, password);
+			}
 		}
-		catch (const char* err) {
-			cout << err << endl;
-			text.clear();
-			Vizhiner(fout, password);
-		}
-		try {
-			cout << "Input key: ";
-			cin >> key;
-			eng(key);
+		else if (n == "2") {
+			text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+			key = "KEY";
+			cout << "Origin text: " << text << endl;
+			cout << "Key: " << key << endl;
 
 			fout << "Vigenere Cipher" << endl;
 			fout << endl;
@@ -80,57 +131,177 @@ void Vizhiner(ofstream& fout, const string& password) {
 				return;
 			}
 		}
-		catch (const char* err) {
-			cout << err << endl;
-			key.clear();
+		else {
+			cout << "Input 1 or 2" << endl;
 			Vizhiner(fout, password);
 		}
 	}
-	else if (n == "2") {
-		text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
-		key = "KEY";
-		cout << "Origin text: " << text << endl;
-		cout << "Key: " << key << endl;
+	else if (wish == "2") {//encrypt
+		if (n == "1") {
+			try {
+				cout << "Input text: ";
+				cin.ignore();
+				getline(cin, text);
+				eng(text);
+			}
+			catch (const char* err) {
+				cout << err << endl;
+				text.clear();
+				Vizhiner(fout, password);
+			}
+			try {
+				cout << "Input key: ";
+				cin >> key;
+				eng(key);
 
-		fout << "Vigenere Cipher" << endl;
-		fout << endl;
-		fout << "Origin text: " << text << endl;
-		fout << endl;
-		cout << "Password: ";
-		cin >> s;
-		if (s == password) {
-			enText = encodeText(text, key);
-			cout << "Encoded string: " << enText << endl;
+				fout << "Vigenere Cipher" << endl;
+				fout << endl;
+				fout << "Origin text: " << text << endl;
+				fout << endl;
 
-			fout << "Encoded string: " << enText << endl;
+				cout << "Password: ";
+				cin >> s;
+				if (s == password) {
+					enText = encodeText(text, key);
+					cout << "Encoded string: " << enText << endl;
+
+					fout << "Encoded string: " << enText << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Incorrect Password! " << endl;
+					return;
+				}
+			}
+			catch (const char* err) {
+				cout << err << endl;
+				key.clear();
+				Vizhiner(fout, password);
+			}
+		}
+		else if (n == "2") {
+			text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+			key = "KEY";
+			cout << "Origin text: " << text << endl;
+			cout << "Key: " << key << endl;
+
+			fout << "Vigenere Cipher" << endl;
 			fout << endl;
+			fout << "Origin text: " << text << endl;
+			fout << endl;
+
+			cout << "Password: ";
+			cin >> s;
+			if (s == password) {
+				enText = encodeText(text, key);
+				cout << "Encoded string: " << enText << endl;
+
+				fout << "Encoded string: " << enText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
 		}
 		else {
-			cout << "Incorrect Password! " << endl;
-			return;
+			cout << "Input 1 or 2" << endl;
+			Vizhiner(fout, password);
 		}
 
-		cout << "Password: ";
-		s.clear();
-		cin >> s;
+	}
+	else if (wish == "1") {
+		if (n == "1") {
+			try {
+				cout << "Input text: ";
+				cin.ignore();
+				getline(cin, text);
+				eng(text);
+			}
+			catch (const char* err) {
+				cout << err << endl;
+				text.clear();
+				Vizhiner(fout, password);
+			}
+			try {
+				cout << "Input key: ";
+				cin >> key;
+				eng(key);
 
-		if (s == password) {
-			deText = decodeText(enText, key);
-			cout << "Decoded string: " << deText << endl;
+				fout << "Vigenere Cipher" << endl;
+				fout << endl;
+				fout << "Origin text: " << text << endl;
+				fout << endl;
 
-			fout << "Decoded string: " << deText << endl;
+				cout << "Password: ";
+				cin >> s;
+				cout << endl;
+
+				if (s == password) {
+
+					deText = decodeText(text, key);
+
+					cout << "Decoded string: " << deText << endl;
+
+					fout << "Decoded string: " << deText << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Incorrect Password! " << endl;
+					return;
+				}
+			}
+			catch (const char* err) {
+				cout << err << endl;
+				key.clear();
+				Vizhiner(fout, password);
+			}
+		}
+		else if (n == "2") {
+			text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+			key = "KEY";
+			cout << "Origin text: " << text << endl;
+			cout << "Key: " << key << endl;
+
+			fout << "Vigenere Cipher" << endl;
 			fout << endl;
+			fout << "Origin text: " << text << endl;
+			fout << endl;
+
+			cout << "Password: ";
+			cin >> s;
+			cout << endl;
+
+			if (s == password) {
+
+				deText = decodeText(text, key);
+
+				cout << "Decoded string: " << deText << endl;
+
+				fout << "Decoded string: " << deText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
 		}
 		else {
-			cout << "Incorrect Password! " << endl;
-			return;
+			cout << "Input 1 or 2" << endl;
+			Vizhiner(fout, password);
 		}
 	}
+
 	else {
-		cout << "Input 1 or 2" << endl;
+		system("cls");
+		cout << "¬ведите число от 1 до 3" << endl;
+		wish.clear();
 		Vizhiner(fout, password);
 	}
 }
+
+
+
 string encodeText(string text, string key) {
     int i, j;
 

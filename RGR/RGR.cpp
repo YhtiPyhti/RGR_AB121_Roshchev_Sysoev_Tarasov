@@ -31,7 +31,7 @@ void menu(const string& password) {
 	cout << "Нажмите <10> если выбрали  выход " << endl;
 
 	cin >> vibor;
-	if (vibor.length() < 3) {
+	if (vibor.length()<3) {
 		k = stoi(vibor);
 	}
 	else {
