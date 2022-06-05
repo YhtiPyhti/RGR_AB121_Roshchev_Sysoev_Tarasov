@@ -170,7 +170,7 @@ void menu(const string& password) {
 
 	case Вижинер:
 		system("cls");
-		Vizhiner(fout, password);
+		Vizhiner(fout, password, in);
 		system("notepad Output.txt ");
 		break;
 
@@ -182,7 +182,7 @@ void menu(const string& password) {
 
 	case Двойная_табличная_перестановка:
 		system("cls");
-		TablCryp(fout, password);
+		TablCryp(fout, password, in);
 		system("notepad Output.txt ");
 		break;
 

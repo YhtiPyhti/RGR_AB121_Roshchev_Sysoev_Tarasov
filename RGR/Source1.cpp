@@ -21,7 +21,7 @@ void numb(vector<int> number, int y) {
 	if(S1 != S2) throw " Incorrect input! Repeating numbers. (Be sure to use a space before entering)\n";
 }
 
-void Vizhiner(ofstream& fout, const string& password) {
+void Vizhiner(ofstream& fout, const string& password, ifstream& in) {
 	mt19937 gen(time(0));
 	uniform_int_distribution<int> uid1(0, 11);
 	vector<string> rantext = { "we", "do", "business", "around", "the", "world", "Recognition", "is","most", "powerful", "motivation", "factor" };//0-11
@@ -53,7 +53,7 @@ void Vizhiner(ofstream& fout, const string& password) {
 			catch (const char* err) {
 				cout << err << endl;
 				text.clear();
-				Vizhiner(fout, password);
+				Vizhiner(fout, password, in);
 			}
 			try {
 				cout << "Input key: ";
@@ -97,7 +97,7 @@ void Vizhiner(ofstream& fout, const string& password) {
 			catch (const char* err) {
 				cout << err << endl;
 				key.clear();
-				Vizhiner(fout, password);
+				Vizhiner(fout, password, in);
 			}
 		}
 		else if (n == "2") {
@@ -142,7 +142,7 @@ void Vizhiner(ofstream& fout, const string& password) {
 		}
 		else {
 			cout << "Input 1 or 2" << endl;
-			Vizhiner(fout, password);
+			Vizhiner(fout, password, in);
 		}
 	}
 	else if (wish == "2") {//encrypt
@@ -156,7 +156,7 @@ void Vizhiner(ofstream& fout, const string& password) {
 			catch (const char* err) {
 				cout << err << endl;
 				text.clear();
-				Vizhiner(fout, password);
+				Vizhiner(fout, password, in);
 			}
 			try {
 				cout << "Input key: ";
@@ -185,7 +185,7 @@ void Vizhiner(ofstream& fout, const string& password) {
 			catch (const char* err) {
 				cout << err << endl;
 				key.clear();
-				Vizhiner(fout, password);
+				Vizhiner(fout, password, in);
 			}
 		}
 		else if (n == "2") {
@@ -215,7 +215,7 @@ void Vizhiner(ofstream& fout, const string& password) {
 		}
 		else {
 			cout << "Input 1 or 2" << endl;
-			Vizhiner(fout, password);
+			Vizhiner(fout, password, in);
 		}
 	}
 	else if (wish == "1") {
@@ -229,7 +229,7 @@ void Vizhiner(ofstream& fout, const string& password) {
 			catch (const char* err) {
 				cout << err << endl;
 				text.clear();
-				Vizhiner(fout, password);
+				Vizhiner(fout, password, in);
 			}
 			try {
 				cout << "Input key: ";
@@ -262,7 +262,7 @@ void Vizhiner(ofstream& fout, const string& password) {
 			catch (const char* err) {
 				cout << err << endl;
 				key.clear();
-				Vizhiner(fout, password);
+				Vizhiner(fout, password, in);
 			}
 		}
 		else if (n == "2") {
@@ -490,7 +490,7 @@ string decrypting(string ishText, vector<int> c, vector<int>& c1) {
 	return text;
 }
 
-void TablCryp(ofstream& fout, const string& password) {
+void TablCryp(ofstream& fout, const string& password, ifstream& in) {
 	mt19937 gen(time(0));
 	uniform_int_distribution<int> uid1(0, 11);
 	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };
@@ -584,13 +584,13 @@ void TablCryp(ofstream& fout, const string& password) {
 					ishText.clear();
 					key.clear();
 					key1.clear();
-					TablCryp(fout, password);
+					TablCryp(fout, password, in);
 				}
 			}
 			catch (const char* err) {
 				cout << err << endl;
 				ishText.clear();
-				TablCryp(fout, password);
+				TablCryp(fout, password, in);
 			}
 		}
 		else if (n == "2") {
@@ -657,7 +657,7 @@ void TablCryp(ofstream& fout, const string& password) {
 		}
 		else {
 			cout << "Input 1 or 2" << endl;
-			TablCryp(fout, password);
+			TablCryp(fout, password, in);
 		}
 	}
 	else if (wish == "2") {
@@ -716,13 +716,13 @@ void TablCryp(ofstream& fout, const string& password) {
 					ishText.clear();
 					key.clear();
 					key1.clear();
-					TablCryp(fout, password);
+					TablCryp(fout, password, in);
 				}
 			}
 			catch (const char* err) {
 				cout << err << endl;
 				ishText.clear();
-				TablCryp(fout, password);
+				TablCryp(fout, password, in);
 			}
 		}
 		else if (n == "2") {
@@ -773,7 +773,7 @@ void TablCryp(ofstream& fout, const string& password) {
 		}
 		else {
 			cout << "Input 1 or 2" << endl;
-			TablCryp(fout, password);
+			TablCryp(fout, password, in);
 		}
 	}
 	else if (wish == "1") {
@@ -833,13 +833,13 @@ void TablCryp(ofstream& fout, const string& password) {
 					ishText.clear();
 					key.clear();
 					key1.clear();
-					TablCryp(fout, password);
+					TablCryp(fout, password, in);
 				}
 			}
 			catch (const char* err) {
 				cout << err << endl;
 				ishText.clear();
-				TablCryp(fout, password);
+				TablCryp(fout, password, in);
 			}
 		}
 		else if (n == "2") {
@@ -891,7 +891,7 @@ void TablCryp(ofstream& fout, const string& password) {
 		}
 		else {
 			cout << "Input 1 or 2" << endl;
-			TablCryp(fout, password);
+			TablCryp(fout, password, in);
 		}
 	}
 
@@ -899,6 +899,6 @@ void TablCryp(ofstream& fout, const string& password) {
 		system("cls");
 		cout << "Input 1 or 2 or 3" << endl;
 		wish.clear();
-		TablCryp(fout, password);
+		TablCryp(fout, password, in);
 	}
 }
