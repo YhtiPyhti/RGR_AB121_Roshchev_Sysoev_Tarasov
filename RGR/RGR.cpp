@@ -10,7 +10,8 @@ enum instuction {
 	Двойная_табличная_перестановка
 };
 
-void menu() {
+void menu(const string& password) {
+	string s;
 	ofstream fout("C:\\Users\\Output.txt", ios::app);
 
 	int k;
@@ -34,7 +35,7 @@ void menu() {
 
 	case Эль_Гамаля:
 		system("cls");
-		El_Gamal(fout);
+		El_Gamal(fout, password);
 		system("notepad C:\\Users\\Output.txt ");
 		break;
 
@@ -55,18 +56,35 @@ void menu() {
 		fout << "Origin strings: " << str << endl;
 		fout << endl;
 
-		cout << "Закодированная строка:";
+		cout << "Пароль: ";
+		cin >> s;
+		if (s == password) {
+			cout << "Закодированная строка:";
+			cout << code_atbash(str) << endl;    // закодированная
 
-		cout << code_atbash(str);    // закодированная
-		fout << "Decoded string: " << str << endl;
-		fout << endl;
+			fout << "Decoded string: " << str << endl;
+			fout << endl;
+		}
+		else {
+			cout << "Неверный пароль " << endl;
+			break;
+		}
 
-		cout << "Декодированная строка:";
+		s.clear();
+		cout << "Пароль: ";
+		cin >> s;
 
-		cout << decode_atbash(str);   // декодированная
-		fout << "Decoded string: " << str << endl;
-		fout << endl;
+		if (s == password) {
+			cout << "Декодированная строка:";
 
+			cout << decode_atbash(str) << endl;   // декодированная
+			fout << "Decoded string: " << str << endl;
+			fout << endl;
+		}
+		else {
+			cout << "Неверный пароль " << endl;
+			break;
+		}
 		putchar('\n');
 		getchar();
 		system("notepad C:\\Users\\Output.txt ");
@@ -74,7 +92,7 @@ void menu() {
 
 	case Вижинер:
 		system("cls");
-		Vizhiner(fout);
+		Vizhiner(fout, password);
 		system("notepad C:\\Users\\Output.txt ");
 		break;
 
@@ -86,7 +104,7 @@ void menu() {
 
 	case Двойная_табличная_перестановка:
 		system("cls");
-		TablCryp(fout);
+		TablCryp(fout, password);
 		system("notepad C:\\Users\\Output.txt ");
 		break;
 
@@ -107,20 +125,20 @@ void menu() {
 	case 10:
 		exit(0);
 	}
-	menu();
+	menu(password);
 }
 
 void main(){
 	setlocale(LC_ALL, "Russian");
-	string s;
+	string s, password = "1111";
 
 	cout << "Пароль: ";
 
 	cin >> s;
 
-	if (s == "1111") {
+	if (s == password) {
 		remove("C:\\Users\\Output.txt");
-		menu();
+		menu(password);
 	}
 
 	else {

@@ -16,7 +16,7 @@ using namespace std;
 
 int mod(int g, int X, int p);
 void eng(string text);
-void El_Gamal(ofstream& fout);
+void El_Gamal(ofstream& fout, const string& password);
 vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m);
 int El_Gamal_decode(int g, int p, int Xb, vector<int> entext);
 

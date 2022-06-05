@@ -21,11 +21,11 @@ void numb(vector<int> number, int y) {
 	if(S1 != S2) throw " Incorrect input! Repeating numbers. (Be sure to use a space before entering)\n";
 }
 
-void Vizhiner(ofstream& fout) {
+void Vizhiner(ofstream& fout, const string& password) {
 	mt19937 gen(time(0));
 	uniform_int_distribution<int> uid1(0, 11);
 	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };//0-11
-    string key, text, enText, deText,n;
+    string key, text, enText, deText, n, s;
 	cout << "Generate text?" << endl;
 	cout << "1 - No" << endl << "2 - Yes" << endl;
 	cin >> n;
@@ -39,7 +39,7 @@ void Vizhiner(ofstream& fout) {
 		catch (const char* err) {
 			cout << err << endl;
 			text.clear();
-			Vizhiner(fout);
+			Vizhiner(fout, password);
 		}
 		try {
 			cout << "Input key: ";
@@ -50,23 +50,40 @@ void Vizhiner(ofstream& fout) {
 			fout << endl;
 			fout << "Origin text: " << text << endl;
 			fout << endl;
+			cout << "Password: ";
+			cin >> s;
+			if (s == password) {
+				enText = encodeText(text, key);
+				cout << "Encoded string: " << enText << endl;
 
-			enText = encodeText(text, key);
-			cout << "Encoded string: " << enText << endl;
+				fout << "Encoded string: " << enText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
 
-			fout << "Encoded string: " << enText << endl;
-			fout << endl;
+			cout << "Password: ";
+			s.clear();
+			cin >> s;
 
-			deText = decodeText(enText, key);
-			cout << "Decoded string: " << deText << endl;
+			if (s == password) {
+				deText = decodeText(enText, key);
+				cout << "Decoded string: " << deText << endl;
 
-			fout << "Decoded string: " << deText << endl;
-			fout << endl;
+				fout << "Decoded string: " << deText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
 		}
 		catch (const char* err) {
 			cout << err << endl;
 			key.clear();
-			Vizhiner(fout);
+			Vizhiner(fout, password);
 		}
 	}
 	else if (n == "2") {
@@ -79,22 +96,39 @@ void Vizhiner(ofstream& fout) {
 		fout << endl;
 		fout << "Origin text: " << text << endl;
 		fout << endl;
+		cout << "Password: ";
+		cin >> s;
+		if (s == password) {
+			enText = encodeText(text, key);
+			cout << "Encoded string: " << enText << endl;
 
-		enText = encodeText(text, key);
-		cout << "Encoded string: " << enText << endl;
+			fout << "Encoded string: " << enText << endl;
+			fout << endl;
+		}
+		else {
+			cout << "Incorrect Password! " << endl;
+			return;
+		}
 
-		fout << "Encoded string: " << enText << endl;
-		fout << endl;
+		cout << "Password: ";
+		s.clear();
+		cin >> s;
 
-		deText = decodeText(enText, key);
-		cout << "Decoded string: " << deText << endl;
+		if (s == password) {
+			deText = decodeText(enText, key);
+			cout << "Decoded string: " << deText << endl;
 
-		fout << "Decoded string: " << deText << endl;
-		fout << endl;
+			fout << "Decoded string: " << deText << endl;
+			fout << endl;
+		}
+		else {
+			cout << "Incorrect Password! " << endl;
+			return;
+		}
 	}
 	else {
 		cout << "Input 1 or 2" << endl;
-		Vizhiner(fout);
+		Vizhiner(fout, password);
 	}
 }
 string encodeText(string text, string key) {
@@ -330,11 +364,11 @@ string decrypting(string ishText, vector<int> c, vector<int>& c1) {
 	return text;
 }
 
-void TablCryp(ofstream& fout) {
+void TablCryp(ofstream& fout, const string& password) {
 	mt19937 gen(time(0));
 	uniform_int_distribution<int> uid1(0, 11);
 	vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };
-	string deText, enText, ishText, n;
+	string deText, enText, ishText, n, s;
 	vector<int>	key;
 	vector<int>	key1;
 	int b, a, x;
@@ -376,19 +410,36 @@ void TablCryp(ofstream& fout) {
 				fout << "Origin strings: " << ishText << endl;
 				fout << endl;
 
-				enText = encrypting(ishText, key, key1);
-				cout << endl;
-				cout << "Encrypting text: " << enText << endl;
+				cout << "Password: ";
+				cin >> s;
+				if (s == password) {
+					enText = encrypting(ishText, key, key1);
+					cout << endl;
+					cout << "Encrypting text: " << enText << endl;
 
-				fout << "Encode strings: " << enText << endl;
-				fout << endl;
+					fout << "Encode strings: " << enText << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Incorrect Password! " << endl;
+					return;
+				}
+				cout << "Password: ";
+				s.clear();
+				cin >> s;
 
-				deText = decrypting(enText, key, key1);
-				cout << endl;
-				cout << "Decrypting text: " << deText << endl;
+				if (s == password) {
+					deText = decrypting(enText, key, key1);
+					cout << endl;
+					cout << "Decrypting text: " << deText << endl;
 
-				fout << "Decoded string: " << deText << endl;
-				fout << endl;
+					fout << "Decoded string: " << deText << endl;
+					fout << endl;
+				}
+				else {
+					cout << "Incorrect Password! " << endl;
+					return;
+				}
 
 			}
 			catch (const char* err) {
@@ -396,13 +447,13 @@ void TablCryp(ofstream& fout) {
 				ishText.clear();
 				key.clear();
 				key1.clear();
-				TablCryp(fout);
+				TablCryp(fout, password);
 			}
 		}
 		catch (const char* err) {
 			cout << err << endl;
 			ishText.clear();
-			TablCryp(fout);
+			TablCryp(fout, password);
 		}
 	}
 	else if (n == "2") {
@@ -429,22 +480,40 @@ void TablCryp(ofstream& fout) {
 		fout << "Origin strings: " << ishText << endl;
 		fout << endl;
 
-		enText = encrypting(ishText, key, key1);
-		cout << endl;
-		cout << "Encrypting text: " << enText << endl;
+		cout << "Password: ";
+		cin >> s;
+		if (s == password) {
+			enText = encrypting(ishText, key, key1);
+			cout << endl;
+			cout << "Encrypting text: " << enText << endl;
 
-		fout << "Encode strings: " << enText << endl;
-		fout << endl;
+			fout << "Encode strings: " << enText << endl;
+			fout << endl;
+		}
+		else {
+			cout << "Incorrect Password! " << endl;
+			return;
+		}
 
-		deText = decrypting(enText, key, key1);
-		cout << endl;
-		cout << "Decrypting text: " << deText << endl;
+		cout << "Password: ";
+		s.clear();
+		cin >> s;
 
-		fout << "Decoded string: " << deText << endl;
-		fout << endl;
+		if (s == password) {
+			deText = decrypting(enText, key, key1);
+			cout << endl;
+			cout << "Decrypting text: " << deText << endl;
+
+			fout << "Decoded string: " << deText << endl;
+			fout << endl;
+		}
+		else {
+			cout << "Incorrect Password! " << endl;
+			return;
+		}
 	}
 	else {
        cout << "Input 1 or 2" << endl;
-       TablCryp(fout);
+       TablCryp(fout, password);
 	}
 }
