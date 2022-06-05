@@ -11,10 +11,11 @@ enum instuction {
 };
 
 void menu(const string& password) {
-	string s;
+	string s, vibor;
 	ofstream fout("C:\\Users\\Output.txt", ios::app);
 
 	int k;
+
 	cout << endl;
 	cout << "Выберите шифр: " << endl;
 	cout << "Нажмите <1> если выбрали  Эль Гамаля " << endl;
@@ -29,8 +30,16 @@ void menu(const string& password) {
 
 	cout << "Нажмите <10> если выбрали  выход " << endl;
 
-	cin >> k;
-
+	cin >> vibor;
+	if (vibor.length() < 3) {
+		k = stoi(vibor);
+	}
+	else {
+		system("cls");
+		cout << "Введите число от 1 до 10";
+		vibor.clear();
+		menu(password);
+	}
 	switch (k) {
 
 	case Эль_Гамаля:

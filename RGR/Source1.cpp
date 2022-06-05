@@ -239,13 +239,7 @@ string encrypting(string ishText, vector<int> c, vector<int>& c1) {
 		}
 	}
 	matr1 = matr;
-	for (auto i : matr) {
-		for (auto j : i) {
-			cout << j << " ";
-		}
-		cout << endl;
-	}
-	cout << endl;
+
 	for (int i = 0; i < a; i++) {
 		for (int j = 0; j < b; j++) {
 			k = c1[j];
@@ -265,25 +259,6 @@ string encrypting(string ishText, vector<int> c, vector<int>& c1) {
 	for (size_t i = 0; i < a; i++) {
 		k = c[i];
 		t[k] = matr1[i];
-	}
-
-
-	cout << "First permutation" << endl;
-	for (auto i : matr1) {
-		for (auto j : i) {
-			cout << j << " ";
-		}
-		cout << endl;
-	}
-	cout << endl;
-
-
-	cout << "Second permutation" << endl;
-	for (auto i : t) {
-		for (auto j : i.second) {
-			cout << j << " ";
-		}
-		cout << endl;
 	}
 
 	for (int j = 0; j < b; j++) {
@@ -315,13 +290,7 @@ string decrypting(string ishText, vector<int> c, vector<int>& c1) {
 		}
 	}
 	matr1 = matr;
-	for (auto i : matr) {
-		for (auto j : i) {
-			cout << j << " ";
-		}
-		cout << endl;
-	}
-	cout << endl;
+
 	for (int i = 0; i < a; i++) {
 		for (int j = b - 1; j >= 0; j--) {
 			k = c1[j + b];
@@ -333,25 +302,6 @@ string decrypting(string ishText, vector<int> c, vector<int>& c1) {
 	for (int i = a - 1; i >= 0; i--) {
 		k = c[i];
 		t[i] = matr1[k];
-	}
-
-
-	cout << "First permutation" << endl;
-	for (auto i : matr1) {
-		for (auto j : i) {
-			cout << j << " ";
-		}
-		cout << endl;
-	}
-	cout << endl;
-
-
-	cout << "Second permutation" << endl;
-	for (auto i : t) {
-		for (auto j : i.second) {
-			cout << j << " ";
-		}
-		cout << endl;
 	}
 
 	for (int i = 0; i < a; i++) {
@@ -461,16 +411,26 @@ void TablCryp(ofstream& fout, const string& password) {
 		a = sqrt(ishText.length());
 		if (ishText.length() % a == 0) b = ishText.length() / a;
 		else b = ishText.length() / a + 1;
-		cout << "Input first key(numbers 0 - " << a - 1 << "): " << endl;
+
+		cout << "Origin strings: " << ishText << endl;
+		fout << "Origin strings: " << ishText << endl;
+		fout << endl;
+
+		cout << "First key(numbers 0 - " << a - 1 << "): ";
 		for (auto i = a-1; i >= 0; i--) {
 			key.push_back(i);
+			cout << i << ' ';
 		}
-
-		cout << "Input second key(numbers 0 - " << b - 1 << "): " << endl;//для stolbik
+		cout << endl;
+		cout << "Second key(numbers 0 - " << b - 1 << "): ";
 
 		for (auto i = b-1; i >= 0; i--) {
 			key1.push_back(i);
+			cout << i << ' ';
 		}
+
+		cout << endl;
+		cout << endl;
 
 		numb(key, a);
 		numb(key1, b);
@@ -484,9 +444,8 @@ void TablCryp(ofstream& fout, const string& password) {
 		cin >> s;
 		if (s == password) {
 			enText = encrypting(ishText, key, key1);
-			cout << endl;
 			cout << "Encrypting text: " << enText << endl;
-
+			cout << endl;
 			fout << "Encode strings: " << enText << endl;
 			fout << endl;
 		}
@@ -501,9 +460,8 @@ void TablCryp(ofstream& fout, const string& password) {
 
 		if (s == password) {
 			deText = decrypting(enText, key, key1);
-			cout << endl;
 			cout << "Decrypting text: " << deText << endl;
-
+			cout << endl;
 			fout << "Decoded string: " << deText << endl;
 			fout << endl;
 		}
