@@ -459,9 +459,11 @@ void Grons(ofstream& fout, const string& password)
         'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{',' ','|','}','~','а','б','в','г','д','е','ж','з', 'е','ё','ж','з', 'и','й','к','л',
         'м','н','о','п', 'р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Ь','Ъ','Щ','Ы','Э','Ю','Я' };
 
+    char msg1[1000];
     cout << "Введите сообщение: \n";
+    cin.getline(msg1, 1000);
     string msg;
-    cin >> msg;
+    msg = msg1;
     cout << "\n";
     cout << "Введите ключ: \n";
     cin >> i;
@@ -471,6 +473,43 @@ void Grons(ofstream& fout, const string& password)
     fout << endl;
     fout << "Origin text: " << msg << endl;
     fout << endl;
+	int q=0;
+    for (int j = 0;j != i.length();j++) {
+        q = 0;
+        if (i[j] == '0') {
+            q++;
+        }
+        if (i[j] == '1') {
+            q++;
+        }
+        if (i[j] == '2') {
+            q++;
+        }
+        if (i[j] == '3') {
+            q++;
+        }
+        if (i[j] == '4') {
+            q++;
+        }
+        if (i[j] == '5') {
+            q++;
+        }
+        if (i[j] == '6') {
+            q++;
+        }
+        if (i[j] == '7') {
+            q++;
+        }
+        if (i[j] == '8') {
+            q++;
+        }
+        if (i[j] == '9') {
+            q++;
+        }
+    }
+    if (q == 0)
+        cout << "Ключ введён неверно.";
+    else {
 
     while (i.length() < msg.length()) {
         i = i + i;
@@ -590,7 +629,7 @@ void Grons(ofstream& fout, const string& password)
         cout << "Incorrect Password! " << endl;
         return;
     }
-
+    }
 }
 void transp(ofstream& fout, const string& password) {
    SetConsoleCP(1251);
