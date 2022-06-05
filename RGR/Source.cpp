@@ -39,7 +39,7 @@ void El_Gamal(ofstream& fout, const string& password, ifstream& in) {
     int r = 0, e = 0, m = 0, decode = 0; //текста
     vector<int> zahiv;
     cout << "Generate text?" << endl;
-    cout << "1 - No" << endl << "2 - Yes" << endl << "3 - Take from file";
+    cout << "1 - No" << endl << "2 - Yes" << endl << "3 - Take from file" << endl;
     cin >> n;
     if (n == "1") {
         try {
@@ -202,7 +202,7 @@ void El_Gamal(ofstream& fout, const string& password, ifstream& in) {
     }
 }
 
-void Tarab_G(ofstream& fout, const string& password)
+void Tarab_G(ofstream& fout, const string& password, ifstream& in)
 {
     SetConsoleCP(1251);
     setlocale(LC_ALL, "Russian");
@@ -211,7 +211,7 @@ void Tarab_G(ofstream& fout, const string& password)
     char alph[] = { '!','#','$','%','&','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','[',']','^','_','`','{','|','}','~','а','б','в','г','д','е','ж','з','ё','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Ь','Ъ','Щ','Ы','Э','Ю','Я' };
     vector<string> rantext = { "we", "do", "business", "around", "the", "world", "Recognition", "is","most", "powerful", "motivation", "factor" };
     cout << "Generate text?" << endl;
-    cout << "1 - No" << endl << "2 - Yes" << endl;
+    cout << "1 - No" << endl << "2 - Yes" << "3 - file" << endl;
     cin >> n;
     if (n == "1")
     {
@@ -238,6 +238,19 @@ void Tarab_G(ofstream& fout, const string& password)
         fout << "Origin text: " << text << endl;
         fout << endl;
     }
+    if (n == "3")
+    {
+        system("cls");
+        mt19937 gen(time(0));
+        uniform_int_distribution<int> uid1(0, 11);
+        getline(in,text);
+        k = text.length();
+        cout << "Origin text: " << text << endl;
+        fout << "Gibberish letter" << endl;
+        fout << endl;
+        fout << "Origin text: " << text << endl;
+        fout << endl;
+    }
     if (n == "1") { //проверка str
         for (int i = 0; i < k; i++)
         {
@@ -254,7 +267,7 @@ void Tarab_G(ofstream& fout, const string& password)
         cout << "Error.Write again.";
     }
     else {
-        if (n == "2") {  //проверка text
+        if (n == "2" || n == "3") {  //проверка text
             for (int i = 0; i < k; i++)
             {
                 for (int x = 0; x < strlen(alph); x++)
@@ -409,7 +422,7 @@ void Tarab_G(ofstream& fout, const string& password)
                 
             }
 
-            if (n == "2") 
+            if (n == "2" || n == "3")
             {   //Encoded text
                 for (int i = 0; i < k; i++)
                 {
@@ -679,7 +692,7 @@ void Tarab_G(ofstream& fout, const string& password)
                     }
                 
             }
-            if (n == "2") {     //Decoded text
+            if (n == "2" || n == "3") {     //Decoded text
                 for (int i = 0; i < k; i++)
                 {
                     if (text[i] == 'B')
@@ -856,7 +869,7 @@ void Tarab_G(ofstream& fout, const string& password)
         }
         return dst;
     }
-void Grons(ofstream& fout, const string& password)
+void Grons(ofstream& fout, const string& password, ifstream& in)
 {
     vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };
     SetConsoleCP(1251);
@@ -869,7 +882,7 @@ void Grons(ofstream& fout, const string& password)
         'м','н','о','п', 'р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Ь','Ъ','Щ','Ы','Э','Ю','Я' };
     int u = strlen(alph);
     cout << "Generate text?" << endl;
-    cout << "1 - No" << endl << "2 - Yes" << endl;
+    cout << "1 - No" << endl << "2 - Yes" << endl << "3 - File" << endl;
     cin >> n;
     cout << "What would you like:" << endl << "1) decryption only" << endl << "2) only encrypt" << endl << "3) this and that" << endl;
     cin >> wish;
@@ -890,6 +903,17 @@ void Grons(ofstream& fout, const string& password)
             mt19937 gen(time(0));
             uniform_int_distribution<int> uid1(0, 11);
             text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+            cout << "Origin text: " << text << endl;
+            fout << "Gronsfeld" << endl;
+            fout << endl;
+            fout << "Origin text: " << text << endl;
+            fout << endl;
+        }
+        else if (n == "3") {
+            system("cls");
+            mt19937 gen(time(0));
+            uniform_int_distribution<int> uid1(0, 11);
+            getline(in,text);
             cout << "Origin text: " << text << endl;
             fout << "Gronsfeld" << endl;
             fout << endl;
@@ -941,12 +965,12 @@ void Grons(ofstream& fout, const string& password)
                     i = i + i;
                 }
             }
-            if (n == "2") {
+            if (n == "2" || n == "3") {
                 while (i.length() < text.length()) {
                     i = i + i;
                 }
             }
-            if (n == "2") {
+            if (n == "2" || n == "3") {
                 for (int j = 0; j != text.length(); j++) {//шифр
                     for (int v = 0; v != strlen(alph); v++) {
                         if (text[j] == alph[v]) {
@@ -991,7 +1015,7 @@ void Grons(ofstream& fout, const string& password)
                     }
                 }
             }
-            if (n == "2") {
+            if (n == "2" || n == "3") {
                 cout << "Password: ";
                 s.clear();
                 cin >> s;
@@ -1067,7 +1091,7 @@ void Grons(ofstream& fout, const string& password)
                     return;
                 }
             }
-            if (n == "2") {
+            if (n == "2" || n == "3") {
                 for (int j = 0; j != text.length(); j++) { //дешифр
                     for (int v = 0; v != strlen(alph); v++) {
                         if (text[j] == alph[v]) {
@@ -1170,7 +1194,7 @@ void Grons(ofstream& fout, const string& password)
                     fout << "Decoded string: " << msg << endl;
                     fout << endl;
                 }
-                if (n == "2") {
+                if (n == "2" || n == "3") {
                     cout << "Decoded: " << text;
                     fout << "Decoded string: " << text << endl;
                     fout << endl;
@@ -1198,6 +1222,17 @@ void Grons(ofstream& fout, const string& password)
             mt19937 gen(time(0));
             uniform_int_distribution<int> uid1(0, 11);
             text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+            cout << "Origin text: " << text << endl;
+            fout << "Gronsfeld" << endl;
+            fout << endl;
+            fout << "Origin text: " << text << endl;
+            fout << endl;
+        }
+        else if (n == "3") {
+            system("cls");
+            mt19937 gen(time(0));
+            uniform_int_distribution<int> uid1(0, 11);
+            getline(in, text);
             cout << "Origin text: " << text << endl;
             fout << "Gronsfeld" << endl;
             fout << endl;
@@ -1249,12 +1284,12 @@ void Grons(ofstream& fout, const string& password)
                     i = i + i;
                 }
             }
-            if (n == "2") {
+            if (n == "2" || n == "3") {
                 while (i.length() < text.length()) {
                     i = i + i;
                 }
             }
-            if (n == "2") {
+            if (n == "2" || n == "3") {
                 for (int j = 0; j != text.length(); j++) {//шифр
                     for (int v = 0; v != strlen(alph); v++) {
                         if (text[j] == alph[v]) {
@@ -1299,7 +1334,7 @@ void Grons(ofstream& fout, const string& password)
                     }
                 }
             }
-            if (n == "2") {
+            if(n == "2" || n == "3") {
                 cout << "Password: ";
                 s.clear();
                 cin >> s;
@@ -1375,7 +1410,7 @@ void Grons(ofstream& fout, const string& password)
                     return;
                 }
             }
-            if (n == "2") {
+            if (n == "2" || n == "3") {
                 for (int j = 0; j != text.length(); j++) { //дешифр
                     for (int v = 0; v != strlen(alph); v++) {
                         if (text[j] == alph[v]) {
@@ -1446,6 +1481,17 @@ void Grons(ofstream& fout, const string& password)
             fout << "Origin text: " << text << endl;
             fout << endl;
         }
+        else if (n == "3") {
+            system("cls");
+            mt19937 gen(time(0));
+            uniform_int_distribution<int> uid1(0, 11);
+            getline(in, text);
+            cout << "Origin text: " << text << endl;
+            fout << "Gronsfeld" << endl;
+            fout << endl;
+            fout << "Origin text: " << text << endl;
+            fout << endl;
+        }
         cout << "Key: \n";
         cin.ignore();
         getline(cin, i);
@@ -1491,12 +1537,12 @@ void Grons(ofstream& fout, const string& password)
                     i = i + i;
                 }
             }
-            if (n == "2") {
+            if (n == "2" || n == "3") {
                 while (i.length() < text.length()) {
                     i = i + i;
                 }
             }
-            if (n == "2") {
+            if (n == "2" || n == "3") {
                 for (int j = 0; j != text.length(); j++) { //дешифр
                     for (int v = 0; v != strlen(alph); v++) {
                         if (text[j] == alph[v]) {
@@ -1615,11 +1661,11 @@ void Grons(ofstream& fout, const string& password)
         system("cls");
         cout << "Incorrect input!" << endl;
         wish.clear();
-        Grons(fout, password);
+        Grons(fout, password,in);
     }
 
 }
-void transp(ofstream& fout, const string& password) 
+void transp(ofstream& fout, const string& password, ifstream& in)
 {
    SetConsoleCP(1251);
     setlocale(LC_ALL, "Russian");
@@ -1913,7 +1959,7 @@ void transp(ofstream& fout, const string& password)
         system("cls");
         cout << "Incorrect input!" << endl;
         wish.clear();
-        transp(fout, password);
+        transp(fout, password, in);
     }
 
 }
@@ -2244,7 +2290,7 @@ void    print_text_with_comment
         << endl;
 }
 ///////////////////////////////////////////////////////////////////////////////
-int     tablichnaya perestanovka()
+void    tablichnaya_perestanovka()
 {
     ios::sync_with_stdio(false);
     srand(unsigned(time(0)));

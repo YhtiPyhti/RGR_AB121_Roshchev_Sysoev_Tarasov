@@ -1,8 +1,26 @@
-ElGamal Cipher
+Gibberish letter
 
 Origin text: Stoka
 
-Encode text: n…nynFntn
+Encrypting text: Tsoma
 
-Decode text: Stoka
+Decrypting text: Stoka
+
+Gronsfeld
+
+Origin text: Stoka
+
+Encoded string: Tvrlc
+
+Decoded string: Stoka
+
+Gronsfeld
+
+Origin text: Stoka
+
+Gronsfeld
+
+Origin text: Stoka
+
+Encoded string: Tvrlc
 

@@ -44,13 +44,13 @@ void El_Gamal(ofstream& fout, const string& password, ifstream& in);
 vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m);
 int El_Gamal_decode(int g, int p, int Xb, vector<int> entext);
 
-void Tarab_G(ofstream& fout, const string& password);
+void Tarab_G(ofstream& fout, const string& password, ifstream& in);
 
 char* code_atbash(char* src);
 char* decode_atbash(char* src);
 
-void Grons(ofstream& fout, const string& password);
-void transp(ofstream& fout, const string& password);
+void Grons(ofstream& fout, const string& password, ifstream& in);
+void transp(ofstream& fout, const string& password, ifstream& in);
 
 int rsa(ofstream& fout, const string& password);
 
@@ -60,3 +60,10 @@ long int greatestCommonDivisor(long int e, long int t);
 long int calculateD(long int e, long int t);
 long int encrypt(long int i, long int e, long int n);
 long int decrypt(long int i, long int d, long int n);
+
+unsigned char     get_rand_symb();
+void    make_rand_key(T_key& key,T_key& reverse_key);
+void    input_text(T_text& text);
+void    encrypt_text(T_text  const& text,T_key   const& key,T_text& encrypted_text);
+void    print_text_with_comment(T_text  const& text,T_text  const& comment);
+void    tablichnaya_perestanovka();

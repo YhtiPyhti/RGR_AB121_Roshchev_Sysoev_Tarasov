@@ -9,7 +9,8 @@ enum instuction {
 	Гронсфельд,
 	Двойная_табличная_перестановка,
 	Транспонирования,
-	RSA
+	RSA,
+	Табличная_перестановка
 };
 
 void menu(const string& password) {
@@ -29,7 +30,7 @@ void menu(const string& password) {
 	cout << "Нажмите <6> если выбрали  Двойная табличная перестановка " << endl;
 	cout << "Нажмите <7> если выбрали  Транспонирование " << endl;
 	cout << "Нажмите <8> если выбрали  RSA " << endl;
-	cout << "Нажмите <9> если выбрали  ??? " << endl;
+	cout << "Нажмите <9> если выбрали  Табличная перестановка " << endl;
 
 	cout << "Нажмите <10> если выбрали  выход " << endl;
 
@@ -53,7 +54,7 @@ void menu(const string& password) {
 
 	case Тарабарская_грамота:
 		system("cls");
-		Tarab_G(fout, password);
+		Tarab_G(fout, password, in);
 		system("notepad Output.txt ");
 		break;
 
@@ -176,7 +177,7 @@ void menu(const string& password) {
 
 	case Гронсфельд:
 		system("cls");
-        Grons(fout, password);
+        Grons(fout, password,in);
 		system("notepad Output.txt ");
 		break;
 
@@ -188,7 +189,7 @@ void menu(const string& password) {
 
 	case Транспонирования:
           system("cls");
-          transp(fout, password);
+          transp(fout, password, in);
 		  system("notepad Output.txt ");
 		break;
 
@@ -198,9 +199,10 @@ void menu(const string& password) {
 		system("notepad Output.txt ");
 		break;
 
-	case 9:
-		tablichnaya perestanovka()
-		
+	case Табличная_перестановка:
+		system("cls");
+		tablichnaya_perestanovka();
+		system("notepad Output.txt ");
 		break;
 
 	case 10:

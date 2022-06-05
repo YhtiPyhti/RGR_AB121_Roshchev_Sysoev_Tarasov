@@ -29,15 +29,15 @@ void Vizhiner(ofstream& fout, const string& password, ifstream& in) {
 	int k;
 	bool is_End = true;
 	cout << "Generate text?" << endl;
-	cout << "1 - No" << endl << "2 - Yes" << endl;
+	cout << "1 - No" << endl << "2 - Yes" << endl << "3 - file" << endl;
 	cin >> n;
-	if (n == "1" || n == "2") is_End = false;
+	if (n == "1" || n == "2" || n == "3") is_End = false;
 	while (is_End) {
 		system("cls");
 		cout << "Input 1 or 2" << endl;
-		cout << "1 - No" << endl << "2 - Yes" << endl;
+		cout << "1 - No" << endl << "2 - Yes" << endl << "3 - file" << endl;
 		cin >> n;
-		if (n == "1" || n == "2") is_End = false;
+		if (n == "1" || n == "2" || n == "3") is_End = false;
 	}
 	cout << "What would you like:" << endl << "1) decryption only" << endl << "2) only encrypt" << endl << "3) this and that" << endl;
 	cin >> wish;
@@ -140,10 +140,51 @@ void Vizhiner(ofstream& fout, const string& password, ifstream& in) {
 				return;
 			}
 		}
+		else if (n == "3") {
+			getline(in,text);
+			key = "KEY";
+			cout << "Origin text: " << text << endl;
+			cout << "Key: " << key << endl;
+
+			fout << "Vigenere Cipher" << endl;
+			fout << endl;
+			fout << "Origin text: " << text << endl;
+			fout << endl;
+			cout << "Password: ";
+			cin >> s;
+			if (s == password) {
+				enText = encodeText(text, key);
+				cout << "Encoded string: " << enText << endl;
+
+				fout << "Encoded string: " << enText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
+
+			cout << "Password: ";
+			s.clear();
+			cin >> s;
+
+			if (s == password) {
+				deText = decodeText(enText, key);
+				cout << "Decoded string: " << deText << endl;
+
+				fout << "Decoded string: " << deText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
+		}
 		else {
-			cout << "Input 1 or 2" << endl;
+			cout << "Input 1 or 2 or 3" << endl;
 			Vizhiner(fout, password, in);
 		}
+
 	}
 	else if (wish == "2") {//encrypt
 		if (n == "1") {
@@ -188,6 +229,31 @@ void Vizhiner(ofstream& fout, const string& password, ifstream& in) {
 				Vizhiner(fout, password, in);
 			}
 		}
+		else if (n == "3") {
+			getline(in,text);
+			key = "KEY";
+			cout << "Origin text: " << text << endl;
+			cout << "Key: " << key << endl;
+
+			fout << "Vigenere Cipher" << endl;
+			fout << endl;
+			fout << "Origin text: " << text << endl;
+			fout << endl;
+
+			cout << "Password: ";
+			cin >> s;
+			if (s == password) {
+				enText = encodeText(text, key);
+				cout << "Encoded string: " << enText << endl;
+
+				fout << "Encoded string: " << enText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
+		}
 		else if (n == "2") {
 			text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
 			key = "KEY";
@@ -214,7 +280,7 @@ void Vizhiner(ofstream& fout, const string& password, ifstream& in) {
 			}
 		}
 		else {
-			cout << "Input 1 or 2" << endl;
+			cout << "Input 1 or 2 or 3" << endl;
 			Vizhiner(fout, password, in);
 		}
 	}
@@ -267,6 +333,35 @@ void Vizhiner(ofstream& fout, const string& password, ifstream& in) {
 		}
 		else if (n == "2") {
 			text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+			key = "KEY";
+			cout << "Origin text: " << text << endl;
+			cout << "Key: " << key << endl;
+
+			fout << "Vigenere Cipher" << endl;
+			fout << endl;
+			fout << "Origin text: " << text << endl;
+			fout << endl;
+
+			cout << "Password: ";
+			cin >> s;
+			cout << endl;
+
+			if (s == password) {
+
+				deText = decodeText(text, key);
+
+				cout << "Decoded string: " << deText << endl;
+
+				fout << "Decoded string: " << deText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
+		}
+		else if (n == "3") {
+			getline(in,text);
 			key = "KEY";
 			cout << "Origin text: " << text << endl;
 			cout << "Key: " << key << endl;
@@ -500,15 +595,15 @@ void TablCryp(ofstream& fout, const string& password, ifstream& in) {
 	int b, a, x;
 	bool is_End = true;
 	cout << "Generate text?" << endl;
-	cout << "1 - No" << endl << "2 - Yes" << endl;
+	cout << "1 - No" << endl << "2 - Yes" << endl << "3 - file" << endl;
 	cin >> n;
-	if (n == "1" || n == "2") is_End = false;
+	if (n == "1" || n == "2" || n == "3") is_End = false;
 	while (is_End) {
 		system("cls");
-		cout << "Input 1 or 2" << endl;
-		cout << "1 - No" << endl << "2 - Yes" << endl;
+		cout << "Input 1 or 2 or 3" << endl;
+		cout << "1 - No" << endl << "2 - Yes" << endl << "3 - file";
 		cin >> n;
-		if (n == "1" || n == "2") is_End = false;
+		if (n == "1" || n == "2" || n == "3") is_End = false;
 	}
 	cout << "What would you like:" << endl << "1) decryption only" << endl << "2) only encrypt" << endl << "3) this and that" << endl;
 	cin >> wish;
@@ -595,6 +690,68 @@ void TablCryp(ofstream& fout, const string& password, ifstream& in) {
 		}
 		else if (n == "2") {
 			ishText = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+			a = sqrt(ishText.length());
+			if (ishText.length() % a == 0) b = ishText.length() / a;
+			else b = ishText.length() / a + 1;
+
+			cout << "Origin strings: " << ishText << endl;
+
+			cout << "First key(numbers 0 - " << a - 1 << "): ";
+			for (auto i = a - 1; i >= 0; i--) {
+				key.push_back(i);
+				cout << i << ' ';
+			}
+			cout << endl;
+			cout << "Second key(numbers 0 - " << b - 1 << "): ";
+
+			for (auto i = b - 1; i >= 0; i--) {
+				key1.push_back(i);
+				cout << i << ' ';
+			}
+
+			cout << endl;
+			cout << endl;
+
+			numb(key, a);
+			numb(key1, b);
+
+			fout << "Spreadsheet encryption using the double permutation method " << endl;
+			fout << endl;
+			fout << "Origin strings: " << ishText << endl;
+			fout << endl;
+
+			cout << "Password: ";
+			cin >> s;
+			if (s == password) {
+				enText = encrypting(ishText, key, key1);
+				cout << "Encrypting text: " << enText << endl;
+				cout << endl;
+				fout << "Encode strings: " << enText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
+
+			cout << "Password: ";
+			s.clear();
+			cin >> s;
+
+			if (s == password) {
+				deText = decrypting(enText, key, key1);
+				cout << "Decrypting text: " << deText << endl;
+				cout << endl;
+				fout << "Decoded string: " << deText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
+		}
+		else if (n == "3") {
+			getline(in,ishText);
 			a = sqrt(ishText.length());
 			if (ishText.length() % a == 0) b = ishText.length() / a;
 			else b = ishText.length() / a + 1;
@@ -771,6 +928,52 @@ void TablCryp(ofstream& fout, const string& password, ifstream& in) {
 				return;
 			}
 		}
+		else if (n == "3") {
+			getline(in, ishText);
+			a = sqrt(ishText.length());
+			if (ishText.length() % a == 0) b = ishText.length() / a;
+			else b = ishText.length() / a + 1;
+
+			cout << "Origin strings: " << ishText << endl;
+
+			cout << "First key(numbers 0 - " << a - 1 << "): ";
+			for (auto i = a - 1; i >= 0; i--) {
+				key.push_back(i);
+				cout << i << ' ';
+			}
+			cout << endl;
+			cout << "Second key(numbers 0 - " << b - 1 << "): ";
+
+			for (auto i = b - 1; i >= 0; i--) {
+				key1.push_back(i);
+				cout << i << ' ';
+			}
+
+			cout << endl;
+			cout << endl;
+
+			numb(key, a);
+			numb(key1, b);
+
+			fout << "Spreadsheet encryption using the double permutation method " << endl;
+			fout << endl;
+			fout << "Origin strings: " << ishText << endl;
+			fout << endl;
+
+			cout << "Password: ";
+			cin >> s;
+			if (s == password) {
+				enText = encrypting(ishText, key, key1);
+				cout << "Encrypting text: " << enText << endl;
+				cout << endl;
+				fout << "Encode strings: " << enText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
+		}
 		else {
 			cout << "Input 1 or 2" << endl;
 			TablCryp(fout, password, in);
@@ -889,8 +1092,55 @@ void TablCryp(ofstream& fout, const string& password, ifstream& in) {
 				return;
 			}
 		}
+		else if (n == "3") {
+			getline(in,ishText);
+			a = sqrt(ishText.length());
+			if (ishText.length() % a == 0) b = ishText.length() / a;
+			else b = ishText.length() / a + 1;
+
+			cout << "Origin strings: " << ishText << endl;
+
+			cout << "First key(numbers 0 - " << a - 1 << "): ";
+			for (auto i = a - 1; i >= 0; i--) {
+				key.push_back(i);
+				cout << i << ' ';
+			}
+			cout << endl;
+			cout << "Second key(numbers 0 - " << b - 1 << "): ";
+
+			for (auto i = b - 1; i >= 0; i--) {
+				key1.push_back(i);
+				cout << i << ' ';
+			}
+
+			cout << endl;
+			cout << endl;
+
+			numb(key, a);
+			numb(key1, b);
+
+			fout << "Spreadsheet encryption using the double permutation method " << endl;
+			fout << endl;
+			fout << "Origin strings: " << ishText << endl;
+			fout << endl;
+
+			cout << "Password: ";
+			cin >> s;
+
+			if (s == password) {
+				deText = decrypting(ishText, key, key1);
+				cout << "Decrypting text: " << deText << endl;
+				cout << endl;
+				fout << "Decoded string: " << deText << endl;
+				fout << endl;
+			}
+			else {
+				cout << "Incorrect Password! " << endl;
+				return;
+			}
+		}
 		else {
-			cout << "Input 1 or 2" << endl;
+			cout << "Input 1 or 2 or 3" << endl;
 			TablCryp(fout, password, in);
 		}
 	}
