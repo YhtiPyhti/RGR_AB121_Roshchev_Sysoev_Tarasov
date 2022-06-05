@@ -451,28 +451,43 @@ void Tarab_G(ofstream& fout, const string& password)
     }
 void Grons(ofstream& fout, const string& password)
 {
+    vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };
     SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
     int res = 0;
-    string i, s;
-    char alph[] = { '!','#','$','%','&','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K',
-        'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{',' ','|','}','~','а','б','в','г','д','е','ж','з', 'е','ё','ж','з', 'и','й','к','л',
+    string i, s, n, text, msg;
+    char alph[] = { ' ','!','#','$','%','&','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K',
+        'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{',' ','|','}','~','а','б','в','г','д','е','ж','з','ё','и','й','к','л',
         'м','н','о','п', 'р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Ь','Ъ','Щ','Ы','Э','Ю','Я' };
-
-    char msg1[1000];
-    cout << "Введите сообщение: \n";
-    cin.getline(msg1, 1000);
-    string msg;
-    msg = msg1;
-    cout << "\n";
-    cout << "Введите ключ: \n";
-    cin >> i;
     int u = strlen(alph);
-
-    fout << "Gronsfeld" << endl;
-    fout << endl;
-    fout << "Origin text: " << msg << endl;
-    fout << endl;
+    cout << "Generate text?" << endl;
+    cout << "1 - No" << endl << "2 - Yes" << endl;
+    cin >> n; 
+    if (n == "1") {
+        cout << "Vvedite soobshenie: \n";
+        cin.ignore();
+        getline(cin, msg);
+        cout << "\n";
+        fout << "Gronsfeld" << endl;
+        fout << endl;
+        fout << "Origin text: " << msg << endl;
+        fout << endl;
+    }
+    else if (n == "2") {
+        system("cls");
+        mt19937 gen(time(0));
+        uniform_int_distribution<int> uid1(0, 11);
+        text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+        cout << "Origin text: " << text << endl;
+        fout << "Gronsfeld" << endl;
+        fout << endl;
+        fout << "Origin text: " << text << endl;
+        fout << endl;
+    }
+    cout << "Key: \n";
+    cin.ignore();
+    getline(cin, i);
 	int q=0;
     for (int j = 0;j != i.length();j++) {
         q = 0;
@@ -508,111 +523,230 @@ void Grons(ofstream& fout, const string& password)
         }
     }
     if (q == 0)
-        cout << "Ключ введён неверно.";
+        cout << "Error. Try again.";
     else {
+        if (n == "1") {
+            while (i.length() < msg.length()) {
+                i = i + i;
+            }
+        }
+        if (n == "2") {
+            while (i.length() < text.length()) {
+                i = i + i;
+            }
+        }
+    if (n == "2") {
+        for (int j = 0; j != text.length();j++) {//шифр
+            for (int v = 0; v != strlen(alph);v++) {
+                if (text[j] == alph[v]) {
+                    if (i[j] == '0') {
+                        res = 0;
+                    }
+                    if (i[j] == '1') {
+                        res = 1;
+                    }
+                    if (i[j] == '2') {
+                        res = 2;
+                    }
+                    if (i[j] == '3') {
+                        res = 3;
+                    }
+                    if (i[j] == '4') {
+                        res = 4;
+                    }
+                    if (i[j] == '5') {
+                        res = 5;
+                    }
+                    if (i[j] == '6') {
+                        res = 6;
+                    }
+                    if (i[j] == '7') {
+                        res = 7;
+                    }
+                    if (i[j] == '8') {
+                        res = 8;
+                    }
+                    if (i[j] == '9') {
+                        res = 9;
+                    }
+                    if (v + res >= u) {
 
-    while (i.length() < msg.length()) {
-        i = i + i;
+                        text[j] = alph[v + res - u];
+                    }
+                    else
+                        text[j] = alph[v + res];
+                    break;
+                }
+            }
+        }
     }
-    for (int j = 0; j != msg.length();j++) {//шифр
-        for (int v = 0; v != strlen(alph);v++) {
-            if (msg[j] == alph[v]) {
-                if (i[j] == '0') {
-                    res = 0;
-                }
-                if (i[j] == '1') {
-                    res = 1;
-                }
-                if (i[j] == '2') {
-                    res = 2;
-                }
-                if (i[j] == '3') {
-                    res = 3;
-                }
-                if (i[j] == '4') {
-                    res = 4;
-                }
-                if (i[j] == '5') {
-                    res = 5;
-                }
-                if (i[j] == '6') {
-                    res = 6;
-                }
-                if (i[j] == '7') {
-                    res = 7;
-                }
-                if (i[j] == '8') {
-                    res = 8;
-                }
-                if (i[j] == '9') {
-                    res = 9;
-                }
-                if (v + res >= u) {
+    if (n == "2") {
+        cout << "Password: ";
+        s.clear();
+        cin >> s;
+        if (s == password) {
+            cout << "Encoded: " << text << endl;
 
-                    msg[j] = alph[v + res - u];
+            fout << "Encoded string: " << text << endl;
+            fout << endl;
+        }
+        else {
+            cout << "Incorrect Password! " << endl;
+            return;
+        }
+    }
+    if (n=="1"){
+        for (int j = 0; j != msg.length();j++) {//шифр
+            for (int v = 0; v != strlen(alph);v++) {
+                if (msg[j] == alph[v]) {
+                    if (i[j] == '0') {
+                        res = 0;
+                    }
+                    if (i[j] == '1') {
+                        res = 1;
+                    }
+                    if (i[j] == '2') {
+                        res = 2;
+                    }
+                    if (i[j] == '3') {
+                        res = 3;
+                    }
+                    if (i[j] == '4') {
+                        res = 4;
+                    }
+                    if (i[j] == '5') {
+                        res = 5;
+                    }
+                    if (i[j] == '6') {
+                        res = 6;
+                    }
+                    if (i[j] == '7') {
+                        res = 7;
+                    }
+                    if (i[j] == '8') {
+                        res = 8;
+                    }
+                    if (i[j] == '9') {
+                        res = 9;
+                    }
+                    if (v + res >= u) {
+
+                        msg[j] = alph[v + res - u];
+                    }
+                    else
+                        msg[j] = alph[v + res];
+                    break;
                 }
-                else
-                    msg[j] = alph[v + res];
-                break;
             }
         }
 
-
     }
-    cout << "Password: ";
-    cin >> s;
-    if (s == password) {
-        cout << "Зашифрованное соббщение: " << msg << endl;
+    if (n == "1") {
+        cout << "Password: ";
+        s.clear();
+        cin >> s;
+        if (s == password) {
+            cout << "Encoded: " << msg << endl;
 
-        fout << "Encoded string: " << msg << endl;
-        fout << endl;
+            fout << "Encoded string: " << msg << endl;
+            fout << endl;
+        }
+        else {
+            cout << "Incorrect Password! " << endl;
+            return;
+        }
     }
-    else {
-         cout << "Incorrect Password! " << endl;
-         return;
-     }
-    for (int j = 0; j != msg.length();j++) { //дешифр
-        for (int v = 0; v != strlen(alph);v++) {
-            if (msg[j] == alph[v]) {
-                if (i[j] == '0') {
-                    res = 0;
-                }
-                if (i[j] == '1') {
-                    res = 1;
-                }
-                if (i[j] == '2') {
-                    res = 2;
-                }
-                if (i[j] == '3') {
-                    res = 3;
-                }
-                if (i[j] == '4') {
-                    res = 4;
-                }
-                if (i[j] == '5') {
-                    res = 5;
-                }
-                if (i[j] == '6') {
-                    res = 6;
-                }
-                if (i[j] == '7') {
-                    res = 7;
-                }
-                if (i[j] == '8') {
-                    res = 8;
-                }
-                if (i[j] == '9') {
-                    res = 9;
-                }
-                if (v - res < 0) {
+    if (n == "2") {
+        for (int j = 0; j != text.length();j++) { //дешифр
+            for (int v = 0; v != strlen(alph);v++) {
+                if (text[j] == alph[v]) {
+                    if (i[j] == '0') {
+                        res = 0;
+                    }
+                    if (i[j] == '1') {
+                        res = 1;
+                    }
+                    if (i[j] == '2') {
+                        res = 2;
+                    }
+                    if (i[j] == '3') {
+                        res = 3;
+                    }
+                    if (i[j] == '4') {
+                        res = 4;
+                    }
+                    if (i[j] == '5') {
+                        res = 5;
+                    }
+                    if (i[j] == '6') {
+                        res = 6;
+                    }
+                    if (i[j] == '7') {
+                        res = 7;
+                    }
+                    if (i[j] == '8') {
+                        res = 8;
+                    }
+                    if (i[j] == '9') {
+                        res = 9;
+                    }
+                    if (v - res < 0) {
 
-                    msg[j] = alph[v - res + u];
+                        text[j] = alph[v - res + u];
 
 
+                    }
+                    else
+                        text[j] = alph[v - res];
+                    break;
                 }
-                else
-                    msg[j] = alph[v - res];
-                break;
+            }
+        }
+    }
+    if(n=="1"){
+        for (int j = 0; j != msg.length();j++) { //дешифр
+            for (int v = 0; v != strlen(alph);v++) {
+                if (msg[j] == alph[v]) {
+                    if (i[j] == '0') {
+                        res = 0;
+                    }
+                    if (i[j] == '1') {
+                        res = 1;
+                    }
+                    if (i[j] == '2') {
+                        res = 2;
+                    }
+                    if (i[j] == '3') {
+                        res = 3;
+                    }
+                    if (i[j] == '4') {
+                        res = 4;
+                    }
+                    if (i[j] == '5') {
+                        res = 5;
+                    }
+                    if (i[j] == '6') {
+                        res = 6;
+                    }
+                    if (i[j] == '7') {
+                        res = 7;
+                    }
+                    if (i[j] == '8') {
+                        res = 8;
+                    }
+                    if (i[j] == '9') {
+                        res = 9;
+                    }
+                    if (v - res < 0) {
+
+                        msg[j] = alph[v - res + u];
+
+
+                    }
+                    else
+                        msg[j] = alph[v - res];
+                    break;
+                }
             }
         }
     }
@@ -620,10 +754,16 @@ void Grons(ofstream& fout, const string& password)
     s.clear();
     cin >> s;
     if (s == password) {
-        cout << "Расшифрованное сообщение: " << msg;
-
-        fout << "Decoded string: " << msg << endl;
-        fout << endl;
+        if (n == "1") {
+            cout << "Decoded: " << msg;
+            fout << "Decoded string: " << msg << endl;
+            fout << endl;
+        }
+        if (n == "2") {
+            cout << "Decoded: " << text;
+            fout << "Decoded string: " << text << endl;
+            fout << endl;
+        }
     }
     else {
         cout << "Incorrect Password! " << endl;
@@ -631,44 +771,131 @@ void Grons(ofstream& fout, const string& password)
     }
     }
 }
-void transp(ofstream& fout, const string& password) {
+void transp(ofstream& fout, const string& password) 
+{
    SetConsoleCP(1251);
     setlocale(LC_ALL, "Russian");
+    vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };
     char n[1000];
-    string s;
-    cout << "Введите слово для шифровки: ";
-    cin.getline(n, 1000);
-    string q = n;
-    if (q.length() % 2 != 0)
-        q = q + ' ';
-
-    for (int i = 0; i < q.length() / 2; i += 2) {
-        swap(q[i], q[q.length() - (i + 1) - 1]);
-        swap(q[i + 1], q[q.length() - i - 1]);
-    }
-    cout << "Password: ";
-    cin >> s;
-    if (s == password) {
-        cout << "Зашифрованное слово :";
-        cout << q << endl;
-    }
-    else {
-        cout << "Incorrect Password! " << endl;
-        return;
-    }
-    for (int i = 0; i < (q.length() / 2); i += 2) {
-        swap(q[i], q[q.length() - (i + 1) - 1]);
-        swap(q[i + 1], q[q.length() - i - 1]);
-    }
-    cout << "Password: ";
-    s.clear();
-    cin >> s;
-    if (s == password) {
-        cout << "Дешифрованное слово: ";
-        cout << q << endl;
-    }
-    else {
-        cout << "Incorrect Password! " << endl;
-        return;
-    }
+    string s,y, text,q;
+    cout << "Generate text?" << endl;
+    cout << "1 - No" << endl << "2 - Yes" << endl;
+    cin >> y;
+        if (y == "1") 
+        {
+            cout << "Vvedite soobshenie: ";
+            q = n;
+            cin.ignore();
+            getline(cin, q);
+            cout << "Origin text: " << q << endl;
+            fout << "Transponirovania" << endl;
+            fout << endl;
+            fout << "Origin text: " << q << endl;
+            fout << endl;
+        }
+        if (y == "2") 
+        {
+            system("cls");
+            mt19937 gen(time(0));
+            uniform_int_distribution<int> uid1(0, 11);
+            text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+            cout << "Origin text: " << text << endl;
+            fout << "Gronsfeld" << endl;
+            fout << endl;
+            fout << "Origin text: " << text << endl;
+            fout << endl;
+        }
+        if (y == "1") 
+        {
+            if (q.length() % 2 != 0) {
+                q = q + ' ';
+            }
+        }
+        if (y == "2") 
+        {
+            if (text.length() % 2 != 0) {
+                text = text + ' ';
+            }
+        }
+        if (y == "1") 
+        {
+            for (int i = 0; i < q.length() / 2; i += 2) 
+            {
+                swap(q[i], q[q.length() - (i + 1) - 1]);
+                swap(q[i + 1], q[q.length() - i - 1]);
+            }
+            cout << "Password: ";
+            cin >> s;
+            if (s == password) {
+                cout << "Encoded: ";
+                cout << q << endl;
+                fout << "Encoded string: " << q << endl;
+                fout << endl;
+            }
+            else {
+                cout << "Incorrect Password! " << endl;
+                return;
+            }
+        }
+        if (y == "2") 
+        {
+            for (int i = 0; i < text.length() / 2; i += 2) {
+                swap(text[i], text[text.length() - (i + 1) - 1]);
+                swap(text[i + 1], text[text.length() - i - 1]);
+            }
+            cout << "Password: ";
+            cin >> s;
+            if (s == password) {
+                cout << "Encoded :";
+                cout << text << endl;
+                fout << "Encoded string: " << text << endl;
+                fout << endl;
+            }
+            else {
+                cout << "Incorrect Password! " << endl;
+                return;
+            }
+        }
+        if (y == "1") 
+        {
+            for (int i = 0; i < (q.length() / 2); i += 2) 
+            {
+                swap(q[i], q[q.length() - (i + 1) - 1]);
+                swap(q[i + 1], q[q.length() - i - 1]);
+            }
+            cout << "Password: ";
+            s.clear();
+            cin >> s;
+            if (s == password) 
+            {
+                cout << "Decoded: ";
+                cout << q << endl;
+                fout << "Decoded string: " << q << endl;
+                fout << endl;
+            }
+            else {
+                cout << "Incorrect Password! " << endl;
+                return;
+            }
+        }
+        if (y == "2") 
+        {
+            for (int i = 0; i < (text.length() / 2); i += 2) {
+                swap(text[i], text[text.length() - (i + 1) - 1]);
+                swap(text[i + 1], text[text.length() - i - 1]);
+            }
+            cout << "Password: ";
+            s.clear();
+            cin >> s;
+            if (s == password) {
+                cout << "Decoded: ";
+                cout << text << endl;
+                fout << "Decoded string: " << text << endl;
+                fout << endl;
+            }
+            else {
+                cout << "Incorrect Password! " << endl;
+                return;
+            }
+        }
 }
