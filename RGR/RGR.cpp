@@ -1,33 +1,90 @@
 ﻿#include "Header.h"
 #include "Header1.h"
+#include <random>
 
 enum instuction {
 	Эль_Гамаля = 1,
-	Тарабарская_грамота,
-	Атбаш,
 	Вижинер,
-	Гронсфельд,
 	Двойная_табличная_перестановка,
+	Атбаш,
+	Гронсфельд,
+	Тарабарская_грамота,
 	Транспонирования,
 	RSA,
 	Табличная_перестановка
 };
 
+void eng(string text) {
+	int k = 0;
+	while (k < text.length()) {
+		if ((text[k] >= 'a') && (text[k] <= 'z') || (text[k] == ' '));
+		else if ((text[k] >= 'A') && (text[k] <= 'Z'));
+		else
+			throw " Incorrect input! Use only english. (Be sure to use a space before entering)\n";
+
+		k++;
+	}
+}
+
+vector<string> rantext = { "we", "do", "business", "around", "the", "world.", "Recognition", "is","most", "powerful", "motivation", "factor." };
+
 void menu(const string& password) {
-	string s, vibor, wish;
+	cout << endl;
+	string s, vibor, wish, n, text;
 	ofstream fout("Output.txt", ios::app);
 	ifstream in("Input.txt");
 
+	mt19937 gen(time(0));
+	uniform_int_distribution<int> uid1(0, 11);
+
 	int k;
+
+	bool is_Wish = true;
+	
+	cout << "Generate text?" << endl;
+	cout << "1 - No" << endl << "2 - Yes" << endl << "3 - file" << endl;
+	cin >> n;
+	if (n == "1") {
+		system("cls");
+		cin.ignore();
+		cout << "Input text: ";
+		getline(cin, text);
+	}
+	else if (n == "2") {
+		system("cls");
+		text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
+	}
+	else if (n == "3") {
+		system("cls");
+		getline(in, text);
+	}
+	else {
+		system("cls");
+		cout << "Введите число от 1 до 3";
+		text.clear();
+		menu(password);
+	}
+
+	cout << "What would you like:" << endl << "1) decryption only" << endl << "2) only encrypt" << endl << "3) this and that" << endl;
+	cin >> wish;
+	if (wish == "1" || wish == "2" || wish == "3") is_Wish = false;
+	while (is_Wish) {
+		system("cls");
+		cout << "Input 1 or 2 or 3" << endl;
+		cout <<"1) decryption only" << endl << "2) only encrypt" << endl << "3) this and that" << endl;
+		cin >> wish;
+		if (wish == "1" || wish == "2" || wish == "3") is_Wish = false;
+	}
+
 
 	cout << endl;
 	cout << "Выберите шифр: " << endl;
 	cout << "Нажмите <1> если выбрали  Эль Гамаля " << endl;
-	cout << "Нажмите <2> если выбрали  Тарабарская грамота " << endl;
-	cout << "Нажмите <3> если выбрали  Атбаш " << endl;
-	cout << "Нажмите <4> если выбрали  Вижинер" << endl;
+	cout << "Нажмите <2> если выбрали  Вижинер" << endl;
+	cout << "Нажмите <3> если выбрали  Двойная табличная перестановка " << endl;
+	cout << "Нажмите <4> если выбрали  Атбаш" << endl;
 	cout << "Нажмите <5> если выбрали  Гронсфельд " << endl;
-	cout << "Нажмите <6> если выбрали  Двойная табличная перестановка " << endl;
+	cout << "Нажмите <6> если выбрали  Тарабарская грамота " << endl;
 	cout << "Нажмите <7> если выбрали  Шифр Транспонирования " << endl;
 	cout << "Нажмите <8> если выбрали  RSA " << endl;
 	cout << "Нажмите <9> если выбрали  Табличная перестановка " << endl;
@@ -48,7 +105,19 @@ void menu(const string& password) {
 
 	case Эль_Гамаля:
 		system("cls");
-		El_Gamal(fout, password, in);
+		El_Gamal(fout, password, text, wish);
+		system("notepad Output.txt ");
+		break;
+
+	case Вижинер:
+		system("cls");
+		Vizhiner(fout, password, text, wish);
+		system("notepad Output.txt ");
+		break;
+
+	case Двойная_табличная_перестановка:
+		system("cls");
+		TablCryp(fout, password, text, wish);
 		system("notepad Output.txt ");
 		break;
 
@@ -169,21 +238,10 @@ void menu(const string& password) {
 		}
 		break;
 
-	case Вижинер:
-		system("cls");
-		Vizhiner(fout, password, in);
-		system("notepad Output.txt ");
-		break;
 
 	case Гронсфельд:
 		system("cls");
         Grons(fout, password,in);
-		system("notepad Output.txt ");
-		break;
-
-	case Двойная_табличная_перестановка:
-		system("cls");
-		TablCryp(fout, password, in);
 		system("notepad Output.txt ");
 		break;
 

@@ -1,20 +1,12 @@
-Vigenere Cipher
+Spreadsheet encryption using the double permutation method 
 
-Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+Origin strings: business we most
 
-Encoded string: Cxmue cxpyoy Wryoy wrbsikWryoy wrbsikWryoy wrbsikWryoy wrbsikWryoy wrbsikWryoy wrbsikWryoy wrbsikWryoy wrbsik Qdsik qdvmueQdsik qdvmueQdsik qdvmueQdsik qdvmueQdsik qdvmueQdsik qdvmueQdsik qdvmue
-
-Decoded string: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
-
-Gronsfeld
-
-Origin text: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+Encode strings: t_sisessoweum_nb
 
 Spreadsheet encryption using the double permutation method 
 
-Origin strings: Stoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka Stoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka strokaStoka stroka
+Origin strings: t sisessoweum nb
 
-Encode strings: *oskSotatktatar_oarskSoskSktatkt_oar_o_oskSosatktatar_oar_kSoskSktatktaoar_oaoskSosktktatkr_oar_oSoskSotatktatar_oarskSoskSktatkt_oar_o_oskSosatktatar_oar_kSoskSktatktaoar_oaoskSosktktatkr_oar_oS
-
-Decoded string: Stoka str akotSkaaStorokts akostoka aStkorts ok strokatSakorStroka stakotSakaaStorokts akostoka aStkorts roa sttokS akoraStroka skotSakokkaSttros akot stokakaSorts aroa sttokSakorta
+Decoded string: business we most
 

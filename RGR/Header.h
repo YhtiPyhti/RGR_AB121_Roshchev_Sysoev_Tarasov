@@ -11,19 +11,17 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 #include <algorithm>
-#include <cctype>
 #include <climits>
 #include <cstdlib>
 #include <ctime>
 #include <exception>
-#include <iostream>
 #include <limits>
 #include <map>
 #include <set>
 #include <stdexcept>
-#include <string>
-#include <vector>
+
 using namespace std;
 
 typedef map        < char, char    >   T_key;
@@ -38,11 +36,7 @@ typedef vector     < char  >               T_symbols;
 
 using namespace std;
 
-int mod(int g, int X, int p);
-void eng(string text);
-void El_Gamal(ofstream& fout, const string& password, ifstream& in);
-vector<int> El_Gamal_encode(int g, int p, int Xb, int k, int m);
-int El_Gamal_decode(int g, int p, int Xb, vector<int> entext);
+
 
 void Tarab_G(ofstream& fout, const string& password, ifstream& in);
 
