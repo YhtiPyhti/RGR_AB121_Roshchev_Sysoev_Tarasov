@@ -1,12 +1,12 @@
-Spreadsheet encryption using the double permutation method 
+Vigenere Cipher
 
-Origin strings: business we most
+Origin text: Stoka stroka Stoka strokaStoka strokaStoka
 
-Encode strings: t_sisessoweum_nb
+Encoded string: Cxmue cxpyoy Wryoy wrbsikWryoy wrbsikWryoy
 
-Spreadsheet encryption using the double permutation method 
+Vigenere Cipher
 
-Origin strings: t sisessoweum nb
+Origin text: Cxmue cxpyoy Wryoy wrbsikWryoy wrbsikWryoy
 
-Decoded string: business we most
+Decoded string: Stoka stroka Stoka strokaStoka strokaStoka
 

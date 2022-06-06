@@ -114,13 +114,9 @@ void El_Gamal(ofstream& fout, const string& password, string& text, string& wish
 		for (int i = 0; i < text.length()/2; i++) {
 
 			zahiv.clear();
-			string stroka = to_string(text[i] - '0') + to_string(text[i + 1] - '0');
-			int e = stoi(stroka);
-			stroka = to_string(text[i + 2] - '0') + to_string(text[i + 3] - '0');
-			int r = stoi(stroka);
 
-			zahiv.push_back(e);
-			zahiv.push_back(r);
+			zahiv.push_back(text[i] - '0');
+			zahiv.push_back(text[i + 1] - '0');
 
 			decodtext += (char)(El_Gamal_decode(g, p, Xb, zahiv) + '0');
 		}
