@@ -18,9 +18,9 @@ void eng(string text) {
 	int k = 0;
 	while (k < text.length()) {
 		if ((text[k] >= 'a') && (text[k] <= 'z') || (text[k] == ' '));
-		else if ((text[k] >= 'A') && (text[k] <= 'Z'));
+		else if ((text[k] >= 'A') && (text[k] <= 'Z') || (text[k] >= '0') && (text[k] <= '9'));
 		else
-			throw " Incorrect input! Use only english. (Be sure to use a space before entering)\n";
+			throw " Incorrect input! Use only english!\n";
 
 		k++;
 	}
@@ -45,18 +45,34 @@ void menu(const string& password) {
 	cout << "1 - No" << endl << "2 - Yes" << endl << "3 - file" << endl;
 	cin >> n;
 	if (n == "1") {
-		system("cls");
 		cin.ignore();
-		cout << "Input text: ";
-		getline(cin, text);
+		try {
+			system("cls");
+			cout << "Input text: ";
+			getline(cin, text);
+			eng(text);
+		}
+		catch (const char* err) {
+			cout << err;
+			text.clear();
+			menu(password);
+		}
 	}
 	else if (n == "2") {
 		system("cls");
 		text = rantext[uid1(gen)] + ' ' + rantext[uid1(gen)] + ' ' + rantext[uid1(gen)];
 	}
 	else if (n == "3") {
-		system("cls");
-		getline(in, text);
+		try {
+			system("cls");
+			getline(in, text);
+			eng(text);
+		}
+		catch (const char* err) {
+			cout << err;
+			text.clear();
+			menu(password);
+		}
 	}
 	else {
 		system("cls");

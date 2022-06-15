@@ -257,7 +257,10 @@ string encodeText(string text, string key) {
     //шифровка
     for (i = 0; i < text.length(); i++) {
         if (text[i] != ' ') {
-            if (97 <= (int)text[i] && 97 <= (int)newKey[i]) {
+			if ((int)text[i] >= 48 && (int)text[i] <= 57) {
+				encryptedText[i] = text[i];
+			}
+            else if (97 <= (int)text[i] && 97 <= (int)newKey[i]) {
                 encryptedText[i] = (((text[i] - 'a') + (newKey[i] - 'a')) % 26);
                 encryptedText[i] += 'a';
             }
@@ -300,7 +303,10 @@ string decodeText(string text, string key) {
     //дешифровка
     for (i = 0; i < text.length(); i++) {
         if (text[i] != ' ') {
-            if (97 <= (int)text[i] && 97 <= (int)newKey[i]) {
+			if ((int)text[i] >= 48 && (int)text[i] <= 57) {
+				encryptedText[i] = text[i];
+			}
+            else if (97 <= (int)text[i] && 97 <= (int)newKey[i]) {
                 encryptedText[i] = (((text[i] - 'a') - (newKey[i] - 'a') + 26) % 26); // a a
                 encryptedText[i] += 'a';
             }
