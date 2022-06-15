@@ -1,12 +1,8 @@
-Vigenere Cipher
-
-Origin text: Stoka stroka Stoka strokaStoka strokaStoka
-
-Encoded string: Cxmue cxpyoy Wryoy wrbsikWryoy wrbsikWryoy
-
-Vigenere Cipher
+ElGamal Cipher
 
 Origin text: Cxmue cxpyoy Wryoy wrbsikWryoy wrbsikWryoy
 
-Decoded string: Stoka stroka Stoka strokaStoka strokaStoka
+Encode text: 3134120313430863134132531343255313429663134-28931346983134308631341156313464931342231346493134-2893134137431343424313464931342231346493134-28931341952313434243134313531349873134360313426283134137431343424313464931342231346493134-2893134195231343424313431353134987313436031342628313413743134342431346493134223134649
+
+Decode text: Cxmue cxpyoy Wryoy wrbsikWryoy wrbsikWryoy
 
